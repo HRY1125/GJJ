@@ -11,12 +11,12 @@
 </head>
 <body>
     <div id="div_form">
-        <form id="form_main" class="layui-form" action="">
+        <form id="form_main" class="layui-form" action="/account/accountInsert">
 
             <div class="layui-form-item">
                 <label class="layui-form-label">单位登记号</label>
                 <div class="layui-input-block">
-                    <input type="text" name="" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" name="unitRegisterId" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
@@ -30,42 +30,42 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">业务种类</label>
                 <div class="layui-input-block">
-                    <input type="radio" name="kind" value="" title="住房公积金">
-                    <input type="radio" name="kind" value="" title="住房补贴">
-                    <input type="radio" name="kind" value="" title="住房基金">
-                    <input type="radio" name="kind" value="" title="住房维修基金">
+                    <input type="radio" name="businessKind" value="住房公积金" title="住房公积金">
+                    <input type="radio" name="businessKind" value="住房补贴" title="住房补贴">
+                    <input type="radio" name="businessKind" value="住房基金" title="住房基金">
+                    <input type="radio" name="businessKind" value="住房维修基金" title="住房维修基金">
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label">资金来源</label>
                 <div class="layui-input-block">
-                    <input type="radio" name="source" value="" title="单位自筹">
-                    <input type="radio" name="source" value="" title="财政拨款">
-                    <input type="radio" name="source" value="" title="财政拨款和单位自筹">
+                    <input type="radio" name="capitalSource" value="单位自筹" title="单位自筹">
+                    <input type="radio" name="capitalSource" value="财政拨款" title="财政拨款">
+                    <input type="radio" name="capitalSource" value="财政拨款和单位自筹" title="财政拨款和单位自筹">
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label">开通二级辅助信息</label>
                 <div class="layui-input-block">
-                    <input type="radio" name="isSecond" value="" title="是">
-                    <input type="radio" name="isSecond" value="" title="否">
+                    <input type="radio" name="isSecondAssist" value="是" title="是">
+                    <input type="radio" name="isSecondAssist" value="否" title="否">
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label">财政拨款单位</label>
                 <div class="layui-input-block">
-                    <input type="radio" name="appropriationUnit" value="" title="市财政">
-                    <input type="radio" name="appropriationUnit" value="" title="区县财政">
+                    <input type="radio" name="allocateUnit" value="市财政" title="市财政">
+                    <input type="radio" name="allocateUnit" value="区县财政" title="区县财政">
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label">业务经办部门</label>
                 <div class="layui-input-block">
-                    <input type="text" name="" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" name="agentDepartment" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
@@ -124,9 +124,9 @@
             </div>
 
             <div class="layui-form-item">
-                <label class="layui-form-label">缴款月份</label>
+                <label class="layui-form-label">首次汇缴月份</label>
                 <div class="layui-input-block">
-                    <select name="firstDemandMonth" required lay-verify="required" lay-filter="papers">
+                    <select name="firstRemitMonth" required lay-verify="required" lay-filter="papers">
                         <option value=""></option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -147,15 +147,15 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">跨年清册核定月份</label>
                 <div class="layui-input-block">
-                    <input type="radio" name="" value="" title="1月">
-                    <input type="radio" name="" value="" title="7月">
+                    <input type="radio" name="yearListRatify" value="1" title="1月">
+                    <input type="radio" name="yearListRatify" value="7" title="7月">
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label">单位缴存比例</label>
                 <div class="layui-input-block">
-                    <input type="text" name="" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" name="unitDepositeRatio" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
@@ -169,8 +169,8 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">每月汇缴是否需要确认人员清册</label>
                 <div class="layui-input-block">
-                    <input type="radio" name="" value="" title="是">
-                    <input type="radio" name="" value="" title="否">
+                    <input type="radio" name="isMonthConfirm" value="是" title="是">
+                    <input type="radio" name="isMonthConfirm" value="否" title="否">
                 </div>
             </div>
 
