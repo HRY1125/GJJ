@@ -2,6 +2,7 @@ package com.zlk.gjj.registerAndAccount.account.controller;
 
 import com.zlk.gjj.registerAndAccount.account.service.AccountService;
 import com.zlk.gjj.registerAndAccount.entity.Account;
+import com.zlk.gjj.registerAndAccount.util.IDUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,7 @@ public class accountController {
         account.setFirstRemitMonth(1);
         account.setUnitDepositeRatio(1);
         account.setIsMonthConfirm("1");*/
+        account.setAccountId(IDUtils.getUUID());
         Integer flag = accountService.insertAccount(account);
         if(flag == 1){
             return "index";
@@ -34,4 +36,6 @@ public class accountController {
             return null;
         }
     }
+
+
 }
