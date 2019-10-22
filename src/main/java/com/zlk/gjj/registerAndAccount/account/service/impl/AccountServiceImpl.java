@@ -22,4 +22,10 @@ public class AccountServiceImpl implements AccountService {
     public String selectAccountByUnitId(String unitId) {
         return accountMapper.selectAccountByUnitId(unitId);
     }
+
+    @Override
+    public Integer updateAccountById(Account account) {
+        return accountMapper.updateAccountById(account);
+    }
+
 }

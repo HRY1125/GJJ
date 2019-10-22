@@ -29,6 +29,54 @@
 		select account_type from account where unit_id=#{unitId}
 	</select>
 
+    <update id="updateAccountById" parameterType="com.zlk.gjj.registerAndAccount.entity.Account">
+    update account
+    <set>
+        <if test="unitRegisterId!=null and unitRegisterId!=''">
+            unit_register_id =#{unitRegisterId},
+        </if>
+        <if test="unitId!=null and unitId!=''">
+            unit_id  =#{unitId},
+        </if>
+        <if test="accountType!=null and accountType!=''">
+            account_type  =#{accountType},
+        </if>
+        <if test="businessKind!=null and businessKind!=''">
+            business_kind  =#{businessKind},
+        </if>
+        <if test="capitalSource!=null and capitalSource!=''">
+            capital_source  =#{capitalSource},
+        </if>
+        <if test="allocateUnit!=null and allocateUnit!=''">
+            allocate_unit  =#{allocateUnit},
+        </if>
+        <if test="isSecondAssist!=null and isSecondAssist!=''">
+            is_second_assist  =#{isSecondAssist},
+        </if>
+        <if test="agentDepartment!=null and agentDepartment!=''">
+            agent_department  =#{agentDepartment},
+        </if>
+        <if test="payDay!=null and payDay!=''">
+            pay_day  =#{payDay},
+        </if>
+        <if test="firstRemitMonth!=null and firstRemitMonth!=''">
+            first_remit_month  =#{firstRemitMonth},
+        </if>
+        <if test="yearListRatify!=null and yearListRatify!=''">
+            year_list_ratify  =#{yearListRatify},
+        </if>
+        <if test="unitDepositeRatio!=null and unitDepositeRatio!=''">
+            unit_deposite_ratio  =#{unitDepositeRatio},
+        </if>
+        <if test="isMonthConfirm!=null and isMonthConfirm!=''">
+            is_month_confirm  =#{isMonthConfirm},
+        </if>
+
+
+    </set>
+    where account_id=#{accountId}
+</update>
+
 
 
 

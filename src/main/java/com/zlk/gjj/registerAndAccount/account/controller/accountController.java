@@ -58,5 +58,15 @@ public class accountController {
 
     }
 
-
+       @RequestMapping(value = "/updateAccountById")
+       public String updateAccountById( Account account){
+        account.setAccountId("1");
+        account.setPayDay(7);
+        Integer flag = accountService.updateAccountById(account);
+           if(flag == 1){
+               return "index1";
+           }else {
+               return null;
+           }
+       }
 }
