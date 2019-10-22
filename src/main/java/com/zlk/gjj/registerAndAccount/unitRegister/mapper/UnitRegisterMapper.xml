@@ -21,4 +21,9 @@
         <result property="unitBuildDate" column="unit_build_time" javaType="java.util.Date"/>
         <result property="superiorUnit" column="superior_unit" javaType="java.lang.String"/>
     </resultMap>
+
+    <select id="selectUnitRegisterUnitId" parameterType="com.zlk.gjj.registerAndAccount.entity.UnitRegister" resultType="java.lang.String">
+		select unit_id from unit_register where unit_name=#{unitName} and org_code=#{orgCode}
+	</select>
+
 </mapper>

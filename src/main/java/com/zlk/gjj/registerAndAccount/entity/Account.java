@@ -4,6 +4,7 @@ public class Account {
     private String accountId;
     private String unitRegisterId;
     private String unitId;
+    private String accountType;
     private String businessKind;
     private String capitalSource;
     private String allocateUnit;
@@ -23,12 +24,12 @@ public class Account {
         this.accountId = accountId;
     }
 
-    public String getUnitRegistId() {
+    public String getUnitRegisterId() {
         return unitRegisterId;
     }
 
-    public void setUnitRegistId(String unitRegistId) {
-        this.unitRegisterId = unitRegistId;
+    public void setUnitRegisterId(String unitRegisterId) {
+        this.unitRegisterId = unitRegisterId;
     }
 
     public String getUnitId() {
@@ -119,10 +120,24 @@ public class Account {
         this.isMonthConfirm = isMonthConfirm;
     }
 
-    public Account(String accountId, String unitRegistId, String unitId, String businessKind, String capitalSource, String allocateUnit, String isSecondAssist, String agentDepartment, int payDay, int firstRemitMonth, int yearListRatify, int unitDepositeRatio, String isMonthConfirm) {
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
+    }
+
+
+
+    public Account() {
+    }
+
+    public Account(String accountId, String unitRegisterId, String unitId, String accountType, String businessKind, String capitalSource, String allocateUnit, String isSecondAssist, String agentDepartment, int payDay, int firstRemitMonth, int yearListRatify, int unitDepositeRatio, String isMonthConfirm) {
         this.accountId = accountId;
-        this.unitRegisterId = unitRegistId;
+        this.unitRegisterId = unitRegisterId;
         this.unitId = unitId;
+        this.accountType = accountType;
         this.businessKind = businessKind;
         this.capitalSource = capitalSource;
         this.allocateUnit = allocateUnit;
@@ -135,15 +150,13 @@ public class Account {
         this.isMonthConfirm = isMonthConfirm;
     }
 
-    public Account() {
-    }
-
     @Override
     public String toString() {
         return "Account{" +
                 "accountId='" + accountId + '\'' +
                 ", unitRegisterId='" + unitRegisterId + '\'' +
                 ", unitId='" + unitId + '\'' +
+                ", accountType='" + accountType + '\'' +
                 ", businessKind='" + businessKind + '\'' +
                 ", capitalSource='" + capitalSource + '\'' +
                 ", allocateUnit='" + allocateUnit + '\'' +

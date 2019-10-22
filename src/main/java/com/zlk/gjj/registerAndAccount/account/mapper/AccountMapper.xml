@@ -7,6 +7,7 @@
         <id property="accountId" column="account_id" javaType="java.lang.String"></id>
         <result property="unitRegisterId" column="unit_register_id" javaType="java.lang.String"></result>
         <result property="unitId" column="unit_id" javaType="java.lang.String"></result>
+        <result property="accountType" column="account_type" javaType="java.lang.String"></result>
         <result property="businessKind" column="business_kind" javaType="java.lang.String"></result>
         <result property="capitalSource" column="capital_source" javaType="java.lang.String"></result>
         <result property="allocateUnit" column="allocate_unit" javaType="java.lang.String"></result>
@@ -23,6 +24,12 @@
 <insert id="insertAccount" parameterType="com.zlk.gjj.registerAndAccount.entity.Account">
         insert into account(account_id,unit_register_id,unit_id,business_kind,capital_source,allocate_unit,is_second_assist,agent_department,pay_day,first_remit_month,year_list_ratify,unit_deposite_ratio,is_month_confirm) values (#{accountId},#{unitRegisertId},#{unitId},#{businessKind},#{capitalSource},#{allocateUnit},#{isSecondAssist},#{agentDepartment},#{payDay},#{firstRemitMonth},#{yearListRatify},#{unitDepositeRatio},#{isMonthConfirm})
     </insert>
+
+    <select id="selectAccountByUnitId" parameterType="com.zlk.gjj.registerAndAccount.entity.Account" resultType="java.lang.String">
+		select account_type from account where unit_id=#{unitId}
+	</select>
+
+
 
 
 
