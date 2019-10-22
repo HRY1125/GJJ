@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zlk.gjj.registerAndAccount.account.mapper.AccountMapper">
+    <resultMap id="accountEntityMap" type="com.zlk.gjj.registerAndAccount.entity.Account">
+        <id property="accountId" column="account_id" javaType="java.lang.String"></id>
+        <result property="unitRegisterId" column="unit_register_id" javaType="java.lang.String"></result>
+        <result property="unitId" column="unit_id" javaType="java.lang.String"></result>
+        <result property="businessKind" column="business_kind" javaType="java.lang.String"></result>
+        <result property="capitalSource" column="capital_source" javaType="java.lang.String"></result>
+        <result property="allocateUnit" column="allocate_unit" javaType="java.lang.String"></result>
+        <result property="isSecondAssist" column="is_second_assist" javaType="java.lang.String"></result>
+        <result property="agentDepartment" column="agent_department" javaType="java.lang.String"></result>
+        <result property="payDay" column="pay_day" javaType="java.lang.Integer"></result>
+        <result property="firstRemitMonth" column="first_remit_month" javaType="java.lang.Integer"></result>
+        <result property="yearListRatify" column="year_list_ratify" javaType="java.lang.Integer"></result>
+        <result property="unitDepositeRatio" column="unit_deposite_ratio" javaType="java.lang.Integer"></result>
+        <result property="isMonthConfirm" column="is_month_confirm" javaType="java.lang.String"></result>
+    </resultMap>
+
+
+<insert id="insertAccount" parameterType="com.zlk.gjj.registerAndAccount.entity.Account">
+        insert into account(account_id,unit_register_id,unit_id,business_kind,capital_source,allocate_unit,is_second_assist,agent_department,pay_day,first_remit_month,year_list_ratify,unit_deposite_ratio,is_month_confirm) values (#{accountId},#{unitRegisertId},#{unitId},#{businessKind},#{capitalSource},#{allocateUnit},#{isSecondAssist},#{agentDepartment},#{payDay},#{firstRemitMonth},#{yearListRatify},#{unitDepositeRatio},#{isMonthConfirm})
+    </insert>
+
+
+
+</mapper>

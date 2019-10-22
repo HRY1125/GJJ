@@ -1,8 +1,8 @@
 package com.zlk.gjj.registerAndAccount.entity;
 
-public class account {
+public class Account {
     private String accountId;
-    private String unitRegistId;
+    private String unitRegisterId;
     private String unitId;
     private String businessKind;
     private String capitalSource;
@@ -24,11 +24,11 @@ public class account {
     }
 
     public String getUnitRegistId() {
-        return unitRegistId;
+        return unitRegisterId;
     }
 
     public void setUnitRegistId(String unitRegistId) {
-        this.unitRegistId = unitRegistId;
+        this.unitRegisterId = unitRegistId;
     }
 
     public String getUnitId() {
@@ -119,9 +119,9 @@ public class account {
         this.isMonthConfirm = isMonthConfirm;
     }
 
-    public account(String accountId, String unitRegistId, String unitId, String businessKind, String capitalSource, String allocateUnit, String isSecondAssist, String agentDepartment, int payDay, int firstRemitMonth, int yearListRatify, int unitDepositeRatio, String isMonthConfirm) {
+    public Account(String accountId, String unitRegistId, String unitId, String businessKind, String capitalSource, String allocateUnit, String isSecondAssist, String agentDepartment, int payDay, int firstRemitMonth, int yearListRatify, int unitDepositeRatio, String isMonthConfirm) {
         this.accountId = accountId;
-        this.unitRegistId = unitRegistId;
+        this.unitRegisterId = unitRegistId;
         this.unitId = unitId;
         this.businessKind = businessKind;
         this.capitalSource = capitalSource;
@@ -135,14 +135,14 @@ public class account {
         this.isMonthConfirm = isMonthConfirm;
     }
 
-    public account() {
+    public Account() {
     }
 
     @Override
     public String toString() {
         return "account{" +
                 "accountId='" + accountId + '\'' +
-                ", unitRegistId='" + unitRegistId + '\'' +
+                ", unitRegisterId='" + unitRegisterId + '\'' +
                 ", unitId='" + unitId + '\'' +
                 ", businessKind='" + businessKind + '\'' +
                 ", capitalSource='" + capitalSource + '\'' +
