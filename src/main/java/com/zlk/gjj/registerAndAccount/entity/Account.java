@@ -140,7 +140,7 @@ public class Account {
 
     @Override
     public String toString() {
-        return "account{" +
+        return "Account{" +
                 "accountId='" + accountId + '\'' +
                 ", unitRegisterId='" + unitRegisterId + '\'' +
                 ", unitId='" + unitId + '\'' +

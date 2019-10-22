@@ -17,7 +17,7 @@ public class Agent {
     /**单位id*/
     private String unitId;
     /**单位登记号*/
-    private String unitRegistId;
+    private String unitRegisterId;
     /**经办人姓名*/
     private String agentName;
     /**经办人证件名称*/

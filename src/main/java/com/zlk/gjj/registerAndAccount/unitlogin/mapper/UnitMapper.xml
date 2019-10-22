@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zlk.gjj.registerAndAccount.unitlogin.mapper.UnitMapper">
+    <resultMap id="unitEntityMap" type="com.zlk.gjj.registerAndAccount.entity.Unit">
+        <id property="unitId" column="unit_id" javaType="java.lang.String"/>
+        <result property="agentName" column="agent_name" javaType="java.lang.String"/>
+        <result property="papersName" column="papers_name" javaType="java.lang.String"/>
+        <result property="papersNum" column="papers_num" javaType="java.lang.String"/>
+        <result property="unitName" column="unit_name" javaType="java.lang.String"/>
+        <result property="agentPhone" column="agent_phone" javaType="java.lang.String"/>
+        <result property="unitEmail" column="unit_email" javaType="java.lang.String"/>
+        <result property="password" column="password" javaType="java.lang.String"/>
+        <result property="status" column="status" javaType="java.lang.String"/>
+    </resultMap>
+</mapper>

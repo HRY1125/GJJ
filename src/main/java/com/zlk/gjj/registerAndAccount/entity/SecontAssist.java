@@ -61,7 +61,7 @@ public class SecontAssist {
 
     @Override
     public String toString() {
-        return "secontAssist{" +
+        return "SecontAssist{" +
                 "saId='" + saId + '\'' +
                 ", unitId='" + unitId + '\'' +
                 ", departmentId='" + departmentId + '\'' +
