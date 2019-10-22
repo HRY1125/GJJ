@@ -23,12 +23,12 @@ public class Account {
         this.accountId = accountId;
     }
 
-    public String getUnitRegistId() {
+    public String getUnitRegisterId() {
         return unitRegisterId;
     }
 
-    public void setUnitRegistId(String unitRegistId) {
-        this.unitRegisterId = unitRegistId;
+    public void setUnitRegisterId(String unitRegisterId) {
+        this.unitRegisterId = unitRegisterId;
     }
 
     public String getUnitId() {
