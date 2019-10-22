@@ -1,6 +1,6 @@
 package com.zlk.gjj.registerAndAccount.entity;
 
-public class account {
+public class Account {
     private String accountId;
     private String unitRegistId;
     private String unitId;
@@ -119,7 +119,7 @@ public class account {
         this.isMonthConfirm = isMonthConfirm;
     }
 
-    public account(String accountId, String unitRegistId, String unitId, String businessKind, String capitalSource, String allocateUnit, String isSecondAssist, String agentDepartment, int payDay, int firstRemitMonth, int yearListRatify, int unitDepositeRatio, String isMonthConfirm) {
+    public Account(String accountId, String unitRegistId, String unitId, String businessKind, String capitalSource, String allocateUnit, String isSecondAssist, String agentDepartment, int payDay, int firstRemitMonth, int yearListRatify, int unitDepositeRatio, String isMonthConfirm) {
         this.accountId = accountId;
         this.unitRegistId = unitRegistId;
         this.unitId = unitId;
@@ -135,12 +135,12 @@ public class account {
         this.isMonthConfirm = isMonthConfirm;
     }
 
-    public account() {
+    public Account() {
     }
 
     @Override
     public String toString() {
-        return "account{" +
+        return "Account{" +
                 "accountId='" + accountId + '\'' +
                 ", unitRegistId='" + unitRegistId + '\'' +
                 ", unitId='" + unitId + '\'' +
