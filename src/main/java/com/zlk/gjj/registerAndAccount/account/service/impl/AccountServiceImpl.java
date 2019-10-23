@@ -14,6 +14,18 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Integer insertAccount(Account account) {
+
         return accountMapper.insertAccount(account);
     }
+
+    @Override
+    public String selectAccountByUnitId(String unitId) {
+        return accountMapper.selectAccountByUnitId(unitId);
+    }
+
+    @Override
+    public Integer updateAccountById(Account account) {
+        return accountMapper.updateAccountById(account);
+    }
+
 }

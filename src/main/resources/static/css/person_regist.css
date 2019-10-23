@@ -1,0 +1,25 @@
+.layui-form-item{
+    width: 500px;
+    margin: 0 auto;
+}
+
+.retmsg{
+    position: relative !important;
+    left: 40px !important;
+    display: none !important;
+}
+
+#regist{
+    position: relative;
+    top: 150px;
+}
+
+#inpt_submit{
+    position: relative;
+    top: 50px;
+    left: 250px;
+}
+
+body{
+    background-color: #e2e2e2;
+}

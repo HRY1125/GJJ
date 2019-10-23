@@ -6,4 +6,7 @@ public interface AccountService {
 
     Integer insertAccount (Account account);
 
+    String selectAccountByUnitId(String unitId);
+
+    Integer updateAccountById(Account account);
 }

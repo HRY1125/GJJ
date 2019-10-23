@@ -6,5 +6,7 @@ public interface AccountMapper {
 
      Integer insertAccount (Account account);
 
-     Integer selectAccount (Account account);
+     String selectAccountByUnitId(String unitId);
+
+     Integer updateAccountById(Account account);
 }

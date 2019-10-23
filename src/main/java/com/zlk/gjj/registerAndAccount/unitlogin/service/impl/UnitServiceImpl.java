@@ -1,9 +1,11 @@
 package com.zlk.gjj.registerAndAccount.unitlogin.service.impl;
 
+import com.zlk.gjj.registerAndAccount.agent.mapper.AgentMapper;
+import com.zlk.gjj.registerAndAccount.entity.Agent;
 import com.zlk.gjj.registerAndAccount.entity.Unit;
 import com.zlk.gjj.registerAndAccount.unitlogin.mapper.UnitMapper;
 import com.zlk.gjj.registerAndAccount.unitlogin.service.UnitService;
-import com.zlk.gjj.registerAndAccount.util.UnitIdUtil;
+import com.zlk.gjj.registerAndAccount.util.IdUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,8 @@ import java.util.List;
 public class UnitServiceImpl implements UnitService {
     @Autowired
     private UnitMapper unitMapper;
+    @Autowired
+    private AgentMapper agentMapper;
 
     @Override
     public Unit findByUnitId(Unit unit) {
@@ -34,17 +38,27 @@ public class UnitServiceImpl implements UnitService {
             message = "该证件已注册，不可重复注册";
             return message;
         }else {
-//            String unitId = new UnitIdUtil().getUnitId();
+//            String unitId = new IdUtils().getUnitId();
             String unitId = "1411";
             List<String> unitIds = findAllUnitId();
             while (unitIds.contains(unitId)){
-                unitId = new UnitIdUtil().getUnitId();
+                unitId = IdUtils.getUnitId(8);
             }
             unit.setUnitId(unitId);
             unit.setStatus("0");
             unit.setErrorTimes(0);
             Integer flag = unitMapper.insertUnit(unit);
-            if(flag>0){
+            Agent agent = new Agent();
+            agent.setAgentName(unit.getAgentName());
+            agent.setAgentPapersName(unit.getPapersName());
+            agent.setAgentPapersNum(unit.getPapersNum());
+            agent.setAgentPhone(unit.getAgentPhone());
+            agent.setUnitId(unit.getUnitId());
+            agent.setAgentType("证书用户");
+            agent.setUkey(IdUtils.getUUID());
+            agent.setAgentId(IdUtils.getUnitId(10));
+            Integer flag1 = agentMapper.insertAgent(agent);
+            if(flag>0 && flag1>0){
                 return message="注册成功";
             }else {
                 return message="注册失败";

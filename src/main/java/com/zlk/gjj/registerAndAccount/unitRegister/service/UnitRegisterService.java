@@ -1,12 +1,11 @@
-package com.zlk.gjj.registerAndAccount.unitRegister.mapper;
+package com.zlk.gjj.registerAndAccount.unitRegister.service;
+
 
 import com.zlk.gjj.registerAndAccount.entity.UnitRegister;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
-@Mapper
-public interface UnitRegisterMapper {
+public interface UnitRegisterService {
 
     String selectUnitRegisterUnitId (UnitRegister unitRegister);
 
@@ -34,11 +33,11 @@ public interface UnitRegisterMapper {
      *  增加新单位登记
      *@method insertUnitRegister
      *@params [unitRegister]
-     *@return java.lang.Integer
+     *@return java.lang.String
      *@author zhang
      *@time 2019/10/23  13:44
      */
-    Integer insertUnitRegister(UnitRegister unitRegister);
+    String insertUnitRegister(UnitRegister unitRegister);
 
     /**
      *  根据unitregisterid查找单位名称
@@ -49,5 +48,4 @@ public interface UnitRegisterMapper {
      *@time 2019/10/23  21:41
      */
     String selectUnitNameByUnitRegisterId(String unitRegisterId);
-
 }

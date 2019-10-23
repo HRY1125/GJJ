@@ -21,22 +21,38 @@ public class UnitController {
     @Autowired
     private UnitService unitService;
 
+    /**
+     *  单位用户注册
+     *@method singIn
+     *@params [unit]
+     *@return org.springframework.web.servlet.ModelAndView
+     *@author zhang
+     *@time 2019/10/23  10:28
+     */
     @RequestMapping(value = "/signin")
     public ModelAndView singIn(Unit unit) throws Exception{
         ModelAndView mv = new ModelAndView();
-        unit.setAgentName("李四");
+        unit.setAgentName("李老师");
         unit.setPapersName("身份证");
-        unit.setPapersNum("129837265427");
-        unit.setAgentPhone("1232424");
-        unit.setPassword("111111");
-        unit.setUnitEmail("123234@123.com");
-        unit.setUnitName("alibaba");
+        unit.setPapersNum("19837772866642");
+        unit.setAgentPhone("122334");
+        unit.setPassword("2222");
+        unit.setUnitEmail("1232434@123.com");
+        unit.setUnitName("wangyi");
         String msg = unitService.insertUnit(unit);
-        mv.addObject("msg",msg);
+        mv.addObject("message",msg);
         mv.setViewName("test");
         return mv;
     }
 
+    /**
+     *  单位用户登录
+     *@method Login
+     *@params [unit]
+     *@return org.springframework.web.servlet.ModelAndView
+     *@author zhang
+     *@time 2019/10/23  10:28
+     */
     @RequestMapping(value = "/login")
     public ModelAndView Login(Unit unit) throws Exception{
 //        String unitId = unit.getUnitId();
