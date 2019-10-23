@@ -15,15 +15,15 @@ public class Remittance {
     /**
      * 汇缴清册的id      对应数据库中 remittance_id 的字段
      */
-    private String remittanceId;
+    private Integer remittanceId;
     /**
      * 单位登记id      对应数据库中 unit_regist_id 的字段
      */
-    private String unitRegistId;
+    private String unitRegisterId;
     /**
      * 个人的id      对应数据库中 employee_id 的字段
      */
-    private String employeeId;
+    private Integer employeeId;
     /**
      * 二级管理辅助信息      对应数据库中 sa_id 的字段
      */
@@ -31,6 +31,6 @@ public class Remittance {
     /**
      *缴存基数      对应数据库中 deposit_base 的字段
      */
-    private Double depositIase;
+    private Double depositBase;
 
 }

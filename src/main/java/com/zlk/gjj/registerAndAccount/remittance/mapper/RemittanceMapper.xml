@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zlk.gjj.registerAndAccount.remittance.mapper.RemittanceMapper">
+
+    <resultMap type="com.zlk.gjj.registerAndAccount.entity.Remittance" id="Remittance">
+        <result property="remittanceId" column="remittance_id" jdbcType="VARCHAR"/>
+        <result property="unitRegisterId" column="unit_register_id" jdbcType="VARCHAR"/>
+        <result property="employeeId" column="employee_id" jdbcType="VARCHAR"/>
+        <result property="saId" column="sa_id" jdbcType="VARCHAR"/>
+        <result property="depositBase" column="deposit_base" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="Remittance">
+        select
+          remittance_id, unit_register_id, employee_id, sa_id, deposit_base
+        from group1_gjj.remittance
+        where remittance_id = #{remittanceId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="Remittance">
+        select
+          remittance_id, unit_register_id, employee_id, sa_id, deposit_base
+        from group1_gjj.remittance
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="Remittance">
+        select
+        remittance_id, unit_register_id, employee_id, sa_id, deposit_base
+        from group1_gjj.remittance
+        <where>
+            <if test="remittanceId != null and remittanceId != ''">
+                and remittance_id = #{remittanceId}
+            </if>
+            <if test="unitRegisterId != null and unitRegisterId != ''">
+                and unit_register_id = #{unitRegisterId}
+            </if>
+            <if test="employeeId != null and employeeId != ''">
+                and employee_id = #{employeeId}
+            </if>
+            <if test="saId != null and saId != ''">
+                and sa_id = #{saId}
+            </if>
+            <if test="depositBase != null">
+                and deposit_base = #{depositBase}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="remittanceId" useGeneratedKeys="true">
+        insert into group1_gjj.remittance(unit_register_id, employee_id, sa_id, deposit_base)
+        values (#{unitRegisterId}, #{employeeId}, #{saId}, #{depositBase})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update group1_gjj.remittance
+        <set>
+            <if test="unitRegisterId != null and unitRegisterId != ''">
+                unit_register_id = #{unitRegisterId},
+            </if>
+            <if test="employeeId != null and employeeId != ''">
+                employee_id = #{employeeId},
+            </if>
+            <if test="saId != null and saId != ''">
+                sa_id = #{saId},
+            </if>
+            <if test="depositBase != null">
+                deposit_base = #{depositBase},
+            </if>
+        </set>
+        where remittance_id = #{remittanceId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from group1_gjj.remittance where remittance_id = #{remittanceId}
+    </delete>
+
+</mapper>
