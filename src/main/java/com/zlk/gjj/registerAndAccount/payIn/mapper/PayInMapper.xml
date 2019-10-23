@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zlk.gjj.registerAndAccount.payIn.mapper.PayInMapper">
+    <resultMap id="payInEntityMap" type="com.zlk.gjj.registerAndAccount.entity.PayIn">
+        <id property="unitId" column="unit_id" javaType="java.lang.String"></id>
+        <result property="payIdId" column="pay_id_id" javaType="java.lang.Integer"></result>
+        <result property="unitRegisterId" column="unit_register_id" javaType="java.lang.String"></result>
+        <result property="payMethod" column="pay_method" javaType="java.lang.String"></result>
+        <result property="receiptUnitName" column="receipt_unit_name" javaType="java.lang.String"></result>
+        <result property="receiptUnitAccount" column="receipt_unit_account" javaType="java.lang.String"></result>
+        <result property="receiptUnitBank" column="receipt_unit_bank" javaType="java.lang.String"></result>
+        <result property="bankExchangeNum" column="bank_exchange_num" javaType="java.lang.String"></result>
+        <result property="paySusNum" column="pay_sus_num" javaType="java.lang.String"></result>
+        <result property="receiptDate" column="receipt_date" javaType="java.lang.String"></result>
+        <result property="remitUnitName" column="remit_unit_name" javaType="java.lang.String"></result>
+        <result property="remitBankName" column="remit_bank_name" javaType="java.lang.String"></result>
+        <result property="remitUnitAccount" column="remit_unit_account" javaType="java.lang.Integer"></result>
+
+    </resultMap>
+
+    <insert id="insertPayIn" parameterType="com.zlk.gjj.registerAndAccount.entity.PayIn">
+        insert into pay_in(unit_id,pay_id_id,unit_register_id,pay_method,receipt_unit_name,receipt_unit_account,receipt_unit_bank,bank_exchange_num,pay_sus_num,receipt_date,remit_unit_name,remit_bank_name,remit_unit_account) values (#{unitId},#{payIdId},#{unitRegisterId},#{payMethod},#{receiptUnitName},#{receiptUnitAccount},#{receiptUnitBank},#{bankExchangeNum},#{paySusNum},#{receiptDate},#{remitUnitName},#{remitBankName},#{remitUnitAccount})
+    </insert>
+
+    <select id="selectPayInByUnitId" parameterType="com.zlk.gjj.registerAndAccount.entity.PayIn" resultMap="payInEntityMap">
+		select * from pay_in where unit_id=#{unitId}
+	</select>
+
+    <update id="updatePayInByUnitId" parameterType="com.zlk.gjj.registerAndAccount.entity.PayIn">
+        update pay_in
+        <set>
+            <if test="payIdId!=null and payIdId!=''">
+                pay_id_id =#{payIdId},
+            </if>
+            <if test="unitRegisterId!=null and unitRegisterId!=''">
+                unit_register_id  =#{unitRegisterId},
+            </if>
+            <if test="payMethod!=null and payMethod!=''">
+                pay_method  =#{payMethod},
+            </if>
+            <if test="receiptUnitName!=null and receiptUnitName!=''">
+                receipt_unit_name  =#{receiptUnitName},
+            </if>
+            <if test="receiptUnitAccount!=null and receiptUnitAccount!=''">
+                receipt_unit_account  =#{receiptUnitAccount},
+            </if>
+            <if test="receiptUnitBank!=null and receiptUnitBank!=''">
+                receipt_unit_bank  =#{receiptUnitBank},
+            </if>
+            <if test="bankExchangeNum!=null and bankExchangeNum!=''">
+                bank_exchange_num  =#{bankExchangeNum},
+            </if>
+            <if test="paySusNum!=null and paySusNum!=''">
+                pay_sus_num  =#{paySusNum},
+            </if>
+            <if test="receiptDate!=null and receiptDate!=''">
+                receipt_date  =#{receiptDate},
+            </if>
+            <if test="remitUnitName!=null and remitUnitName!=''">
+                remit_unit_name  =#{remitUnitName},
+            </if>
+            <if test="remitBankName!=null and remitBankName!=''">
+                remit_bank_name  =#{remitBankName},
+            </if>
+            <if test="remitUnitAccount!=null and remitUnitAccount!=''">
+                remit_unit_account  =#{remitUnitAccount},
+            </if>
+
+
+
+        </set>
+        where unit_id=#{unitId}
+    </update>
+
+
+</mapper>
