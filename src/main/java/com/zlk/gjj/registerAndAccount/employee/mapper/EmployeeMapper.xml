@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zlk.gjj.registerAndAccount.employee.mapper.EmployeeMapper">
+
+    <resultMap type="com.zlk.gjj.registerAndAccount.entity.Employee" id="EmployeeMap">
+        <result property="employeeId" column="employee_id" jdbcType="VARCHAR"/>
+        <result property="employeeName" column="employee_name" jdbcType="VARCHAR"/>
+        <result property="employeePapersName" column="employee_papers_name" jdbcType="VARCHAR"/>
+        <result property="employeePapersNum" column="employee_papers_num" jdbcType="VARCHAR"/>
+        <result property="employeeNationnality" column="employee_nationnality" jdbcType="VARCHAR"/>
+        <result property="employeeCardRegistStatus" column="employee_card_regist_status" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="EmployeeMap">
+        select
+          employee_id, employee_name, employee_papers_name, employee_papers_num, employee_nationnality, employee_card_regist_status
+        from group1_gjj.employee
+        where employee_id = #{employeeId}
+    </select>
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="EmployeeMap">
+        select
+          employee_id, employee_name, employee_papers_name, employee_papers_num, employee_nationnality, employee_card_regist_status
+        from group1_gjj.employee
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="EmployeeMap">
+        select
+        employee_id, employee_name, employee_papers_name, employee_papers_num, employee_nationnality, employee_card_regist_status
+        from group1_gjj.employee
+        <where>
+            <if test="employeeId != null and employeeId != ''">
+                and employee_id = #{employeeId}
+            </if>
+            <if test="employeeName != null and employeeName != ''">
+                and employee_name = #{employeeName}
+            </if>
+            <if test="employeePapersName != null and employeePapersName != ''">
+                and employee_papers_name = #{employeePapersName}
+            </if>
+            <if test="employeePapersNum != null and employeePapersNum != ''">
+                and employee_papers_num = #{employeePapersNum}
+            </if>
+            <if test="employeeNationnality != null and employeeNationnality != ''">
+                and employee_nationnality = #{employeeNationnality}
+            </if>
+            <if test="employeeCardRegistStatus != null and employeeCardRegistStatus != ''">
+                and employee_card_regist_status = #{employeeCardRegistStatus}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="employeeId">
+        insert into group1_gjj.employee(employee_name, employee_papers_name, employee_papers_num, employee_nationnality, employee_card_regist_status)
+        values (#{employeeName}, #{employeePapersName}, #{employeePapersNum}, #{employeeNationnality}, #{employeeCardRegistStatus})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update group1_gjj.employee
+        <set>
+            <if test="employeeName != null and employeeName != ''">
+                employee_name = #{employeeName},
+            </if>
+            <if test="employeePapersName != null and employeePapersName != ''">
+                employee_papers_name = #{employeePapersName},
+            </if>
+            <if test="employeePapersNum != null and employeePapersNum != ''">
+                employee_papers_num = #{employeePapersNum},
+            </if>
+            <if test="employeeNationnality != null and employeeNationnality != ''">
+                employee_nationnality = #{employeeNationnality},
+            </if>
+            <if test="employeeCardRegistStatus != null and employeeCardRegistStatus != ''">
+                employee_card_regist_status = #{employeeCardRegistStatus},
+            </if>
+        </set>
+        where employee_id = #{employeeId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from group1_gjj.employee where employee_id = #{employeeId}
+    </delete>
+
+</mapper>
