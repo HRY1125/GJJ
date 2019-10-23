@@ -1,6 +1,6 @@
 package com.zlk.gjj.registerAndAccount.entity;
 
-public class payIn {
+public class PayIn {
     private String unitId;
     private int payIdId;
     private String unitRegistId;
@@ -15,7 +15,7 @@ public class payIn {
     private String remitBankName;
     private int remitUnitAccount;
 
-    public payIn(String unitId, int payIdId, String unitRegistId, String payMethod, String receiptUnitName, String receiptUnitAccount, String receiptUnitBank, String bankExchangeNum, String paySusNum, String receiptDate, String remitUnitName, String remitBankName, int remitUnitAccount) {
+    public PayIn(String unitId, int payIdId, String unitRegistId, String payMethod, String receiptUnitName, String receiptUnitAccount, String receiptUnitBank, String bankExchangeNum, String paySusNum, String receiptDate, String remitUnitName, String remitBankName, int remitUnitAccount) {
         this.unitId = unitId;
         this.payIdId = payIdId;
         this.unitRegistId = unitRegistId;
@@ -135,12 +135,12 @@ public class payIn {
         this.remitUnitAccount = remitUnitAccount;
     }
 
-    public payIn() {
+    public PayIn() {
     }
 
     @Override
     public String toString() {
-        return "payIn{" +
+        return "PayIn{" +
                 "unitId='" + unitId + '\'' +
                 ", payIdId=" + payIdId +
                 ", unitRegistId='" + unitRegistId + '\'' +

@@ -1,6 +1,6 @@
 package com.zlk.gjj.registerAndAccount.entity;
 
-public class secontAssist {
+public class SecontAssist {
     private String saId;
     private String unitId;
     private String departmentId;
@@ -48,7 +48,7 @@ public class secontAssist {
         this.departmentCode = departmentCode;
     }
 
-    public secontAssist(String saId, String unitId, String departmentId, String departmentName, String departmentCode) {
+    public SecontAssist(String saId, String unitId, String departmentId, String departmentName, String departmentCode) {
         this.saId = saId;
         this.unitId = unitId;
         this.departmentId = departmentId;
@@ -56,12 +56,12 @@ public class secontAssist {
         this.departmentCode = departmentCode;
     }
 
-    public secontAssist() {
+    public SecontAssist() {
     }
 
     @Override
     public String toString() {
-        return "secontAssist{" +
+        return "SecontAssist{" +
                 "saId='" + saId + '\'' +
                 ", unitId='" + unitId + '\'' +
                 ", departmentId='" + departmentId + '\'' +

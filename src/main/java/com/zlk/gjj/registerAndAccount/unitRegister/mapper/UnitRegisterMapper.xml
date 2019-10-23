@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zlk.gjj.registerAndAccount.unitRegister.mapper.UnitRegisterMapper">
+    <resultMap id="unitRegisterMap" type="com.zlk.gjj.registerAndAccount.entity.UnitRegister">
+        <id property="unitRegisterId" column="unit_register_id" javaType="java.lang.String"/>
+        <result property="unitId" column="unit_id" javaType="java.lang.String"/>
+        <result property="unitName" column="unit_name" javaType="java.lang.String"/>
+        <result property="orgCode" column="org_code" javaType="java.lang.String"/>
+        <result property="unitPapersName" column="unit_papers_name" javaType="java.lang.String"/>
+        <result property="unitPapersNum" column="unit_papers_num" javaType="java.lang.String"/>
+        <result property="unitPropertyCode" column="unit_property_code" javaType="java.lang.String"/>
+        <result property="legalPerson" column="legalperson" javaType="java.lang.String"/>
+        <result property="lpPapersName" column="lp_papers_name" javaType="java.lang.String"/>
+        <result property="nationality" column="nationality" javaType="java.lang.String"/>
+        <result property="lpPapersNum" column="lp_papers_num" javaType="java.lang.String"/>
+        <result property="unitRegisterAddress" column="unit_register_address" javaType="java.lang.String"/>
+        <result property="unitOfficeAddress" column="unit_office_address" javaType="java.lang.String"/>
+        <result property="isLP" column="is_lp" javaType="java.lang.String"/>
+        <result property="unitBuildDate" column="unit_build_time" javaType="java.util.Date"/>
+        <result property="superiorUnit" column="superior_unit" javaType="java.lang.String"/>
+    </resultMap>
+
+    <select id="selectUnitRegisterUnitId" parameterType="com.zlk.gjj.registerAndAccount.entity.UnitRegister" resultType="java.lang.String">
+		select unit_id from unit_register where unit_name=#{unitName} and org_code=#{orgCode}
+	</select>
+
+</mapper>
