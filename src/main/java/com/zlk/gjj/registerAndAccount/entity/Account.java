@@ -15,6 +15,15 @@ public class Account {
     private int  yearListRatify;
     private int  unitDepositeRatio;
     private String isMonthConfirm;
+    private String payMethod;
+
+    public String getPayMethod() {
+        return payMethod;
+    }
+
+    public void setPayMethod(String payMethod) {
+        this.payMethod = payMethod;
+    }
 
     public String getAccountId() {
         return accountId;
@@ -133,7 +142,7 @@ public class Account {
     public Account() {
     }
 
-    public Account(String accountId, String unitRegisterId, String unitId, String accountType, String businessKind, String capitalSource, String allocateUnit, String isSecondAssist, String agentDepartment, int payDay, int firstRemitMonth, int yearListRatify, int unitDepositeRatio, String isMonthConfirm) {
+    public Account(String accountId, String unitRegisterId, String unitId, String accountType, String businessKind, String capitalSource, String allocateUnit, String isSecondAssist, String agentDepartment, int payDay, int firstRemitMonth, int yearListRatify, int unitDepositeRatio, String isMonthConfirm, String payMethod) {
         this.accountId = accountId;
         this.unitRegisterId = unitRegisterId;
         this.unitId = unitId;
@@ -148,6 +157,7 @@ public class Account {
         this.yearListRatify = yearListRatify;
         this.unitDepositeRatio = unitDepositeRatio;
         this.isMonthConfirm = isMonthConfirm;
+        this.payMethod = payMethod;
     }
 
     @Override
@@ -167,6 +177,7 @@ public class Account {
                 ", yearListRatify=" + yearListRatify +
                 ", unitDepositeRatio=" + unitDepositeRatio +
                 ", isMonthConfirm='" + isMonthConfirm + '\'' +
+                ", payMethod='" + payMethod + '\'' +
                 '}';
     }
 }

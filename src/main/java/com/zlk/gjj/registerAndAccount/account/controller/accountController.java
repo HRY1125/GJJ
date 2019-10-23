@@ -19,6 +19,11 @@ public class accountController {
     @Autowired
     private UnitRegisterService UnitRegisterService;
 
+    @RequestMapping(value = "/toUA")
+    public String toUA(){
+        return "unit_account";
+    }
+
     @RequestMapping(value = "/accountInsert")
     public String insertAccount(Account account){
         /*account.setAccountId("1");

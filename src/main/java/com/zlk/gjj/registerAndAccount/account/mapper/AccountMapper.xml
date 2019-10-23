@@ -18,6 +18,9 @@
         <result property="yearListRatify" column="year_list_ratify" javaType="java.lang.Integer"></result>
         <result property="unitDepositeRatio" column="unit_deposite_ratio" javaType="java.lang.Integer"></result>
         <result property="isMonthConfirm" column="is_month_confirm" javaType="java.lang.String"></result>
+        <result property="payMethod" column="pay_method" javaType="java.lang.String"></result>
+
+
     </resultMap>
 
 

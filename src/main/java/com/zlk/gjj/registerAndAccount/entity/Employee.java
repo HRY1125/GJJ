@@ -15,7 +15,7 @@ public class Employee {
     /**
      * 个人的id      对应数据库中 employee_id 的字段
      */
-    private String employeeId;
+    private int employeeId;
     /**
      * 个人的姓名      对应数据库中 employee_name的字段
      */
@@ -23,17 +23,17 @@ public class Employee {
     /**
      * 个人的国籍      对应数据库中 employee_nationnality 的字段
      */
-    private String employee_nationnality;
+    private String employeeNationnality;
     /**
      * 个人的证件名      对应数据库中 employee_papers_name 的字段
      */
-    private String employee_papers_name;
+    private String employeePapersName;
     /**
      * 个人的证件号      对应数据库中 employee_papers_num 的字段
      */
-    private String employee_papers_num;
+    private String employeePapersNum;
     /**
      * 个人的ka      对应数据库中 employee_card_regist_status 的字段
      */
-    private String employee_card_regist_status;
+    private String employeeCardRegistStatus;
 }

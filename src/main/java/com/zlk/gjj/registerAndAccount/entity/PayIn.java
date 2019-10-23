@@ -1,24 +1,37 @@
 package com.zlk.gjj.registerAndAccount.entity;
 
 public class PayIn {
+    /**单位Id*/
     private String unitId;
+    /**缴款方式申请表Id*/
     private int payIdId;
-    private String unitRegistId;
+    /**单位登记号*/
+    private String unitRegisterId;
+    /**缴款方式*/
     private String payMethod;
+    /**委托收款*/
     private String receiptUnitName;
+    /**委托收款单位账号*/
     private String receiptUnitAccount;
+    /**托收单位开户银行名称*/
     private String receiptUnitBank;
+    /**银行交换号*/
     private String bankExchangeNum;
+    /**支付系统号*/
     private String paySusNum;
+    /**托收日期*/
     private String receiptDate;
+    /**汇款单位名称*/
     private String remitUnitName;
+    /**汇款单位开户银行名称*/
     private String remitBankName;
+    /**汇款单位账号*/
     private int remitUnitAccount;
 
-    public PayIn(String unitId, int payIdId, String unitRegistId, String payMethod, String receiptUnitName, String receiptUnitAccount, String receiptUnitBank, String bankExchangeNum, String paySusNum, String receiptDate, String remitUnitName, String remitBankName, int remitUnitAccount) {
+    public PayIn(String unitId, int payIdId, String unitRegisterId, String payMethod, String receiptUnitName, String receiptUnitAccount, String receiptUnitBank, String bankExchangeNum, String paySusNum, String receiptDate, String remitUnitName, String remitBankName, int remitUnitAccount) {
         this.unitId = unitId;
         this.payIdId = payIdId;
-        this.unitRegistId = unitRegistId;
+        this.unitRegisterId = unitRegisterId;
         this.payMethod = payMethod;
         this.receiptUnitName = receiptUnitName;
         this.receiptUnitAccount = receiptUnitAccount;
@@ -47,12 +60,12 @@ public class PayIn {
         this.payIdId = payIdId;
     }
 
-    public String getUnitRegistId() {
-        return unitRegistId;
+    public String getUnitRegisterId() {
+        return unitRegisterId;
     }
 
-    public void setUnitRegistId(String unitRegistId) {
-        this.unitRegistId = unitRegistId;
+    public void setUnitRegisterId(String unitRegisterId) {
+        this.unitRegisterId = unitRegisterId;
     }
 
     public String getPayMethod() {
@@ -143,7 +156,7 @@ public class PayIn {
         return "PayIn{" +
                 "unitId='" + unitId + '\'' +
                 ", payIdId=" + payIdId +
-                ", unitRegistId='" + unitRegistId + '\'' +
+                ", unitRegisterId='" + unitRegisterId + '\'' +
                 ", payMethod='" + payMethod + '\'' +
                 ", receiptUnitName='" + receiptUnitName + '\'' +
                 ", receiptUnitAccount='" + receiptUnitAccount + '\'' +
