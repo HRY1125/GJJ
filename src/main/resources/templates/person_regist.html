@@ -16,11 +16,11 @@
 <body>
     <div id="regist">
 
-        <form id="form_main" class="layui-form" action="">
+        <form id="form_main" class="layui-form" action="/employee/insEmployee">
             <div class="layui-form-item">
                 <label class="layui-form-label">姓名</label>
                 <div class="layui-input-block">
-                    <input type="text" name="" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" name="employeeName" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
                 <label class="layui-form-label retmsg">aaa</label>
             </div>
@@ -29,7 +29,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">证件名称</label>
                 <div class="layui-input-block">
-                    <select id="select1" name="papersName" required lay-verify="required" lay-filter="papers">
+                    <select id="select1" name="employeePapersName" required lay-verify="required" lay-filter="papers">
                         <option ></option>
                         <option value="0">身份证</option>
                         <option value="1">护照</option>
@@ -40,7 +40,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">证件号码</label>
                 <div class="layui-input-block">
-                    <input type="text" name="" lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" name="employeePapersNum" lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
                 <label class="layui-form-label retmsg">aaa</label>
             </div>
@@ -48,7 +48,7 @@
             <div id="div_nation" class="layui-form-item" style="display: none">
                 <label class="layui-form-label">国籍</label>
                 <div class="layui-input-block">
-                    <input id="ipt_nation" type="text" name="" lay-verify="required" autocomplete="off" class="layui-input">
+                    <input id="ipt_nation" type="text" name="employeeNationnality" lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
                 <label class="layui-form-label retmsg">aaa</label>
             </div>
