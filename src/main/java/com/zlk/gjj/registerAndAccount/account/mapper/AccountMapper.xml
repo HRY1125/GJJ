@@ -32,6 +32,11 @@
 		select account_type from account where unit_id=#{unitId}
 	</select>
 
+    <select id="selectAccountByUnitRegisterId" resultMap="accountEntityMap">
+        select * from account where
+        unit_register_id = #{unitRegisterId}
+    </select>
+
     <update id="updateAccountById" parameterType="com.zlk.gjj.registerAndAccount.entity.Account">
     update account
     <set>

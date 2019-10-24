@@ -3,13 +3,12 @@ package com.zlk.gjj.registerAndAccount.account.controller;
 import com.zlk.gjj.registerAndAccount.account.service.AccountService;
 import com.zlk.gjj.registerAndAccount.entity.Account;
 import com.zlk.gjj.registerAndAccount.entity.UnitRegister;
-import com.zlk.gjj.registerAndAccount.unitRegister.mapper.UnitRegisterMapper;
 import com.zlk.gjj.registerAndAccount.unitRegister.service.UnitRegisterService;
 import com.zlk.gjj.registerAndAccount.util.IDUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(value="/account")
@@ -74,4 +73,15 @@ public class accountController {
                return null;
            }
        }
+    @RequestMapping("selectAccountByUnitRegisterId")
+    @ResponseBody
+    public Account selectAccountByUnitRegisterId(String unitRegisterId){
+        Account account=accountService.selectAccountByUnitRegisterId(unitRegisterId);
+        return accountService.selectAccountByUnitRegisterId(unitRegisterId);
+    }
+
+    @RequestMapping("updatekaihu")
+    public String updatekaihu(){
+        return "unit_account_update";
+    }
 }
