@@ -1,5 +1,6 @@
 package com.zlk.gjj.registerAndAccount.util;
 
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -10,9 +11,19 @@ import java.util.UUID;
  **/
 public class IDUtils {
 
+
+    public static String getUnitId(int i){
+         long time =new Date().getTime();
+         String str =String.valueOf(time);
+         String unitId=str.substring(str.length() - i);
+
+          return unitId;
+    }
     //生成随机的id
     public static String getUUID(){
         String id = UUID.randomUUID().toString().replaceAll("-", "");
         return id;
     }
+
+
 }

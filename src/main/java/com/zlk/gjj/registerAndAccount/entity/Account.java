@@ -4,11 +4,14 @@ public class Account {
     private String accountId;
     private String unitRegisterId;
     private String unitId;
-    private String accountType;
+    private String unitName;
+    private String unitPhone;
+    //private String accountType;
     private String businessKind;
     private String capitalSource;
     private String allocateUnit;
     private String isSecondAssist;
+    private String isAcceptService;
     private String agentDepartment;
     private int  payDay;
     private int  firstRemitMonth;
@@ -16,6 +19,14 @@ public class Account {
     private int  unitDepositeRatio;
     private String isMonthConfirm;
     private String payMethod;
+
+    public String getUnitName() {
+        return unitName;
+    }
+
+    public void setUnitName(String unitName) {
+        this.unitName = unitName;
+    }
 
     public String getPayMethod() {
         return payMethod;
@@ -129,28 +140,37 @@ public class Account {
         this.isMonthConfirm = isMonthConfirm;
     }
 
-    public String getAccountType() {
-        return accountType;
+
+    public String getUnitPhone() {
+        return unitPhone;
     }
 
-    public void setAccountType(String accountType) {
-        this.accountType = accountType;
+    public void setUnitPhone(String unitPhone) {
+        this.unitPhone = unitPhone;
     }
 
+    public String getIsAcceptService() {
+        return isAcceptService;
+    }
 
+    public void setIsAcceptService(String isAcceptService) {
+        this.isAcceptService = isAcceptService;
+    }
 
     public Account() {
     }
 
-    public Account(String accountId, String unitRegisterId, String unitId, String accountType, String businessKind, String capitalSource, String allocateUnit, String isSecondAssist, String agentDepartment, int payDay, int firstRemitMonth, int yearListRatify, int unitDepositeRatio, String isMonthConfirm, String payMethod) {
+    public Account(String accountId, String unitRegisterId, String unitId, String unitName, String unitPhone, String accountType, String businessKind, String capitalSource, String allocateUnit, String isSecondAssist, String isAcceptService, String agentDepartment, int payDay, int firstRemitMonth, int yearListRatify, int unitDepositeRatio, String isMonthConfirm, String payMethod) {
         this.accountId = accountId;
         this.unitRegisterId = unitRegisterId;
         this.unitId = unitId;
-        this.accountType = accountType;
+        this.unitName = unitName;
+        this.unitPhone = unitPhone;
         this.businessKind = businessKind;
         this.capitalSource = capitalSource;
         this.allocateUnit = allocateUnit;
         this.isSecondAssist = isSecondAssist;
+        this.isAcceptService = isAcceptService;
         this.agentDepartment = agentDepartment;
         this.payDay = payDay;
         this.firstRemitMonth = firstRemitMonth;
@@ -166,11 +186,13 @@ public class Account {
                 "accountId='" + accountId + '\'' +
                 ", unitRegisterId='" + unitRegisterId + '\'' +
                 ", unitId='" + unitId + '\'' +
-                ", accountType='" + accountType + '\'' +
+                ", unitName='" + unitName + '\'' +
+                ", unitPhone='" + unitPhone + '\'' +
                 ", businessKind='" + businessKind + '\'' +
                 ", capitalSource='" + capitalSource + '\'' +
                 ", allocateUnit='" + allocateUnit + '\'' +
                 ", isSecondAssist='" + isSecondAssist + '\'' +
+                ", isAcceptService='" + isAcceptService + '\'' +
                 ", agentDepartment='" + agentDepartment + '\'' +
                 ", payDay=" + payDay +
                 ", firstRemitMonth=" + firstRemitMonth +
