@@ -90,7 +90,7 @@ public class RemittanceController {
     }
 
     @RequestMapping("select")
-    public Map selRemAndEmpAndSAAll1(int page,int limit){
+    public Map selRemAndEmpAndSAAll1(Integer page,Integer limit){
         int offset=(page-1)*limit;
         List<Emp_Rem> emp_rems = remittanceService.selRemAndEmpAndSAAll(offset, limit);
         int count = emp_rems.size();

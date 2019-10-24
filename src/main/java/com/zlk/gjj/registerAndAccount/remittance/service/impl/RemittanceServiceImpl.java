@@ -138,7 +138,7 @@ public class RemittanceServiceImpl implements RemittanceService {
         remittance.setRemittanceId(empRem.getRemittanceId());
         remittance.setEmployeeId(empRem.getEmployeeId());
         remittance.setDepositBase(empRem.getDepositBase());
-        remittance.setDepositeTotal(empRem.getDepositeTotal());
+        remittance.setDepositeTotal(empRem.getEmployeeDeposite()+empRem.getUnitDeposite());
         remittance.setEmployeeDeposite(empRem.getEmployeeDeposite());
         remittance.setUnitDeposite(empRem.getUnitDeposite());
         int i1= remittanceMapper.update(remittance);
