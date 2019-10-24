@@ -42,4 +42,9 @@ public class SysController {
     public String ajaxTest(){
         return "";
     }
+
+    @RequestMapping("/toUR")
+    public String toUR(){
+        return "unit_register";
+    }
 }
