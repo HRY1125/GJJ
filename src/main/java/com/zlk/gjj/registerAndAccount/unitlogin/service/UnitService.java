@@ -1,10 +1,10 @@
-package com.zlk.gjj.registerAndAccount.unitlogin.mapper;
+package com.zlk.gjj.registerAndAccount.unitlogin.service;
 
 import com.zlk.gjj.registerAndAccount.entity.Unit;
 
 import java.util.List;
 
-public interface UnitMapper {
+public interface UnitService {
 
     /**
      *  根据用户名，密码查找单位用户
@@ -15,15 +15,16 @@ public interface UnitMapper {
      *@time 2019/10/22  14:46
      */
     Unit findByUnitId(Unit unit);
+
     /**
      *  单位用户注册
      *@method insertUnit
      *@params [unit]
-     *@return java.lang.Integer
+     *@return java.lang.String
      *@author zhang
      *@time 2019/10/22  17:18
      */
-    Integer insertUnit(Unit unit);
+    String insertUnit(Unit unit);
 
     /**
      *  返回所有unitid的集合
@@ -36,16 +37,6 @@ public interface UnitMapper {
     List<String> findAllUnitId();
 
     /**
-     *  根据证件号码查找用户
-     *@method findUnitByPapersNum
-     *@params [papersNum]
-     *@return com.zlk.gjj.registerAndAccount.entity.Unit
-     *@author zhang
-     *@time 2019/10/22  19:11
-     */
-    Unit findUnitByPapersNum(String papersNum);
-
-    /**
      *  根据unitid更改unit信息
      *@method undateUnitByUnitId
      *@params [unit]
@@ -55,4 +46,13 @@ public interface UnitMapper {
      */
     Integer updateUnitByUnitId(Unit unit);
 
+    /**
+     *  登录账号
+     *@method login
+     *@params [unit]
+     *@return java.lang.String
+     *@author zhang
+     *@time 2019/10/22  20:37
+     */
+    String login(Unit unit);
 }

@@ -67,12 +67,10 @@
             <if test="remitUnitAccount!=null and remitUnitAccount!=''">
                 remit_unit_account  =#{remitUnitAccount},
             </if>
-
-
-
         </set>
         where unit_id=#{unitId}
     </update>
+
 
 
 </mapper>

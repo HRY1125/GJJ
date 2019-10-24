@@ -11,7 +11,7 @@
         <result property="unitPapersName" column="unit_papers_name" javaType="java.lang.String"/>
         <result property="unitPapersNum" column="unit_papers_num" javaType="java.lang.String"/>
         <result property="unitPropertyCode" column="unit_property_code" javaType="java.lang.String"/>
-        <result property="legalPerson" column="legalperson" javaType="java.lang.String"/>
+        <result property="legalPerson" column="legal_person" javaType="java.lang.String"/>
         <result property="lpPapersName" column="lp_papers_name" javaType="java.lang.String"/>
         <result property="nationality" column="nationality" javaType="java.lang.String"/>
         <result property="lpPapersNum" column="lp_papers_num" javaType="java.lang.String"/>
@@ -25,5 +25,119 @@
     <select id="selectUnitRegisterUnitId" parameterType="com.zlk.gjj.registerAndAccount.entity.UnitRegister" resultType="java.lang.String">
 		select unit_id from unit_register where unit_name=#{unitName} and org_code=#{orgCode}
 	</select>
-
+    <select id="selectUnitRegisterByName" parameterType="java.lang.String" resultMap="unitRegisterMap">
+        select unit_register_id,unit_id,unit_name,org_code,unit_papers_name,unit_papers_num,unit_property_code,
+        legal_person,lp_papers_name,nationality,lp_papers_num,unit_register_address,unit_office_address,is_lp,unit_build_time,superior_unit
+        from unit_register where unit_name=#{unitName}
+    </select>
+    <select id="selectOrgCode" resultType="java.lang.String">
+        select org_code from unit_register
+    </select>
+    <insert id="insertUnitRegister" parameterType="com.zlk.gjj.registerAndAccount.entity.UnitRegister">
+        insert into unit_register
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="unitRegisterId != null and unitRegisterId!=''">
+                unit_register_id,
+            </if>
+            <if test="unitId != null and unitId!=''">
+                unit_id,
+            </if>
+            <if test="unitName != null and unitName!=''">
+                unit_name,
+            </if>
+            <if test="orgCode != null and orgCode!=''">
+                org_code,
+            </if>
+            <if test="unitPapersName != null and unitPapersName!=''">
+                unit_papers_name,
+            </if>
+            <if test="unitPapersNum != null and unitPapersNum!=''">
+                unit_papers_num,
+            </if>
+            <if test="unitPropertyCode != null and unitPropertyCode!=''">
+                unit_property_code,
+            </if>
+            <if test="legalPerson != null and legalPerson!=''">
+                legal_person,
+            </if>
+            <if test="lpPapersName != null and lpPapersName!=''">
+                lp_papers_name,
+            </if>
+            <if test="nationality != null and nationality!=''">
+                nationality,
+            </if>
+            <if test="lpPapersNum != null and lpPapersNum!=''">
+                lp_papers_num,
+            </if>
+            <if test="unitRegisterAddress != null and unitRegisterAddress!=''">
+                unit_register_address,
+            </if>
+            <if test="unitOfficeAddress != null and unitOfficeAddress!=''">
+                unit_office_address,
+            </if>
+            <if test="isLP != null and isLP!=''">
+                is_lp,
+            </if>
+            <if test="unitBuildDate != null">
+                unit_build_time,
+            </if>
+            <if test="superiorUnit != null and superiorUnit !=''">
+                superior_unit,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="unitRegisterId != null and unitRegisterId!=''">
+                #{unitRegisterId},
+            </if>
+            <if test="unitId != null and unitId!=''">
+                #{unitId},
+            </if>
+            <if test="unitName != null and unitName!=''">
+                #{unitName},
+            </if>
+            <if test="orgCode != null and orgCode!=''">
+                #{orgCode},
+            </if>
+            <if test="unitPapersName != null and unitPapersName!=''">
+                #{unitPapersName},
+            </if>
+            <if test="unitPapersNum != null and unitPapersNum!=''">
+                #{unitPapersNum},
+            </if>
+            <if test="unitPropertyCode != null and unitPropertyCode!=''">
+                #{unitPropertyCode},
+            </if>
+            <if test="legalPerson != null and legalPerson!=''">
+                #{legalPerson},
+            </if>
+            <if test="lpPapersName != null and lpPapersName!=''">
+                #{lpPapersName},
+            </if>
+            <if test="nationality != null and nationality!=''">
+                #{nationality},
+            </if>
+            <if test="lpPapersNum != null and lpPapersNum!=''">
+                #{lpPapersNum},
+            </if>
+            <if test="unitRegisterAddress != null and unitRegisterAddress!=''">
+                #{unitRegisterAddress},
+            </if>
+            <if test="unitOfficeAddress != null and unitOfficeAddress!=''">
+                #{unitOfficeAddress},
+            </if>
+            <if test="isLP != null and isLP!=''">
+                #{isLP},
+            </if>
+            <if test="unitBuildDate != null">
+                #{unitBuildDate},
+            </if>
+            <if test="superiorUnit != null and superiorUnit !=''">
+                #{superiorUnit},
+            </if>
+        </trim>
+    </insert>
+    <select id="selectUnitNameByUnitRegisterId" parameterType="java.lang.String" resultMap="java.lang.String">
+        select unit_name from unit_register where unit_register_id=#{unitRegisterId}
+    </select>
 </mapper>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zlk.gjj.registerAndAccount.secondAssist.mapper.SecondAssistMapper">
+    <resultMap id="secondAssistEntityMap" type="com.zlk.gjj.registerAndAccount.entity.SecondAssist">
+        <id property="saId" column="sa_id" javaType="java.lang.String"></id>
+        <result property="unitId" column="unit_id" javaType="java.lang.String"></result>
+        <result property="departmentId" column="department_id" javaType="java.lang.String"></result>
+        <result property="departmentName" column="department_name" javaType="java.lang.String"></result>
+        <result property="departmentCode" column="department_code" javaType="java.lang.String"></result>
+    </resultMap>
+
+    <insert id="insertSecondAssist" parameterType="com.zlk.gjj.registerAndAccount.entity.SecondAssist">
+        insert into secont_assist(sa_id,unit_id,department_id,department_name,department_code) values (#{saId},#{unitId},#{departmentId},#{departmentName},#{departmentCode})
+    </insert>
+
+    <select id="selectSecondAssistByUnitId" parameterType="com.zlk.gjj.registerAndAccount.entity.SecondAssist" resultMap="secondAssistEntityMap">
+		select * from secont_assist where unit_id=#{unitId}
+	</select>
+
+    <update id="updateSecondAssistById" parameterType="com.zlk.gjj.registerAndAccount.entity.SecondAssist">
+        update secont_assist
+        <set>
+            <if test="saId!=null and saId!=''">
+                sa_id =#{saId},
+            </if>
+            <if test="departmentId!=null and departmentId!=''">
+                department_id  =#{departmentId},
+            </if>
+            <if test="departmentName!=null and departmentName!=''">
+                department_name  =#{departmentName},
+            </if>
+            <if test="departmentCode!=null and departmentCode!=''">
+                department_code  =#{departmentCode},
+            </if>
+        </set>
+        where unit_id=#{unitId}
+    </update>
+
+    <delete id="deleteSecondAssistByUnitId" parameterType="com.zlk.gjj.registerAndAccount.entity.SecondAssist">
+        delete from secont_assist where unit_id=#{unitId}
+    </delete>
+
+
+
+</mapper>
+

@@ -30,4 +30,6 @@ public class Unit {
     private String password;
     /**单位用户状态*/
     private String status;
+    /**用户登录失败次数*/
+    private Integer errorTimes;
 }
