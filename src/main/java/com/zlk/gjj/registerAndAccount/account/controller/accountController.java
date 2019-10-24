@@ -38,7 +38,10 @@ public class accountController {
         account.setFirstRemitMonth(1);
         account.setUnitDepositeRatio(1);
         account.setIsMonthConfirm("1");*/
-        account.setAccountId(IdUtils.getUUID());
+
+        account.setAccountId(IdUtils.getUnitId(9));
+        account.setUnitId("2");
+
         Integer flag = accountService.insertAccount(account);
         if(flag == 1){
             return "index";
