@@ -137,7 +137,7 @@
             </if>
         </trim>
     </insert>
-    <select id="selectUnitNameByUnitRegisterId" parameterType="java.lang.String" resultMap="java.lang.String">
+    <select id="selectUnitNameByUnitRegisterId" parameterType="java.lang.String" resultType="java.lang.String">
         select unit_name from unit_register where unit_register_id=#{unitRegisterId}
     </select>
 </mapper>
