@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * (Remittance)表控制层
@@ -71,5 +73,17 @@ public class RemittanceController {
     @RequestMapping("selRemAndEmpAndSAAll")
     public List<Emp_Rem> selRemAndEmpAndSAAll(){
         return remittanceService.selRemAndEmpAndSAAll();
+    }
+
+    @RequestMapping("select")
+    public Map selRemAndEmpAndSAAll1(){
+        List<Emp_Rem> emp_rems = remittanceService.selRemAndEmpAndSAAll();
+        int count = emp_rems.size();
+        Map map = new HashMap();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("count",count);
+        map.put("data",emp_rems);
+        return map;
     }
 }

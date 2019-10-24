@@ -75,15 +75,4 @@ public class EmployeeController {
         return employeeService.update(employee);
     }
 
-    @RequestMapping("select")
-    public Map selEmployeebyEmployee1(Employee employee){
-        List<Employee> employees = employeeService.queryAll(employee);
-        int count = employees.size();
-        Map map = new HashMap();
-        map.put("code",0);
-        map.put("msg","");
-        map.put("count",count);
-        map.put("data",employees);
-        return map;
-    }
 }

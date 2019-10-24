@@ -7,7 +7,7 @@ window.onload=function(){
         table.render({
             elem: '#employ'
             ,height: 400
-            ,url: '/employee/select'
+            ,url: '/remittance/select'
             ,page: true
             ,toolbar: '#toolbar'
             ,cols: [[ //表头
