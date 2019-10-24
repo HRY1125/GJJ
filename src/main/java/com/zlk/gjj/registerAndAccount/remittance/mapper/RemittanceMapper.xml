@@ -97,7 +97,7 @@
                 employee_deposite = #{employeeDeposite},
             </if>
             <if test="depositeTotal != null and depositeTotal != ''">
-                eposite_total = #{depositeTotal},
+                deposite_total = #{depositeTotal},
             </if>
         </set>
         where remittance_id = #{remittanceId}

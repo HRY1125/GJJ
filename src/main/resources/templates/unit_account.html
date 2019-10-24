@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>单位开户</title>
@@ -34,12 +34,27 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">业务种类</label>
                 <div class="layui-input-block">
-                    <input type="radio" name="businessKind" value="住房公积金" title="住房公积金">
-                    <input type="radio" name="businessKind" value="住房补贴" title="住房补贴">
-                    <input type="radio" name="businessKind" value="住房基金" title="住房基金">
-                    <input type="radio" name="businessKind" value="住房维修基金" title="住房维修基金">
+                    <input id="gjj" type="radio" name="businessKind" value="住房公积金" title="住房公积金">
+                    <input id="bt" type="radio" name="businessKind" value="住房补贴" title="住房补贴">
+                    <input id="jj" type="radio" name="businessKind" value="住房基金" title="住房基金">
+                    <input id="wx" type="radio" name="businessKind" value="住房维修基金" title="住房维修基金">
                 </div>
             </div>
+
+
+            <script th:if="${#strings.equals(accountKind, '住房公积金')}">
+                $("#gjj").attr("checked","checked");
+            </script>
+            <script th:if="${#strings.equals(accountKind, '住房补贴')}">
+                $("#bt").attr("checked","checked");
+            </script>
+            <script th:if="${#strings.equals(accountKind, '住房基金')}">
+                $("#jj").attr("checked","checked");
+            </script>
+            <script th:if="${#strings.equals(accountKind, '住房维修基金')}">
+                $("#wx").attr("checked","checked");
+            </script>
+
 
             <div class="layui-form-item">
                 <label class="layui-form-label">资金来源</label>
@@ -186,7 +201,7 @@
                 </div>
             </div>
 
-            <div class="layui-form-item">
+            <!--<div class="layui-form-item">
                 <label class="layui-form-label">缴款方式</label>
                 <div class="layui-input-block">
                     <input type="radio" name="payMethod" value="委托收款" title="委托收款">
@@ -197,7 +212,7 @@
                     <input type="radio" name="payMethod" value="转账交款" title="转账交款">
                     <input type="radio" name="payMethod" value="在线支付" title="在线支付">
                 </div>
-            </div>
+            </div>-->
 
             <input id="inpt_submit" type="submit" class="layui-btn" value="开户">
 
