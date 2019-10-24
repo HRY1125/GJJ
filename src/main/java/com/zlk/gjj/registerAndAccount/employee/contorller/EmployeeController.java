@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * (Employee)表控制层
@@ -73,5 +75,15 @@ public class EmployeeController {
         return employeeService.update(employee);
     }
 
-
+    @RequestMapping("selEmployeeAll1")
+    public Map selEmployeebyEmployee1(Employee employee){
+        List<Employee> employees = employeeService.queryAll(employee);
+        int count = employees.size();
+        Map map = new HashMap();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("count",count);
+        map.put("data",employees);
+        return map;
+    }
 }

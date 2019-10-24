@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zlk.gjj.registerAndAccount.agent.mapper.AgentMapper">
+    <resultMap id="agentEntityMap" type="com.zlk.gjj.registerAndAccount.entity.Agent">
+        <id property="agentId" column="agent_id" javaType="java.lang.String"/>
+        <result property="unitId" column="unit_id" javaType="java.lang.String"/>
+        <result property="unitRegisterId" column="unit_register_id" javaType="java.lang.String"/>
+        <result property="agentName" column="agent_name" javaType="java.lang.String"/>
+        <result property="agentPapersName" column="agent_papers_name" javaType="java.lang.String"/>
+        <result property="agentPapersNum" column="agent_papers_num" javaType="java.lang.String"/>
+        <result property="nationality" column="nationality" javaType="java.lang.String"/>
+        <result property="officePhone" column="office_phone" javaType="java.lang.String"/>
+        <result property="agentPhone" column="agent_phone" javaType="java.lang.String"/>
+        <result property="agentEmail" column="agent_email" javaType="java.lang.String"/>
+        <result property="agentType" column="agent_type" javaType="java.lang.String"/>
+        <result property="ukey" column="ukey" javaType="java.lang.String"/>
+        <result property="agentUserName" column="agent_username" javaType="java.lang.String"/>
+    </resultMap>
+    
+    <insert id="insertAgent" parameterType="com.zlk.gjj.registerAndAccount.entity.Agent">
+        insert into agent
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="agentId != null and agentId!=''">
+                agent_id,
+            </if>
+            <if test="unitId != null and unitId!=''">
+                unit_id,
+            </if>
+            <if test="unitRegisterId != null and unitRegisterId!=''">
+                unit_register_id,
+            </if>
+            <if test="agentName != null and agentName !=''">
+                agent_name,
+            </if>
+            <if test="agentPapersName != null and agentPapersName!=''">
+                agent_papers_name,
+            </if>
+            <if test="agentPapersNum != null and agentPapersNum!=''">
+                agent_papers_num,
+            </if>
+            <if test="nationality != null and nationality!=''">
+                nationality,
+            </if>
+            <if test="officePhone != null and officePhone!=''">
+                office_phone,
+            </if>
+            <if test="agentPhone != null and agentPhone!=''">
+                agent_phone,
+            </if>
+            <if test="agentEmail != null and agentEmail!=''">
+                agent_email,
+            </if>
+            <if test="agentType != null and agentType!=''">
+                agent_type,
+            </if>
+            <if test="ukey != null and ukey!=''">
+                ukey,
+            </if>
+            <if test="agentUserName != null and agentUserName!=''">
+                agent_username,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="agentId != null and agentId!=''">
+                #{agentId},
+            </if>
+            <if test="unitId != null and unitId!=''">
+                #{unitId},
+            </if>
+            <if test="unitRegisterId != null and unitRegisterId!=''">
+                #{unitRegisterId},
+            </if>
+            <if test="agentName != null and agentName !=''">
+                #{agentName},
+            </if>
+            <if test="agentPapersName != null and agentPapersName!=''">
+                #{agentPapersName},
+            </if>
+            <if test="agentPapersNum != null and agentPapersNum!=''">
+                #{agentPapersNum},
+            </if>
+            <if test="nationality != null and nationality!=''">
+                #{nationality},
+            </if>
+            <if test="officePhone != null and officePhone!=''">
+                #{officePhone},
+            </if>
+            <if test="agentPhone != null and agentPhone!=''">
+                #{agentPhone},
+            </if>
+            <if test="agentEmail != null and agentEmail!=''">
+                #{agentEmail},
+            </if>
+            <if test="agentType != null and agentType!=''">
+                #{agentType},
+            </if>
+            <if test="ukey != null and ukey!=''">
+                #{ukey},
+            </if>
+            <if test="agentUserName != null and agentUserName!=''">
+                #{agentUserName},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateAgentById" parameterType="com.zlk.gjj.registerAndAccount.entity.Agent">
+        update agent
+        <set>
+            <if test="agentId != null and agentId!=''">
+                agent_id = #{agentId},
+            </if>
+            <if test="unitId != null and unitId!=''">
+                unit_id = #{unitId},
+            </if>
+            <if test="unitRegisterId != null and unitRegisterId!=''">
+                unit_register_id = #{unitRegisterId},
+            </if>
+            <if test="agentName != null and agentName !=''">
+                agent_name = #{agentName},
+            </if>
+            <if test="agentPapersName != null and agentPapersName!=''">
+                agent_papers_name = #{agentPapersName},
+            </if>
+            <if test="agentPapersNum != null and agentPapersNum!=''">
+                agent_papers_num = #{agentPapersNum},
+            </if>
+            <if test="nationality != null and nationality!=''">
+                nationality = #{nationality},
+            </if>
+            <if test="officePhone != null and officePhone!=''">
+                office_phone = #{officePhone},
+            </if>
+            <if test="agentPhone != null and agentPhone!=''">
+                agent_phone = #{agentPhone},
+            </if>
+            <if test="agentEmail != null and agentEmail!=''">
+                agent_email = #{agentEmail},
+            </if>
+            <if test="agentType != null and agentType!=''">
+                agent_type = #{agentType},
+            </if>
+            <if test="ukey != null and ukey!=''">
+                ukey = #{ukey},
+            </if>
+            <if test="agentUserName != null and agentUserName!=''">
+                agent_username = #{agentUserName},
+            </if>
+        </set>
+    </update>
+    <select id="findUnitRegisterIdByUkey" parameterType="java.lang.String" resultType="java.lang.String">
+        select unit_register_id from agent where ukey = #{ukey}
+    </select>
+</mapper>
