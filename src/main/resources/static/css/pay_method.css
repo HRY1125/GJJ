@@ -1,0 +1,34 @@
+.entrust{
+    display: none;
+}
+.remit{
+    display: none;
+}
+.check{
+    display: none;
+}
+.cash{
+    display: none;
+}
+.finance{
+    display: none;
+}
+.transfer{
+    display: none;
+}
+
+#div_form{
+    position: relative;
+    width: 80%;
+    height: 800px;
+    top: 50px;
+    margin: 0 auto;
+}
+
+#form_main{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+}
