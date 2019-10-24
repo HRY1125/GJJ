@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * (Employee)表控制层
@@ -72,5 +74,17 @@ public class EmployeeController {
     @RequestMapping("updateEmployee")
     public Employee updateEmployee(Employee employee){
         return employeeService.update(employee);
+    }
+
+    @RequestMapping("selEmployeeAll1")
+    public Map selEmployeebyEmployee1(Employee employee){
+        List<Employee> employees = employeeService.queryAll(employee);
+        int count = employees.size();
+        Map map = new HashMap();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("count",count);
+        map.put("data",employees);
+        return map;
     }
 }

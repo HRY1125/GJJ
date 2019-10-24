@@ -4,6 +4,10 @@ server:
 spring:
   datasource:
     url: jdbc:mysql://47.98.183.4:3306/group1_gjj?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+<<<<<<< HEAD
     username: 
+=======
+    username: group1
+>>>>>>> 3ba793e833b7e1e4f8bab52754b0cdb3518f1dd5
     password:
     driver-class-name: com.mysql.cj.jdbc.Driver
