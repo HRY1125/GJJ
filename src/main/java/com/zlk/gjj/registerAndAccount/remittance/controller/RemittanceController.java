@@ -1,6 +1,7 @@
 package com.zlk.gjj.registerAndAccount.remittance.controller;
 
 import com.zlk.gjj.registerAndAccount.entity.Remittance;
+import com.zlk.gjj.registerAndAccount.entity.vo.Emp_Rem;
 import com.zlk.gjj.registerAndAccount.remittance.service.RemittanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -65,5 +66,10 @@ public class RemittanceController {
     @RequestMapping("updateByRemittance")
     public Remittance updateByRemittance(Remittance remittance){
         return remittanceService.update(remittance);
+    }
+
+    @RequestMapping("selRemAndEmpAndSAAll")
+    public List<Emp_Rem> selRemAndEmpAndSAAll(){
+        return remittanceService.selRemAndEmpAndSAAll();
     }
 }

@@ -7,11 +7,16 @@
         <id property="accountId" column="account_id" javaType="java.lang.String"></id>
         <result property="unitRegisterId" column="unit_register_id" javaType="java.lang.String"></result>
         <result property="unitId" column="unit_id" javaType="java.lang.String"></result>
+        <result property="unitName" column="unit_name" javaType="java.lang.String"></result>
+        <result property="unitPhone" column="unit_phone" javaType="java.lang.String"></result>
+<!--
         <result property="accountType" column="account_type" javaType="java.lang.String"></result>
+-->
         <result property="businessKind" column="business_kind" javaType="java.lang.String"></result>
         <result property="capitalSource" column="capital_source" javaType="java.lang.String"></result>
         <result property="allocateUnit" column="allocate_unit" javaType="java.lang.String"></result>
         <result property="isSecondAssist" column="is_second_assist" javaType="java.lang.String"></result>
+        <result property="isAcceptService" column="is_accept_service" javaType="java.lang.String"></result>
         <result property="agentDepartment" column="agent_department" javaType="java.lang.String"></result>
         <result property="payDay" column="pay_day" javaType="java.lang.Integer"></result>
         <result property="firstRemitMonth" column="first_remit_month" javaType="java.lang.Integer"></result>
@@ -25,12 +30,17 @@
 
 
 <insert id="insertAccount" parameterType="com.zlk.gjj.registerAndAccount.entity.Account">
-        insert into account(account_id,unit_register_id,unit_id,business_kind,capital_source,allocate_unit,is_second_assist,agent_department,pay_day,first_remit_month,year_list_ratify,unit_deposite_ratio,is_month_confirm) values (#{accountId},#{unitRegisertId},#{unitId},#{businessKind},#{capitalSource},#{allocateUnit},#{isSecondAssist},#{agentDepartment},#{payDay},#{firstRemitMonth},#{yearListRatify},#{unitDepositeRatio},#{isMonthConfirm})
+        insert into account(account_id,unit_register_id,unit_id,unit_name,unit_phone,business_kind,capital_source,allocate_unit,is_second_assist,is_accept_service,agent_department,pay_day,first_remit_month,year_list_ratify,unit_deposite_ratio,is_month_confirm,pay_method) values (#{accountId},#{unitRegisterId},#{unitId},#{unitName},#{unitPhone},#{businessKind},#{capitalSource},#{allocateUnit},#{isSecondAssist},#{isAcceptService},#{agentDepartment},#{payDay},#{firstRemitMonth},#{yearListRatify},#{unitDepositeRatio},#{isMonthConfirm},#{payMethod})
     </insert>
 
     <select id="selectAccountByUnitId" parameterType="com.zlk.gjj.registerAndAccount.entity.Account" resultType="java.lang.String">
-		select account_type from account where unit_id=#{unitId}
+		select businessKind from account where unit_id=#{unitId}
 	</select>
+
+    <select id="selectAccountByUnitRegisterId" resultMap="accountEntityMap">
+        select * from account where
+        unit_register_id = #{unitRegisterId}
+    </select>
 
     <update id="updateAccountById" parameterType="com.zlk.gjj.registerAndAccount.entity.Account">
     update account
@@ -41,9 +51,13 @@
         <if test="unitId!=null and unitId!=''">
             unit_id  =#{unitId},
         </if>
-        <if test="accountType!=null and accountType!=''">
-            account_type  =#{accountType},
+        <if test="unitName!=null and unitName!=''">
+            unit_name  =#{unitName},
         </if>
+        <if test="unitPhone!=null and unitPhone!=''">
+            unit_phone  =#{unitPhone},
+        </if>
+
         <if test="businessKind!=null and businessKind!=''">
             business_kind  =#{businessKind},
         </if>
@@ -55,6 +69,9 @@
         </if>
         <if test="isSecondAssist!=null and isSecondAssist!=''">
             is_second_assist  =#{isSecondAssist},
+        </if>
+        <if test="isAcceptService!=null and isAcceptService!=''">
+            is_accept_service  =#{isAcceptService},
         </if>
         <if test="agentDepartment!=null and agentDepartment!=''">
             agent_department  =#{agentDepartment},
@@ -73,6 +90,10 @@
         </if>
         <if test="isMonthConfirm!=null and isMonthConfirm!=''">
             is_month_confirm  =#{isMonthConfirm},
+        </if>
+
+        <if test="isMonthConfirm!=null and isMonthConfirm!=''">
+            pay_method  =#{payMethod},
         </if>
 
 

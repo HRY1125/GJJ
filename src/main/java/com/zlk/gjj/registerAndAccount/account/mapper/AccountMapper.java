@@ -8,5 +8,7 @@ public interface AccountMapper {
 
      String selectAccountByUnitId(String unitId);
 
+     Account selectAccountByUnitRegisterId(String unitRegisterId);
+
      Integer updateAccountById(Account account);
 }

@@ -8,7 +8,7 @@ import com.zlk.gjj.registerAndAccount.util.IdUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(value="/account")
@@ -38,7 +38,10 @@ public class accountController {
         account.setFirstRemitMonth(1);
         account.setUnitDepositeRatio(1);
         account.setIsMonthConfirm("1");*/
-        account.setAccountId(IdUtils.getUUID());
+
+        account.setAccountId(IdUtils.getUnitId(9));
+        account.setUnitId("2");
+
         Integer flag = accountService.insertAccount(account);
         if(flag == 1){
             return "index";
@@ -73,4 +76,15 @@ public class accountController {
                return null;
            }
        }
+    @RequestMapping("selectAccountByUnitRegisterId")
+    @ResponseBody
+    public Account selectAccountByUnitRegisterId(String unitRegisterId){
+        Account account=accountService.selectAccountByUnitRegisterId(unitRegisterId);
+        return accountService.selectAccountByUnitRegisterId(unitRegisterId);
+    }
+
+    @RequestMapping("updatekaihu")
+    public String updatekaihu(){
+        return "unit_account_update";
+    }
 }
