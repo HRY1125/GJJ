@@ -1,18 +1,19 @@
 window.onload=function(){
 
-    layui.use(['table','form'], function(){
+    layui.use(['table','form','layer'], function(){
         var table = layui.table;
         var form = layui.form;
+        var layer = layui.layer;
 
         table.render({
             elem: '#employ'
-            ,height: 400
-            ,url: '/employee/select'
+            ,height: 500
+            ,url: '/remittance/select'
             ,page: true
             ,toolbar: '#toolbar'
             ,cols: [[ //表头
                 /*{field: 'NO.', title: '序号', width:80}
-                ,*/{field: 'employeeId', title: '职工编号', width:135, edit:'text'}
+                ,*/{field: 'employeeId', title: '职工编号', width:135}
                 ,{field: 'employeeName', title: '姓名', width:135, edit:'text'}
                 ,{field: 'employeePapersName', title: '证件名称', width:135, edit:'text'}
                 ,{field: 'employeeNationnality', title: '国别', width: 135, edit:'text'}
@@ -39,13 +40,6 @@ window.onload=function(){
 
         table.on('edit(edit)', function(obj){
 
-            /*table.reload('employ',{
-                height: 400
-                ,url: '/employee/select'
-                ,page: true
-                ,toolbar: '#toolbar'
-            });*/
-
             console.log(obj.value); //得到修改后的值
             console.log(obj.field); //当前编辑的字段名
             console.log(obj.data); //所在行的所有相关数据
@@ -64,7 +58,7 @@ window.onload=function(){
         table.on('toolbar(edit)', function(obj){
             var event = obj.event;
             var flag = true;
-            if(event=='add'){
+            /*if(event=='add'){
                 console.log(form.val("unit"));
                 var data = form.val("unit");
                 if(data.unitRegisterId==null || data.unitRegisterId==''){
@@ -80,11 +74,23 @@ window.onload=function(){
                     layer.msg("个人比例不能为空");
                     flag = false;
                 }
-            }
+            }*/
 
             if(flag){
                 $.ajax({
-
+                    type : "POST",
+                    contentType: "application/json;charset=UTF-8",
+                    url : "/remittance/add",
+                    data : "",
+                    dataType : "json",
+                    success : function(result) {
+                        table.reload('employ',{
+                            height: 500
+                            ,url: '/remittance/select'
+                            ,page: true
+                            ,toolbar: '#toolbar'
+                        });
+                    },
                 });
             }
         });
@@ -95,10 +101,61 @@ window.onload=function(){
             console.log(obj.event);
             var data = obj.data;
             var event = obj.event;
+            var flag = true;
             if(event=='save'){
-                layer.msg(event);
+                layer.open({
+                    content:'是否保存？'
+                    ,btn:['是','否']
+                    ,yes:function () {
+                        $.ajax({
+                            type: "POST",
+                            contentType: "application/json;charset=UTF-8",
+                            url: "/remittance/update",
+                            data: JSON.stringify(data),
+                            dataType: "json",
+                            success: function (result) {
+                                layer.msg("保存成功！");
+                                table.reload('employ', {
+                                    height: 500
+                                    , url: '/remittance/select'
+                                    , page: true
+                                    , toolbar: '#toolbar'
+                                });
+                            },
+                        });
+                    }
+                    ,btn2:function () {
+                        flag = false;
+                    }
+                });
+
             }else if(event=='delete'){
-                layer.msg(event);
+                layer.open({
+                    content:'是否删除？'
+                    ,btn:['是','否']
+                    ,yes:function () {
+                        $.ajax({
+                            type: "POST",
+                            contentType: "application/json;charset=UTF-8",
+                            url: "/remittance/delete",
+                            data: JSON.stringify(data),
+                            dataType: "json",
+                            success: function (result) {
+                                layer.msg("删除成功！");
+                                table.reload('employ', {
+                                    height: 500
+                                    , url: '/remittance/select'
+                                    , page: true
+                                    , toolbar: '#toolbar'
+                                });
+                            },
+                        });
+                    }
+                    ,btn2:function () {
+                        flag = false;
+                    }
+                });
+
             }
         })
 

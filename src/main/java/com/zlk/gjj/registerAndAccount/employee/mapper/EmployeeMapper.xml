@@ -54,7 +54,7 @@
     </select>
 
     <!--新增所有列-->
-    <insert id="insert" keyProperty="employeeId">
+    <insert id="insert" keyProperty="employeeId" useGeneratedKeys="true">
         insert into group1_gjj.employee(employee_name, employee_papers_name, employee_papers_num, employee_nationnality, employee_card_regist_status)
         values (#{employeeName}, #{employeePapersName}, #{employeePapersNum}, #{employeeNationnality}, #{employeeCardRegistStatus})
     </insert>

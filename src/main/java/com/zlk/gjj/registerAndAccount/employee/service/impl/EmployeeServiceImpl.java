@@ -61,10 +61,10 @@ public class EmployeeServiceImpl implements EmployeeService {
      * @return 是否成功
      */
     @Override
-    public boolean insert(Employee employee) {
+    public Employee insert(Employee employee) {
         employee.setEmployeeCardRegistStatus("未制卡");
-        int i=this.employeeMapper.insert(employee);
-        return i>0;
+        this.employeeMapper.insert(employee);
+        return employee;
     }
 
     /**

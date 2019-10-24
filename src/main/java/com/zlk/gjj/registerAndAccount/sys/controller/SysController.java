@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,7 +19,8 @@ public class SysController {
     }
 
     @RequestMapping("/toUA")
-    public String toUA(){
+    public String toUA(Map map){
+        map.put("accountKind","住房补贴");
         return "unit_account";
     }
 
@@ -33,14 +35,13 @@ public class SysController {
     }
 
     @RequestMapping("/toRemit")
-    public String toRemit(){
+    public String toRemit(HttpServletRequest request){
+        request.getSession().setAttribute("unitRegistId","111");
+        request.getSession().setAttribute("unitName","111");
+        request.getSession().setAttribute("source","111");
+        request.getSession().setAttribute("unitRatio","111");
+        request.getSession().setAttribute("personRatio","111");
         return "remit";
-    }
-
-    @RequestMapping("/ajaxTest")
-    @ResponseBody
-    public String ajaxTest(){
-        return "";
     }
 
     @RequestMapping("/toUR")
