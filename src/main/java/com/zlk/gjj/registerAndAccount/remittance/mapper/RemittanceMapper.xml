@@ -91,13 +91,13 @@
                 deposit_base = #{depositBase},
             </if>
             <if test="unitDeposite != null and unitDeposite != ''">
-               unit_deposite = #{unitDeposite}
+               unit_deposite = #{unitDeposite},
             </if>
             <if test="employeeDeposite != null and employeeDeposite != ''">
-                employee_deposite = #{employeeDeposite}
+                employee_deposite = #{employeeDeposite},
             </if>
             <if test="depositeTotal != null and depositeTotal != ''">
-                eposite_total = #{depositeTotal}
+                eposite_total = #{depositeTotal},
             </if>
         </set>
         where remittance_id = #{remittanceId}

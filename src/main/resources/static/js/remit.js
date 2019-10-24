@@ -108,9 +108,37 @@ window.onload=function(){
             var data = obj.data;
             var event = obj.event;
             if(event=='save'){
-                layer.msg(event);
+                $.ajax({
+                    type : "POST",
+                    contentType: "application/json;charset=UTF-8",
+                    url : "/remittance/update",
+                    data : JSON.stringify(data),
+                    dataType : "json",
+                    success : function(result) {
+                        table.reload('employ',{
+                            height: 400
+                            ,url: '/remittance/select'
+                            ,page: true
+                            ,toolbar: '#toolbar'
+                        });
+                    },
+                });
             }else if(event=='delete'){
-                layer.msg(event);
+                $.ajax({
+                    type : "POST",
+                    contentType: "application/json;charset=UTF-8",
+                    url : "/remittance/delete",
+                    data : JSON.stringify(data),
+                    dataType : "json",
+                    success : function(result) {
+                        table.reload('employ',{
+                            height: 400
+                            ,url: '/remittance/select'
+                            ,page: true
+                            ,toolbar: '#toolbar'
+                        });
+                    },
+                });
             }
         })
 

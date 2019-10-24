@@ -4,6 +4,7 @@ import com.zlk.gjj.registerAndAccount.entity.Remittance;
 import com.zlk.gjj.registerAndAccount.entity.vo.Emp_Rem;
 import com.zlk.gjj.registerAndAccount.remittance.service.RemittanceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -105,7 +106,21 @@ public class RemittanceController {
     @RequestMapping("add")
     @ResponseBody
     public Map insertRemittance1(Remittance remittance){
-        /*remittanceService.insert(remittance);*/
+        remittanceService.insert(remittance);
+        Map map = new HashMap();
+        return map;
+    }
+
+    @RequestMapping("delete")
+    public Map delEmpAndRem1(@RequestBody Emp_Rem empRem){
+        remittanceService.deleRemAndEmp(empRem);
+        Map map = new HashMap();
+        return map;
+    }
+
+    @RequestMapping("update")
+    public Map updateEmpAndRem1(@RequestBody Emp_Rem empRem){
+        remittanceService.updateEmpAndRem(empRem);
         Map map = new HashMap();
         return map;
     }
