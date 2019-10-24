@@ -8,6 +8,7 @@ import com.zlk.gjj.registerAndAccount.unitlogin.service.UnitService;
 import com.zlk.gjj.registerAndAccount.util.IdUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class UnitServiceImpl implements UnitService {
     }
 
     @Override
+    @Transactional
     public String insertUnit(Unit unit) {
         String message = "";
         String papersNum = unit.getPapersNum();

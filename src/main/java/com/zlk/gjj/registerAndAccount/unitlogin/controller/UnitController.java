@@ -32,9 +32,9 @@ public class UnitController {
     @RequestMapping(value = "/signin")
     public ModelAndView singIn(Unit unit) throws Exception{
         ModelAndView mv = new ModelAndView();
-        unit.setAgentName("李老师");
+        unit.setAgentName("拉萨的飞机");
         unit.setPapersName("身份证");
-        unit.setPapersNum("19837772866642");
+        unit.setPapersNum("410928198802021216");
         unit.setAgentPhone("122334");
         unit.setPassword("2222");
         unit.setUnitEmail("1232434@123.com");
