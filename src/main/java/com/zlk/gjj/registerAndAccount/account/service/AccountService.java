@@ -9,4 +9,6 @@ public interface AccountService {
     String selectAccountByUnitId(String unitId);
 
     Integer updateAccountById(Account account);
+
+    Account selectAccountByUnitRegisterId(String unitRegisterId);
 }

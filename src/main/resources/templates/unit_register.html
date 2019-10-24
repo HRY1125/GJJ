@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>单位登记申请</title>
+    <link rel="stylesheet" href="/css/unit_register.css" type="text/css">
+    <script type="text/javascript" src="/js/unit_register.js"></script>
+    <link rel="stylesheet" href="/layui/css/layui.css" type="text/css">
+    <script src="/layui/layui.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <div id="div_form">
+        <form id="form_main" class="layui-form" action="/account/accountInsert">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">单位名称</label>
+                <div class="layui-input-block">
+                    <input id="unitName" type="text" readonly="readonly" name="unitName" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">组织机构代码</label>
+                <div class="layui-input-block">
+                    <input id="ipt_unitId" type="text" name="orgCode"  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">单位证件名称</label>
+                <div class="layui-input-block">
+                    <select id="select1" name="unitPapersName" required lay-verify="required">
+                        <option ></option>
+                        <option value="企业营业执照">企业营业执照</option>
+                        <option value="事业法人证书">事业法人证书</option>
+                        <option value="社团登记证书">社团登记证书</option>
+                        <option value="个体工商执照">个体工商执照</option>
+                        <option value="设立文件">设立文件</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">单位证件号码</label>
+                <div class="layui-input-block">
+                    <input type="text" name="unitPapersNum" lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">法人或负责人姓名</label>
+                <div class="layui-input-block">
+                    <input type="text" name="legalPerson" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">法人或负责人证件名称</label>
+                <div class="layui-input-block">
+                    <select id="select2" name="lpPapersName" required lay-verify="required" lay-filter="papers">
+                        <option ></option>
+                        <option value="0">身份证</option>
+                        <option value="1">护照</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">证件号码</label>
+                <div class="layui-input-block">
+                    <input type="text" name="lpPapersNum" lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div id="div_nation" class="layui-form-item" style="display: none">
+                <label class="layui-form-label">国籍</label>
+                <div class="layui-input-block">
+                    <input id="ipt_nation" type="text" name="nationality" lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">单位注册地址</label>
+                <div class="layui-input-block">
+                    <input type="text" name="unitRegisterAddress" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">单位办公地址</label>
+                <div class="layui-input-block">
+                    <input type="text" name="unitOfficeAddress" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">是否具有法人资格</label>
+                <div class="layui-input-block">
+                    <select name="isLP" required lay-verify="required" lay-filter="papers">
+                        <option ></option>
+                        <option value="是">是</option>
+                        <option value="否">否</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">单位成立时间</label>
+                <div class="layui-input-block">
+                    <input type="text" id="unitBuildDate" name="unitBuildDate" class="laydate layui-input" placeholder="yyyy-MM-dd HH:mm">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">上级主管单位</label>
+                <div class="layui-input-block">
+                    <input type="text" name="superiorUnit" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <input id="inpt_submit" type="submit" class="layui-btn" value="开户">
+
+        </form>
+    </div>
+</body>
+</html>

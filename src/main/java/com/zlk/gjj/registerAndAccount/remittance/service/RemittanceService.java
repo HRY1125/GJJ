@@ -1,6 +1,7 @@
 package com.zlk.gjj.registerAndAccount.remittance.service;
 
 import com.zlk.gjj.registerAndAccount.entity.Remittance;
+import com.zlk.gjj.registerAndAccount.entity.vo.Emp_Rem;
 
 import java.util.List;
 
@@ -61,4 +62,5 @@ public interface RemittanceService {
      */
     boolean deleteById(Integer remittanceId);
 
+    List<Emp_Rem> selRemAndEmpAndSAAll();
 }

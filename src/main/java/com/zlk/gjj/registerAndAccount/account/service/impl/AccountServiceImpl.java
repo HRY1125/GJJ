@@ -28,4 +28,9 @@ public class AccountServiceImpl implements AccountService {
         return accountMapper.updateAccountById(account);
     }
 
+    @Override
+    public Account selectAccountByUnitRegisterId(String unitRegisterId) {
+        return accountMapper.selectAccountByUnitRegisterId(unitRegisterId);
+    }
+
 }
