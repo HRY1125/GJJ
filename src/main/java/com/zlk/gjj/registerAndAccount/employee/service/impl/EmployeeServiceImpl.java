@@ -3,9 +3,9 @@ package com.zlk.gjj.registerAndAccount.employee.service.impl;
 import com.zlk.gjj.registerAndAccount.employee.mapper.EmployeeMapper;
 import com.zlk.gjj.registerAndAccount.employee.service.EmployeeService;
 import com.zlk.gjj.registerAndAccount.entity.Employee;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Service("employeeService")
 public class EmployeeServiceImpl implements EmployeeService {
-    @Resource
+    @Autowired
     private EmployeeMapper employeeMapper;
 
     /**

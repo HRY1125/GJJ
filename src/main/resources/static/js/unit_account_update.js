@@ -15,16 +15,13 @@ window.onload=function(){
             success:function (data) {
                 $.each(data, function(index,values){// 解析出data对应的Object数组
                     if(index==="unitPhone"){
-                        alert(values);
                         $("#dianhua").val(values);
                     }
                     if(index==="unitDepositeRatio"){
-                        alert(values);
                         $("#danweibili").val(values);
                         $("#gernbili").val(values)
                     }
                     if(index==="agentDepartment"){
-                        alert(values);
                         $("#yewujingban").val(values);
                     }
                 });

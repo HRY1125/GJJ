@@ -1,11 +1,16 @@
 package com.zlk.gjj.registerAndAccount.remittance.service.impl;
 
+import com.zlk.gjj.registerAndAccount.employee.mapper.EmployeeMapper;
+import com.zlk.gjj.registerAndAccount.entity.Employee;
 import com.zlk.gjj.registerAndAccount.entity.Remittance;
+import com.zlk.gjj.registerAndAccount.entity.vo.Emp_Rem;
 import com.zlk.gjj.registerAndAccount.remittance.mapper.RemittanceMapper;
 import com.zlk.gjj.registerAndAccount.remittance.service.RemittanceService;
+import com.zlk.gjj.registerAndAccount.secondAssist.mapper.SecondAssistMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,8 +21,14 @@ import java.util.List;
  */
 @Service("remittanceService")
 public class RemittanceServiceImpl implements RemittanceService {
-    @Resource
+    @Autowired
     private RemittanceMapper remittanceMapper;
+
+    @Autowired
+    private EmployeeMapper employeeMapper;
+
+    @Autowired
+    private SecondAssistMapper secondAssistMapper;
 
     /**
      * 通过ID查询单条数据
@@ -86,5 +97,29 @@ public class RemittanceServiceImpl implements RemittanceService {
     @Override
     public boolean deleteById(Integer remittanceId) {
         return this.remittanceMapper.deleteById(remittanceId) > 0;
+    }
+
+    @Override
+    public List<Emp_Rem> selRemAndEmpAndSAAll() {
+        List<Emp_Rem> empRemList=new ArrayList<>();
+        List<Remittance>  remittanceList=remittanceMapper.queryAll(new Remittance());
+        for(Remittance remittance:remittanceList){
+            Employee employee=employeeMapper.queryById(remittance.getEmployeeId());
+            Emp_Rem empRem=new Emp_Rem();
+            empRem.setEmployeeId(employee.getEmployeeId());
+            empRem.setEmployeeName(employee.getEmployeeName());
+            empRem.setEmployeePapersName(employee.getEmployeePapersName());
+            empRem.setEmployeePapersNum(employee.getEmployeePapersNum());
+            empRem.setEmployeeNationnality(employee.getEmployeeNationnality());
+            empRem.setEmployeeDeposite(remittance.getEmployeeDeposite());
+            empRem.setDepositBase(remittance.getDepositBase());
+            empRem.setDepositeTotal(remittance.getDepositeTotal());
+            empRem.setUnitRegisterId(remittance.getUnitRegisterId());
+            empRem.setUnitDeposite(remittance.getUnitDeposite());
+            empRem.setSaId(remittance.getSaId());
+            empRem.setRemittanceId(remittance.getRemittanceId());
+            empRemList.add(empRem);
+        }
+        return empRemList;
     }
 }
