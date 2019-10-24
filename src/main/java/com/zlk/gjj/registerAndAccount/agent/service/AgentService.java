@@ -25,12 +25,12 @@ public interface AgentService {
     String updateAgentById(Agent agent);
 
     /**
-     *  根据ukey查找unitRegisterId
+     *  根据ukey或agentUserName查找unitRegisterId
      *@method findUnitRegisterIdByUkey
-     *@params [ukey]
+     *@params [agent]
      *@return java.lang.String
      *@author zhang
      *@time 2019/10/23  21:35
      */
-    String findUnitRegisterIdByUkey(String ukey);
+    String findUnitRegisterIdByUkeyOrAgentUserName(Agent agent);
 }

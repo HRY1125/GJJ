@@ -11,12 +11,12 @@
 </head>
 <body>
     <div id="div_form">
-        <form id="form_main" class="layui-form" action="/account/accountInsert">
+        <form id="form_main" class="layui-form" action="/unitRegister/unitRegister" method="post">
 
             <div class="layui-form-item">
                 <label class="layui-form-label">单位名称</label>
                 <div class="layui-input-block">
-                    <input id="unitName" type="text" readonly="readonly" name="unitName" autocomplete="off" class="layui-input">
+                    <input id="unitName" type="text" name="unitName" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
@@ -109,7 +109,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">单位成立时间</label>
                 <div class="layui-input-block">
-                    <input type="text" id="unitBuildDate" name="unitBuildDate" class="laydate layui-input" placeholder="yyyy-MM-dd HH:mm">
+                    <input type="text" id="unitBuildDate" name="unitBuildDate" class="laydate layui-input" placeholder="yyyy-MM-dd">
                 </div>
             </div>
 
@@ -120,7 +120,7 @@
                 </div>
             </div>
 
-            <input id="inpt_submit" type="submit" class="layui-btn" value="开户">
+            <input id="inpt_submit" type="submit" class="layui-btn" value="登记">
 
         </form>
     </div>

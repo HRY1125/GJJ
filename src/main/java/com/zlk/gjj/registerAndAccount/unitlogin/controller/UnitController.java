@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -32,13 +33,13 @@ public class UnitController {
     @RequestMapping(value = "/signin")
     public ModelAndView singIn(Unit unit) throws Exception{
         ModelAndView mv = new ModelAndView();
-        unit.setAgentName("拉萨的飞机");
+        unit.setAgentName("李四");
         unit.setPapersName("身份证");
-        unit.setPapersNum("410928198802021216");
-        unit.setAgentPhone("122334");
-        unit.setPassword("2222");
-        unit.setUnitEmail("1232434@123.com");
-        unit.setUnitName("wangyi");
+        unit.setPapersNum("129837265427");
+        unit.setAgentPhone("1232424");
+        unit.setPassword("111111");
+        unit.setUnitEmail("123234@123.com");
+        unit.setUnitName("alibaba");
         String msg = unitService.insertUnit(unit);
         mv.addObject("message",msg);
         mv.setViewName("test");
@@ -46,7 +47,7 @@ public class UnitController {
     }
 
     /**
-     *  单位用户登录
+     *  普通单位用户登录
      *@method Login
      *@params [unit]
      *@return org.springframework.web.servlet.ModelAndView
@@ -54,26 +55,38 @@ public class UnitController {
      *@time 2019/10/23  10:28
      */
     @RequestMapping(value = "/login")
-    public ModelAndView Login(Unit unit) throws Exception{
-//        String unitId = unit.getUnitId();
-//        String password = unit.getPassword();
-        String unitId = "1411";
-        String password = "141";
-        unit.setUnitId(unitId);
-        unit.setPassword(password);
+    public ModelAndView Login(HttpServletRequest request,Unit unit,String code) throws Exception{
         ModelAndView mv = new ModelAndView();
-        String message = unitService.login(unit);
-        if(message.equals("登录成功")){
-            mv.addObject("message",message);
-            mv.setViewName("test");
-        }else if(message.equals("登录错误3次，退出系统")){
-            mv.addObject("message",message);
-            mv.setViewName("test");
+        String checkCode = (String) request.getSession().getAttribute("checkCode");
+        unit.setUnitId("44954121");
+        unit.setAgentName("李四");
+        unit.setPapersName("身份证");
+        unit.setPapersNum("129837265427");
+        unit.setAgentPhone("1232424");
+        unit.setPassword("111111");
+        unit.setUnitEmail("123234@123.com");
+        unit.setUnitName("alibaba");
+        if(/*code.toLowerCase().equals(checkCode.toLowerCase())*/true){
+            String message = unitService.login(unit);
+            if(message.equals("登录成功")){
+                request.getSession().setAttribute("ID",unit.getUnitId());
+                request.getSession().setAttribute("name",unit.getAgentName());
+                mv.addObject("message",message);
+                mv.setViewName("functions");
+            }else if(message.equals("登录错误3次，退出系统")){
+                mv.addObject("message",message);
+                mv.setViewName("test");
+            }else {
+                mv.addObject("message",message);
+                mv.setViewName("test");
+            }
         }else {
-            mv.addObject("message",message);
+            mv.addObject("message","验证码输入错误");
             mv.setViewName("test");
         }
+
         return mv;
     }
+
 
 }

@@ -140,4 +140,65 @@
     <select id="selectUnitNameByUnitRegisterId" parameterType="java.lang.String" resultType="java.lang.String">
         select unit_name from unit_register where unit_register_id=#{unitRegisterId}
     </select>
+    <select id="selectUnitRegisterByURId" parameterType="java.lang.String" resultMap="unitRegisterMap">
+        select unit_register_id,unit_id,unit_name,org_code,unit_papers_name,unit_papers_num,unit_property_code,
+        legal_person,lp_papers_name,nationality,lp_papers_num,unit_register_address,unit_office_address,is_lp,unit_build_time,superior_unit
+        from unit_register where unit_register_id=#{unitRegisterId}
+    </select>
+    <select id="selectUnitRegisterByUId" parameterType="java.lang.String" resultMap="unitRegisterMap">
+        select unit_register_id,unit_id,unit_name,org_code,unit_papers_name,unit_papers_num,unit_property_code,
+        legal_person,lp_papers_name,nationality,lp_papers_num,unit_register_address,unit_office_address,is_lp,unit_build_time,superior_unit
+        from unit_register where unit_id=#{unitId}
+    </select>
+    <update id="updateUnitRegister" parameterType="com.zlk.gjj.registerAndAccount.entity.UnitRegister">
+        update unit_register
+        <set>
+            <if test="unitId != null and unitId!=''">
+                unit_id = #{unitId},
+            </if>
+            <if test="unitName != null and unitName!=''">
+                unit_name = #{unitName},
+            </if>
+            <if test="orgCode != null and orgCode!=''">
+                org_code = #{orgCode},
+            </if>
+            <if test="unitPapersName != null and unitPapersName!=''">
+                unit_papers_name = #{unitPapersName},
+            </if>
+            <if test="unitPapersNum != null and unitPapersNum!=''">
+                unit_papers_num = #{unitPapersNum},
+            </if>
+            <if test="unitPropertyCode != null and unitPropertyCode!=''">
+                unit_property_code = #{unitPropertyCode},
+            </if>
+            <if test="legalPerson != null and legalPerson!=''">
+                legal_person = #{legalPerson},
+            </if>
+            <if test="lpPapersName != null and lpPapersName!=''">
+                lp_papers_name = #{lpPapersName},
+            </if>
+            <if test="nationality != null and nationality!=''">
+                nationality = #{nationality},
+            </if>
+            <if test="lpPapersNum != null and lpPapersNum!=''">
+                lp_papers_num = #{lpPapersNum},
+            </if>
+            <if test="unitRegisterAddress != null and unitRegisterAddress!=''">
+                unit_register_address = #{unitRegisterAddress},
+            </if>
+            <if test="unitOfficeAddress != null and unitOfficeAddress!=''">
+                unit_office_address = #{unitOfficeAddress},
+            </if>
+            <if test="isLP != null and isLP!=''">
+                is_lp = #{isLP},
+            </if>
+            <if test="unitBuildDate != null">
+                unit_build_time = #{unitBuildDate},
+            </if>
+            <if test="superiorUnit != null and superiorUnit !=''">
+                superior_unit = #{superiorUnit},
+            </if>
+        </set>
+        where unit_register_id = #{unitRegisterId}
+    </update>
 </mapper>

@@ -11,7 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import sun.management.counter.Units;
 
+import javax.jws.WebParam;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -79,11 +83,31 @@ public class UnitRegisterController {
         }
     }
 
-    @RequestMapping(value = "/unitRegister",method = RequestMethod.GET)
+    @RequestMapping(value = "/unitRegister",method = RequestMethod.POST)
     public String unitRegister(Model model,UnitRegister unitRegister) throws Exception{
         String message = UnitRegisterService.insertUnitRegister(unitRegister);
         model.addAttribute("message",message);
         return "test";
+    }
+
+    @RequestMapping(value = "/findUnitRegister")
+    public String findUnitRegister(Model model, HttpServletRequest request) throws Exception{
+        String unitId = (String) request.getSession().getAttribute("ID");
+//        unitId = "1";
+        UnitRegister unitRegister = UnitRegisterService.selectUnitRegisterByUId(unitId);
+        model.addAttribute("unitRegister",unitRegister);
+        return "unit_register_update";
+    }
+
+    @RequestMapping(value = "/updateUnitRegister")
+    public String updateUnitRegister(Model model,UnitRegister unitRegister) throws Exception{
+        Integer integer = UnitRegisterService.updateUnitRegister(unitRegister);
+        if (integer>0){
+            model.addAttribute("message","修改成功");
+            return "unit_register_update";
+        }else {
+            return "test";
+        }
     }
 
 }
