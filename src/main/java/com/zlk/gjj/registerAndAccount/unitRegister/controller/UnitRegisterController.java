@@ -2,12 +2,19 @@ package com.zlk.gjj.registerAndAccount.unitRegister.controller;
 
 
 
+import com.zlk.gjj.registerAndAccount.entity.Agent;
 import com.zlk.gjj.registerAndAccount.entity.Unit;
 import com.zlk.gjj.registerAndAccount.entity.UnitRegister;
 import com.zlk.gjj.registerAndAccount.unitRegister.service.UnitRegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping(value="/unitRegister")
@@ -17,11 +24,66 @@ public class UnitRegisterController {
     private UnitRegisterService UnitRegisterService;
 
     @RequestMapping(value = "/selectUnitRegisterUnitId")
-    public String selectUnitRegisterUnitId(String unitName,String orgCode){
-
-        String s = UnitRegisterService.selectUnitRegisterUnitId("1", "1");
+    public String selectUnitRegisterUnitId(UnitRegister unitRegister){
+        String s = UnitRegisterService.selectUnitRegisterUnitId(unitRegister);
         System.out.println(s);
-        return "index1";
+        return "test";
+    }
+
+    /**
+     *  内联检测单位是否已登记
+     *@method detection
+     *@params [model, unitRegister]
+     *@return java.lang.String
+     *@author zhang
+     *@time 2019/10/23  11:15
+     */
+    @RequestMapping(value = "/detection",method = RequestMethod.GET)
+    public String detection(Model model,UnitRegister unitRegister) throws Exception{
+//        String unitName = unitRegister.getUnitName();
+//        String orgCode = unitRegister.getOrgCode();
+//        Map<String,Object> map = new HashMap<>();
+        String unitName = "alibaba";
+        String orgCode = "1";
+        if(unitName!=null && !unitName.equals("")){
+            UnitRegister unitRegister1 = UnitRegisterService.selectUnitRegisterByName(unitName);
+            if(orgCode!=null && !orgCode.equals("")){
+                List<String> orgCodes = UnitRegisterService.selectOrgCode();
+                Boolean hasCode = orgCodes.contains(orgCode);
+                if(hasCode && unitRegister1!=null){
+                    model.addAttribute("message","该单位已在系统中登记");
+                    model.addAttribute("unitRegister",unitRegister1);
+                    return "test";
+                }else if (hasCode||unitRegister1!=null){
+                    model.addAttribute("message","请检查录入信息是否正确");
+                    model.addAttribute("unitRegister",unitRegister1);
+                    return "test";
+                }else {
+                    model.addAttribute("message","内联成功，可以登记申请");
+                    model.addAttribute("unitRegister",unitRegister);
+                    return "test";
+                }
+            }else {
+                if (unitRegister1!=null){
+                    model.addAttribute("unitRegister",unitRegister1);
+                    return "test";
+                }else {
+                    model.addAttribute("message","内联成功，可以登记申请");
+                    model.addAttribute("unitRegister",unitRegister);
+                    return "test";
+                }
+            }
+        }else {
+            model.addAttribute("message","单位全称不能为空");
+            return "test";
+        }
+    }
+
+    @RequestMapping(value = "/unitRegister",method = RequestMethod.GET)
+    public String unitRegister(Model model,UnitRegister unitRegister) throws Exception{
+        String message = UnitRegisterService.insertUnitRegister(unitRegister);
+        model.addAttribute("message",message);
+        return "test";
     }
 
 }

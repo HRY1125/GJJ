@@ -3,9 +3,8 @@ package com.zlk.gjj.registerAndAccount.account.controller;
 import com.zlk.gjj.registerAndAccount.account.service.AccountService;
 import com.zlk.gjj.registerAndAccount.entity.Account;
 import com.zlk.gjj.registerAndAccount.entity.UnitRegister;
-import com.zlk.gjj.registerAndAccount.unitRegister.mapper.UnitRegisterMapper;
 import com.zlk.gjj.registerAndAccount.unitRegister.service.UnitRegisterService;
-import com.zlk.gjj.registerAndAccount.util.IDUtils;
+import com.zlk.gjj.registerAndAccount.util.IdUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,8 +38,10 @@ public class accountController {
         account.setFirstRemitMonth(1);
         account.setUnitDepositeRatio(1);
         account.setIsMonthConfirm("1");*/
-        account.setAccountId(IDUtils.getUnitId(9));
+
+        account.setAccountId(IdUtils.getUnitId(9));
         account.setUnitId("2");
+
         Integer flag = accountService.insertAccount(account);
         if(flag == 1){
             return "index";
@@ -54,7 +55,7 @@ public class accountController {
         UnitRegister unitRegister = new UnitRegister();
         unitRegister.setUnitName("1");
         unitRegister.setOrgCode("1");
-        String s = UnitRegisterService.selectUnitRegisterUnitId("1", "1");
+        String s = UnitRegisterService.selectUnitRegisterUnitId(unitRegister);
         String flag = accountService.selectAccountByUnitId(s);
         if(flag .equals("1")){
             return "index1";

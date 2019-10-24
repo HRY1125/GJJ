@@ -32,5 +32,12 @@ public class Agent {
     private String agentPhone;
     /**经办人邮箱*/
     private String agentEmail;
+    /**经办人用户类型*/
+    private String agentType;
+    /**数字证书*/
+    private String ukey;
+    /**经办人用户名*/
+    private String agentUserName;
+
 
 }

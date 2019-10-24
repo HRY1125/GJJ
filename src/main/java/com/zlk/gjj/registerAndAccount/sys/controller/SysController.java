@@ -22,9 +22,24 @@ public class SysController {
         return "unit_account";
     }
 
-    @RequestMapping("toPR")
+    @RequestMapping("/toPR")
     public String toPR(){
         return "person_regist";
     }
 
+    @RequestMapping("/toPM")
+    public String toPM(){
+        return "pay_method";
+    }
+
+    @RequestMapping("/toRemit")
+    public String toRemit(){
+        return "remit";
+    }
+
+    @RequestMapping("/ajaxTest")
+    @ResponseBody
+    public String ajaxTest(){
+        return "";
+    }
 }
