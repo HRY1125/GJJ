@@ -64,7 +64,7 @@ window.onload=function(){
         table.on('toolbar(edit)', function(obj){
             var event = obj.event;
             var flag = true;
-            if(event=='add'){
+            /*if(event=='add'){
                 console.log(form.val("unit"));
                 var data = form.val("unit");
                 if(data.unitRegisterId==null || data.unitRegisterId==''){
@@ -80,11 +80,23 @@ window.onload=function(){
                     layer.msg("个人比例不能为空");
                     flag = false;
                 }
-            }
+            }*/
 
             if(flag){
                 $.ajax({
-
+                    type : "POST",
+                    contentType: "application/json;charset=UTF-8",
+                    url : "/remittance/add",
+                    data : "",
+                    dataType : "json",
+                    success : function(result) {
+                        table.reload('employ',{
+                            height: 400
+                            ,url: '/remittance/select'
+                            ,page: true
+                            ,toolbar: '#toolbar'
+                        });
+                    },
                 });
             }
         });

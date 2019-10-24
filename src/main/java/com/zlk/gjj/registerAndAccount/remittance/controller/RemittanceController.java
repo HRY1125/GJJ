@@ -5,6 +5,7 @@ import com.zlk.gjj.registerAndAccount.entity.vo.Emp_Rem;
 import com.zlk.gjj.registerAndAccount.remittance.service.RemittanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -86,4 +87,13 @@ public class RemittanceController {
         map.put("data",emp_rems);
         return map;
     }
+
+    @RequestMapping("add")
+    @ResponseBody
+    public Map insertRemittance1(Remittance remittance){
+        /*remittanceService.insert(remittance);*/
+        Map map = new HashMap();
+        return map;
+    }
+
 }
