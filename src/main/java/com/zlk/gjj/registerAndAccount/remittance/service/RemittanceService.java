@@ -62,5 +62,9 @@ public interface RemittanceService {
      */
     boolean deleteById(Integer remittanceId);
 
-    List<Emp_Rem> selRemAndEmpAndSAAll();
+    List<Emp_Rem> selRemAndEmpAndSAAll(int offset, int limit);
+
+    String updateEmpAndRem(Emp_Rem empRem);
+
+    String deleRemAndEmp(Emp_Rem empRem);
 }

@@ -42,7 +42,7 @@ public interface EmployeeService {
      * @param employee 实例对象
      * @return 是否成功
      */
-    boolean insert(Employee employee);
+    Employee insert(Employee employee);
 
     /**
      * 修改数据

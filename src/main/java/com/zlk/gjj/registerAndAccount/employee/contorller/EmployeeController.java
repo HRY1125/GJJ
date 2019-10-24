@@ -7,9 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * (Employee)表控制层
@@ -45,8 +43,7 @@ public class EmployeeController {
      * @return 是否成功
      */
     @RequestMapping("insEmployee")
-    @ResponseBody
-    public boolean insertEmployee(Employee employee){
+    public Employee insertEmployee(Employee employee){
         return employeeService.insert(employee);
     }
 
