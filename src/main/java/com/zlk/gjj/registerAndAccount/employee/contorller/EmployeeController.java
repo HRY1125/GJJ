@@ -72,4 +72,29 @@ public class EmployeeController {
         return employeeService.update(employee);
     }
 
+    /**
+     * 根据姓名 证件名 证件号进行查询单个
+     * @param employee
+     * @return
+     */
+    @RequestMapping("selEmployeeByNameAndPapersNameAndPapersNum")
+    @ResponseBody
+    public Employee selectEmployeeByNameAndPapersNameAndPapersNum(Employee employee){
+        return  employeeService.selectEmployeeByNameAndPapersNameAndPapersNum(employee);
+    }
+
+    /**
+     * 根据unitId删除数据
+     */
+
+    @RequestMapping(value = "/deleteEmployeeByUnitId")
+    public String deleteEmployeeByUnitId(String unitId) throws  Exception{
+
+        Integer flag = employeeService.deleteEmployeeByUnitId("1");
+        if(flag == 1){
+            return "index1";
+        }else {
+            return null;
+        }
+    }
 }

@@ -149,7 +149,15 @@
             </if>
         </set>
     </update>
-    <select id="findUnitRegisterIdByUkey" parameterType="java.lang.String" resultType="java.lang.String">
-        select unit_register_id from agent where ukey = #{ukey}
+    <select id="findUnitRegisterIdByUkeyOrAgentUserName" parameterType="com.zlk.gjj.registerAndAccount.entity.Agent" resultType="java.lang.String">
+        select unit_register_id from agent
+        <where>
+            <if test="ukey != null and ukey!=''">
+                ukey = #{ukey},
+            </if>
+            <if test="agentUserName != null and agentUserName!=''">
+                agent_username = #{agentUserName},
+            </if>
+        </where>
     </select>
 </mapper>

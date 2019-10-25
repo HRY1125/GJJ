@@ -6,24 +6,15 @@ window.onload=function(){
         var $ = layui.jquery;
 
         //时间格式设置
-        $(".laydate").each(function () {
-            laydate.render({
-                elem: this,
-                type: 'datetime',
-                format:'yyyy-MM-dd HH:mm',
-                ready: formatminutes,
-                trigger:'click'
-            });
+        laydate.render({
+            elem: '.laydate',
+            format:'yyyy-MM-dd',
+            trigger:'click'
         });
-
-        //日期时间选择器去掉秒
-        function formatminutes(date){
-            $($(".laydate-time-list li ol")[2]).find("li").remove();
-        }
 
         //监听select
         form.on('select(papers)', function(data){
-            if ($("#select2").val()==1){
+            if ($("#select2").val()=='护照'){
                 $("#div_nation").css("display","block");
                 $("#ipt_nation").attr("required","required");
             }else{

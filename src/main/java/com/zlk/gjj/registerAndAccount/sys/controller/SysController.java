@@ -50,7 +50,12 @@ public class SysController {
     }
 
     @RequestMapping("/toCard")
-    public String toCard(){
+    public String toCard() {
         return "card";
+    }
+
+    @RequestMapping("/toLogin")
+    public String toLogin(){
+        return "login";
     }
 }

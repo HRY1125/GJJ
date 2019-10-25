@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>单位登记申请</title>
+    <link rel="stylesheet" href="/css/unit_register.css" type="text/css">
+    <script type="text/javascript" src="/js/unit_register.js"></script>
+    <link rel="stylesheet" href="/layui/css/layui.css" type="text/css">
+    <script src="/layui/layui.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <div id="div_form">
+        <form id="form_main" class="layui-form" th:action="@{/unitRegister/updateUnitRegister}" method="post" th:object="${unitRegister}">
+            <input th:field="*{unitRegisterId}" th:hidden="hidden">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">单位名称</label>
+                <div class="layui-input-block">
+                    <input id="unitName" th:field="*{unitName}" autocomplete="off" class="layui-input" th:readonly="true">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">组织机构代码</label>
+                <div class="layui-input-block">
+                    <input id="ipt_unitId" type="text" th:field="*{orgCode}"  autocomplete="off" class="layui-input" th:readonly="true">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">单位证件名称</label>
+                <div class="layui-input-block">
+                    <select id="select1" th:field="*{unitPapersName}" th:value="*{unitPapersName}" required lay-verify="required" th:readonly="true">
+                        <option value=""></option>
+                        <option th:selected="*{unitPapersName=='企业营业执照'}" value="企业营业执照">企业营业执照</option>
+                        <option th:selected="*{unitPapersName=='事业法人证书'}" value="事业法人证书">事业法人证书</option>
+                        <option th:selected="*{unitPapersName=='社团登记证书'}" value="社团登记证书">社团登记证书</option>
+                        <option th:selected="*{unitPapersName=='个体工商执照'}" value="个体工商执照">个体工商执照</option>
+                        <option th:selected="*{unitPapersName=='设立文件'}" value="设立文件">设立文件</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">单位证件号码</label>
+                <div class="layui-input-block">
+                    <input type="text" th:field="*{unitPapersNum}" lay-verify="required" autocomplete="off" class="layui-input" th:readonly="true">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">法人或负责人姓名</label>
+                <div class="layui-input-block">
+                    <input type="text" th:field="*{legalPerson}" required  lay-verify="required" autocomplete="off" class="layui-input" th:readonly="true">
+                </div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">法人或负责人证件名称</label>
+                <div class="layui-input-block">
+                    <select id="select2" th:field="*{lpPapersName}" required lay-verify="required" lay-filter="papers" th:readonly="true">
+                        <option value=""></option>
+                        <option th:selected="*{lpPapersName=='身份证'}" value="身份证">身份证</option>
+                        <option th:selected="*{lpPapersName=='护照'}" value="护照">护照</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">证件号码</label>
+                <div class="layui-input-block">
+                    <input type="text" th:field="*{lpPapersNum}" lay-verify="required" autocomplete="off" class="layui-input" th:readonly="true">
+                </div>
+            </div>
+
+            <div th:if="*{lpPapersName=='护照'}">
+                <script>
+                    $(function () {
+                        $("#div_nation").css("display","block");
+                        $("#ipt_nation").attr("required","required");
+                    });
+                </script>
+            </div>
+
+            <div id="div_nation" class="layui-form-item" style="display: none">
+                <label class="layui-form-label">国籍</label>
+                <div class="layui-input-block">
+                    <input id="ipt_nation" type="text" th:field="*{nationality}" lay-verify="required" autocomplete="off" class="layui-input" th:readonly="true">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">单位注册地址</label>
+                <div class="layui-input-block">
+                    <input type="text" th:field="*{unitRegisterAddress}" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">单位办公地址</label>
+                <div class="layui-input-block">
+                    <input type="text" th:field="*{unitOfficeAddress}" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">是否具有法人资格</label>
+                <div class="layui-input-block">
+                    <select th:field="*{isLP}" th:value="*{isLP}" required lay-verify="required" lay-filter="papers">
+                        <option value=""></option>
+<!--                        <option th:selected="*{isLP=='是'}" value="是">是</option>-->
+<!--                        <option th:selected="*{isLP=='否'}" value="否">否</option>-->
+                        <option th:feild="*{isLP}" value="是">是</option>
+                        <option th:feild="*{isLP}" value="否">否</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">单位成立时间</label>
+                <div class="layui-input-block">
+                    <input type="text" id="unitBuildDate" th:field="*{unitBuildDate}" class="laydate layui-input" placeholder="yyyy-MM-dd" th:readonly="true">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">上级主管单位</label>
+                <div class="layui-input-block">
+                    <input type="text" th:field="*{superiorUnit}" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <input id="inpt_submit" type="submit" class="layui-btn" value="修改">
+
+        </form>
+    </div>
+</body>
+</html>

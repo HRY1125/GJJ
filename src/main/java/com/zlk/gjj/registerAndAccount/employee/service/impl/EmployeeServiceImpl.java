@@ -89,4 +89,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     public boolean deleteById(Integer employeeId) {
         return this.employeeMapper.deleteById(employeeId) > 0;
     }
+
+    @Override
+    public Employee selectEmployeeByNameAndPapersNameAndPapersNum(Employee employee) {
+        return employeeMapper.selectEmployeeByNameAndPapersNameAndPapersNum(employee);
+    }
+
+    @Override
+    public Integer deleteEmployeeByUnitId(String unitId) {
+        return employeeMapper.deleteEmployeeByUnitId(unitId);
+    }
 }

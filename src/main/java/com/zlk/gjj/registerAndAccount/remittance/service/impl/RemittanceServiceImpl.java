@@ -141,6 +141,7 @@ public class RemittanceServiceImpl implements RemittanceService {
         remittance.setDepositeTotal(empRem.getEmployeeDeposite()+empRem.getUnitDeposite());
         remittance.setEmployeeDeposite(empRem.getEmployeeDeposite());
         remittance.setUnitDeposite(empRem.getUnitDeposite());
+        remittance.setUnitRegisterId(empRem.getUnitRegisterId());
         int i1= remittanceMapper.update(remittance);
         Employee emp1=employeeService.update(employee);
         if (i1>0&emp1!=null){
@@ -160,4 +161,18 @@ public class RemittanceServiceImpl implements RemittanceService {
         }
         return "删除失败";
     }
+
+    @Override
+    public List<Employee> selectRemAndEmpByUnitRegisterId(String unitRegisterId) {
+        List<Employee> employees= new ArrayList<>();
+        Remittance remittance = new Remittance();
+        remittance.setUnitRegisterId(unitRegisterId);
+        List<Remittance> remittanceList = remittanceMapper.queryAll(remittance);
+        for (Remittance rem:remittanceList) {
+            Employee employee = employeeService.queryById(rem.getEmployeeId());
+            employees.add(employee);
+        }
+        return employees;
+    }
+
 }
