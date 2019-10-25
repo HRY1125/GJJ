@@ -48,4 +48,9 @@ public class SysController {
     public String toUR(){
         return "unit_register";
     }
+
+    @RequestMapping("/toCard")
+    public String toCard(){
+        return "card";
+    }
 }
