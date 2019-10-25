@@ -111,9 +111,6 @@
             <if test="agentId != null and agentId!=''">
                 agent_id = #{agentId},
             </if>
-            <if test="unitId != null and unitId!=''">
-                unit_id = #{unitId},
-            </if>
             <if test="unitRegisterId != null and unitRegisterId!=''">
                 unit_register_id = #{unitRegisterId},
             </if>
@@ -164,5 +161,8 @@
     <select id="findAgentByUId" parameterType="java.lang.String" resultMap="agentEntityMap">
         select agent_id,unit_id,unit_register_id,agent_name,agent_papers_name,agent_papers_num,nationality
         office_phone,agent_phone,agent_email,agent_type,ukey,agent_username from agent where unit_id = #{unitId}
+    </select>
+    <select id="findAllAgentId" resultType="java.lang.String">
+        select agent_id from agent;
     </select>
 </mapper>

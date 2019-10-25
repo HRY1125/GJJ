@@ -9,6 +9,7 @@ import com.zlk.gjj.registerAndAccount.util.IdUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class UnitServiceImpl implements UnitService {
     @Override
     @Transactional
     public String insertUnit(Unit unit) {
+        ModelAndView mv = new ModelAndView();
         String message = "";
         String papersNum = unit.getPapersNum();
         Unit unit1 = unitMapper.findUnitByPapersNum(papersNum);
@@ -57,13 +59,19 @@ public class UnitServiceImpl implements UnitService {
             agent.setUnitId(unit.getUnitId());
             agent.setAgentType("证书用户");
             agent.setUkey(IdUtils.getUUID());
-            agent.setAgentId(IdUtils.getUnitId(10));
+            String agentId = IdUtils.getUnitId(10);
+            List<String> agentIds = agentMapper.findAllAgentId();
+            while (agentIds.contains(agentId)){
+                agentId = IdUtils.getUnitId(10);
+            }
+            agent.setAgentId(agentId);
             Integer flag1 = agentMapper.insertAgent(agent);
             if(flag>0 && flag1>0){
-                return message="注册成功";
+                message="注册成功";
             }else {
-                return message="注册失败";
+                message="注册失败";
             }
+            return message;
         }
     }
 
@@ -112,6 +120,11 @@ public class UnitServiceImpl implements UnitService {
            msg = "用户不能为空";
         }
         return msg;
+    }
+
+    @Override
+    public Unit findUnitByPapersNum(String papersNum) {
+        return unitMapper.findUnitByPapersNum(papersNum);
     }
 
 }

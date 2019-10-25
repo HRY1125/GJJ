@@ -11,19 +11,21 @@
 </head>
 <body>
     <div id="div_form">
-        <form id="form_main" class="layui-form" action="/unitRegister/unitRegister" method="post">
+        <form id="form_main" class="layui-form" action="/unitRegister/unitRegister" method="post" th:object="${unitRegister}">
+
+            <input th:field="*{unitId}" th:hidden="hidden">
 
             <div class="layui-form-item">
                 <label class="layui-form-label">单位名称</label>
                 <div class="layui-input-block">
-                    <input id="unitName" type="text" name="unitName" autocomplete="off" class="layui-input">
+                    <input id="unitName" th:field="*{unitName}" autocomplete="off" class="layui-input" th:readonly="true">
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label">组织机构代码</label>
                 <div class="layui-input-block">
-                    <input id="ipt_unitId" type="text" name="orgCode"  autocomplete="off" class="layui-input">
+                    <input id="ipt_unitId" type="text" th:field="*{orgCode}"  autocomplete="off" class="layui-input" th:readonly="true">
                 </div>
             </div>
 

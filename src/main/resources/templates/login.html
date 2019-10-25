@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <title>table模块快速使用</title>
@@ -59,8 +59,9 @@
             <div class="layui-tab-item layui-show">
                 <div class="d2">
                     <div class="d3">
-                        <form action="/unit/login" method="post" class="f1">
-                            <input type="text" name="unitId" placeholder="请输入用户名" autocomplete="off" class="layui-input" autofocus="true" required>
+                        <form action="/unit/login" method="post" class="f1" th:object="${unit}">
+                            <input type="text" id="unitId1" th:if="${unit == null}" name="unitId" placeholder="请输入用户名" autocomplete="off" class="layui-input1" required>
+                            <input type="text" id="unitId2" th:unless="${unit == null}" placeholder="请输入用户名" autocomplete="off" class="layui-input1" required style="display: none">
                             <br><br>
                             <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input1" required>
                             <br><br>
@@ -73,6 +74,17 @@
                         </form>
                     </div>
                 </div>
+            </div>
+
+            <div th:unless="${unit == null}">
+                <script>
+                    $(function () {
+                        $("#unitId2").css("display","block");
+                        $("#unitId2").attr("required","required");
+                        $("#unitId1").css("display","none");
+                        $("#unitId1").attr("required","required");
+                    });
+                </script>
             </div>
 
             <div class="layui-tab-item">
@@ -100,8 +112,6 @@
 
                 </form>
             </div>
-
-
         </div>
     </div>
 </div>
@@ -115,13 +125,6 @@
     });
 </script>
 
-<script type="text/javascript">
-    $(function () {
-        $("#imgCode").click(function () {
-            var time=new Date().getTime();
-            $("#imgCode").attr("src","<%=request.getContextPath()%>/validateCodeServlet?time"+time)
-        });
-    });
-</script>
+
 </body>
 </html>
