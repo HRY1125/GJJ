@@ -129,7 +129,8 @@ public class RemittanceController {
      * 2.13的查询
      */
     @RequestMapping("selRemAndEmpByUnitRegisterId")
-    public  List<Employee> selRemAndEmpByUnitRegisterId(String unitRegisterId){
-        return remittanceService.selectRemAndEmpByUnitRegisterId(unitRegisterId);
+    public  List<Employee> selRemAndEmpByUnitRegisterId(String unitRegisterId,Integer page,Integer limit){
+        int offset=(page-1)*limit;
+        return remittanceService.selectRemAndEmpByUnitRegisterId(unitRegisterId,offset,limit);
     }
 }

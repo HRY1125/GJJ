@@ -69,5 +69,5 @@ public interface RemittanceService {
 
     String deleRemAndEmp(Emp_Rem empRem);
 
-    List<Employee> selectRemAndEmpByUnitRegisterId(String UnitRegisterId);
+    List<Employee> selectRemAndEmpByUnitRegisterId(String UnitRegisterId,int offset, int limit);
 }

@@ -114,5 +114,11 @@
         delete from employee where unit_id=#{unitId}
     </delete>
 
-
+    <!--查询单个并分页-->
+    <select id="queryByIdAndLimit" resultMap="EmployeeMap">
+        select
+          unit_id,employee_id, employee_name, employee_papers_name, employee_papers_num, employee_nationnality, employee_card_regist_status,department_name
+        from group1_gjj.employee
+        where employee_id = #{employeeId}  limit #{offset}, #{limit}
+    </select>
 </mapper>
