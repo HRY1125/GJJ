@@ -46,7 +46,7 @@ public class SysController {
 
     @RequestMapping("/toUR")
     public String toUR(){
-        return "unit_register";
+        return "unit_register_detection";
     }
 
     @RequestMapping("/toLAR")
