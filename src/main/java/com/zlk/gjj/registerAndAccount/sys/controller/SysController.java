@@ -49,6 +49,10 @@ public class SysController {
         return "unit_register";
     }
 
+    @RequestMapping("/toCard")
+    public String toCard() {
+        return "card";
+    }
 
     @RequestMapping("/toLogin")
     public String toLogin(){
