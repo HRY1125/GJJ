@@ -5,6 +5,8 @@
     <title>table模块快速使用</title>
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
     <script src="/layui/layui.js"></script>
+    <script type="text/javascript" src="/js/login.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <style>
 
         .d2{
@@ -75,21 +77,24 @@
 
             <div class="layui-tab-item">
                 <form action="/unit/signin" method="post" class="f1">
-                    <input type="text" name="agentName" placeholder="请输入经办人姓名" autocomplete="off" class="layui-input" autofocus="true" required>
+                    <input id="agentName" type="text" name="agentName" placeholder="请输入经办人姓名" autocomplete="off" class="layui-input" required>
+                    <img id="res_agentName" src="">
                     <br>
-                    <input type="text" name="papersName" placeholder="请输入证件名称" autocomplete="off" class="layui-input" autofocus="true" required>
+                    <input type="text" name="papersName" placeholder="请输入证件名称" autocomplete="off" class="layui-input" required>
                     <br>
-                    <input type="text" name="papersNum" placeholder="请输入证件号码" autocomplete="off" class="layui-input" autofocus="true" required>
+                    <input type="text" name="papersNum" placeholder="请输入证件号码" autocomplete="off" class="layui-input" required>
                     <br>
-                    <input type="text" name="unitName" placeholder="请输入单位名称" autocomplete="off" class="layui-input" autofocus="true" required>
+                    <input id="unitName" type="text" name="unitName" placeholder="请输入单位名称" autocomplete="off" class="layui-input" required>
+                    <i id="res_unitName_r" class="layui-icon" hidden="hidden">&#xe605;</i>
+                    <i id="res_unitName_w" class="layui-icon" hidden="hidden">&#x1006;</i>
                     <br>
-                    <input type="text" name="agentPhone" placeholder="请输入经办人手机号" autocomplete="off" class="layui-input" autofocus="true" required>
+                    <input type="text" name="agentPhone" placeholder="请输入经办人手机号" autocomplete="off" class="layui-input" required>
                     <br>
-                    <input type="text" name="unitEmail" placeholder="请输入单位邮箱" autocomplete="off" class="layui-input" autofocus="true" required>
+                    <input type="text" name="unitEmail" placeholder="请输入单位邮箱" autocomplete="off" class="layui-input" required>
                     <br>
-                    <input type="text" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input" autofocus="true" required>
+                    <input type="text" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input" required>
                     <br>
-                    <input type="text" name="password1" placeholder="请再次输入密码" autocomplete="off" class="layui-input" autofocus="true" required>
+                    <input type="text" name="password1" placeholder="请再次输入密码" autocomplete="off" class="layui-input" required>
                     <br>
                     <button class="layui-btn layui-btn-fluid" type="submit">注 册</button>
 
