@@ -25,8 +25,8 @@ public class AgentController {
     private UnitRegisterService unitRegisterService;
 
     @RequestMapping(value = "/toAgent")
-    public String toAgent(Model model,String ukey) throws Exception{
-        String unitRegisterId = agentService.findUnitRegisterIdByUkey(ukey);
+    public String toAgent(Model model,Agent agent) throws Exception{
+        String unitRegisterId = agentService.findUnitRegisterIdByUkeyOrAgentUserName(agent);
         String unitName = unitRegisterService.selectUnitNameByUnitRegisterId(unitRegisterId);
         model.addAttribute("unitRegisterId",unitRegisterId);
         model.addAttribute("unitName",unitName);

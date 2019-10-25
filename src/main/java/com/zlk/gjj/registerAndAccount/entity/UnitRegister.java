@@ -2,6 +2,7 @@ package com.zlk.gjj.registerAndAccount.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -43,6 +44,7 @@ public class UnitRegister {
     /**是否具有法人资格*/
     private String isLP;
     /**单位创建时间*/
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date unitBuildDate;
     /**上级单位*/
     private String superiorUnit;
