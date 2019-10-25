@@ -8,12 +8,21 @@ window.onload=function(){
 
     $(function () {
         $("#ipt_unitId").blur(function () {
-            var unitRegisterId=$("#ipt_unitId").val();
-            alert(unitRegisterId);
+            var unitRegisterId = $("#ipt_unitId").val();
+            $.ajax({
+                type : "POST",
+                contentType: "application/json;charset=UTF-8",
+                url : "/sys/findURId",
+                data : unitRegisterId,
+                dataType : "json",
+                success : function(result) {
+                    $("#unitName").val(result.unitName);
+                }
+            });
             $.ajax({
                 type: "POST",
-                async: true,
-                url: "../account/selectAccountByUnitRegisterId",
+                //async: false,
+                url: "/account/selectAccountByUnitRegisterId",
                 data: {"unitRegisterId": unitRegisterId},
                 dataType: "json",
                 success: function (data) {
@@ -221,25 +230,6 @@ window.onload=function(){
                     alert("有错了");
                 }
             });
-        });
-
-
-        $("#ipt_unitId").blur(function () {
-            var unitId = $("#ipt_unitId").val();
-            $.ajax({
-                type: "POST",
-                contentType: "application/json;charset=UTF-8",
-                url: "",
-                data: unitId,
-                dataType: "json",
-                success: function (result) {
-                    $("#unitName").val(result);
-                },
-                error: function (result) {
-
-                }
-            });
-
         });
     });
 };
