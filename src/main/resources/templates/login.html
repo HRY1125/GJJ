@@ -60,12 +60,11 @@
                     <div class="d3">
                         <form action="/unit/login" method="post" class="f1" th:object="${unit}">
                             <input type="text" id="unitId1" th:if="${unit == null}" name="unitId" placeholder="请输入用户名" autocomplete="off" class="layui-input1" required>
-                            <input type="text" id="unitId2" th:unless="${unit == null}" placeholder="请输入用户名" autocomplete="off" class="layui-input1" required style="display: none">
                             <br><br>
                             <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input1" required>
                             <br><br>
                             <input type="text" name="code" placeholder="验证码" autocomplete="off" class="layui-input1" required><br>
-                            <img id="imgCode" onclick="this.src='defaultKaptcha?d='+new Date()*1" src="defaultKaptcha"><br>
+                            <img id="imgCode" onclick="this.src='defaultKaptcha?d='+new Date()*1" src="/sys/defaultKaptcha"><br>
                             <br><br>
                             <input type="checkbox" name="remember_user" id="remember_user" lay-skin="primary" title="记住用户" /> 记住密码
                             <br><br>
@@ -74,6 +73,16 @@
                     </div>
                 </div>
             </div>
+
+<!--            <script th:if="${flag==true}">-->
+<!--                layer.open({-->
+
+<!--                });-->
+<!--            </script>-->
+<!--            <script th:if="${flag==false}">-->
+
+<!--            </script>-->
+
 
             <div th:unless="${unit == null}">
                 <script>
