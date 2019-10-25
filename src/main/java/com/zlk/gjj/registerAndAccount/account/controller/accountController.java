@@ -87,4 +87,15 @@ public class accountController {
     public String updatekaihu(){
         return "unit_account_update";
     }
+
+    @RequestMapping(value = "/deleteAccountByUnitId")
+    public String deleteAccountByUnitId(String unitId) throws  Exception{
+
+        Integer flag = accountService.deleteAccountByUnitId("1");
+        if(flag == 1){
+            return "index1";
+        }else {
+            return null;
+        }
+    }
 }

@@ -47,4 +47,11 @@ public class SysController {
     public String toUR(){
         return "unit_register";
     }
+
+    @RequestMapping("/toLogin")
+    public String toLogin(){
+        return "login";
+    }
+
+
 }

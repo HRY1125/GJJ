@@ -102,6 +102,11 @@
 </update>
 
 
+    <delete id="deleteAccountByUnitId" parameterType="com.zlk.gjj.registerAndAccount.entity.Account">
+        delete from account where unit_id=#{unitId}
+    </delete>
+
+
 
 
 

@@ -11,4 +11,6 @@ public interface AccountService {
     Integer updateAccountById(Account account);
 
     Account selectAccountByUnitRegisterId(String unitRegisterId);
+
+    Integer deleteAccountByUnitId(String unitId);
 }
