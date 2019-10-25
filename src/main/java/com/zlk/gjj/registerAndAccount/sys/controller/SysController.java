@@ -59,7 +59,7 @@ public class SysController {
 
     @RequestMapping("/toUR")
     public String toUR(){
-        return "unit_register";
+        return "unit_register_detection";
     }
 
     @RequestMapping("/toCard")
@@ -70,6 +70,11 @@ public class SysController {
     @RequestMapping("/toLogin")
     public String toLogin(){
         return "login";
+    }
+
+    @RequestMapping("/toAgent")
+    public String toAgent() {
+        return "agent";
     }
 
     @RequestMapping("/findURId")
@@ -84,11 +89,6 @@ public class SysController {
     @RequestMapping("/toSA")
     public String toSA() {
         return "second_assist";
-    }
-
-    @RequestMapping("/toDetection")
-    public String toDetection(){
-        return "detection";
     }
 
     @RequestMapping("/defaultKaptcha")

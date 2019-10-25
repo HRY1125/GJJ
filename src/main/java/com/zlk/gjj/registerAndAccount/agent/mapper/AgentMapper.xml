@@ -148,6 +148,7 @@
                 agent_username = #{agentUserName},
             </if>
         </set>
+        where unit_id = #{unitId}
     </update>
     <select id="findUnitRegisterIdByUkeyOrAgentUserName" parameterType="com.zlk.gjj.registerAndAccount.entity.Agent" resultType="java.lang.String">
         select unit_register_id from agent
@@ -159,5 +160,9 @@
                 agent_username = #{agentUserName},
             </if>
         </where>
+    </select>
+    <select id="findAgentByUId" parameterType="java.lang.String" resultMap="agentEntityMap">
+        select agent_id,unit_id,unit_register_id,agent_name,agent_papers_name,agent_papers_num,nationality
+        office_phone,agent_phone,agent_email,agent_type,ukey,agent_username from agent where unit_id = #{unitId}
     </select>
 </mapper>

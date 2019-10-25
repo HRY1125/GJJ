@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @program: gjj
  * @description: Agent控制器
@@ -25,12 +27,16 @@ public class AgentController {
     private UnitRegisterService unitRegisterService;
 
     @RequestMapping(value = "/toAgent")
-    public String toAgent(Model model,Agent agent) throws Exception{
-        String unitRegisterId = agentService.findUnitRegisterIdByUkeyOrAgentUserName(agent);
-        String unitName = unitRegisterService.selectUnitNameByUnitRegisterId(unitRegisterId);
-        model.addAttribute("unitRegisterId",unitRegisterId);
-        model.addAttribute("unitName",unitName);
-        return "test";
+    public String toAgent(Model model, HttpServletRequest request) throws Exception{
+//        String unitRegisterId = agentService.findUnitRegisterIdByUkeyOrAgentUserName(agent);
+//        String unitName = unitRegisterService.selectUnitNameByUnitRegisterId(unitRegisterId);
+//        model.addAttribute("unitRegisterId",unitRegisterId);
+//        model.addAttribute("unitName",unitName);
+        String unitId = (String) request.getSession().getAttribute("ID");
+        unitId = "24356741";
+        Agent agent = agentService.findAgentByUId(unitId);
+        model.addAttribute("agent",agent);
+        return "agent";
     }
 
     @RequestMapping(value = "/insertAgent")
