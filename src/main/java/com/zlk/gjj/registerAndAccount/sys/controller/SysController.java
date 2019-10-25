@@ -58,4 +58,9 @@ public class SysController {
     public String toLogin(){
         return "login";
     }
+
+    @RequestMapping("/toDetection")
+    public String toDetection(){
+        return "detection";
+    }
 }
