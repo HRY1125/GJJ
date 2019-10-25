@@ -1,5 +1,6 @@
 package com.zlk.gjj.registerAndAccount.remittance.controller;
 
+import com.zlk.gjj.registerAndAccount.entity.Employee;
 import com.zlk.gjj.registerAndAccount.entity.Remittance;
 import com.zlk.gjj.registerAndAccount.entity.vo.Emp_Rem;
 import com.zlk.gjj.registerAndAccount.remittance.service.RemittanceService;
@@ -109,5 +110,11 @@ public class RemittanceController {
         Map map = new HashMap();
         return map;
     }
-
+    /**
+     * 2.13的查询
+     */
+    @RequestMapping("selRemAndEmpByUnitRegisterId")
+    public  List<Employee> selRemAndEmpByUnitRegisterId(String unitRegisterId){
+        return remittanceService.selectRemAndEmpByUnitRegisterId(unitRegisterId);
+    }
 }

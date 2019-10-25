@@ -60,5 +60,10 @@ public interface EmployeeService {
      */
     boolean deleteById(Integer employeeId);
 
-
+    /**
+     * 根据姓名 证件名 证件号进行查询单个
+     * @param employee
+     * @return
+     */
+    Employee selectEmployeeByNameAndPapersNameAndPapersNum(Employee employee);
 }
