@@ -45,7 +45,8 @@ public class AgentServiceImpl implements AgentService {
     }
 
     @Override
-    public String findUnitRegisterIdByUkey(String ukey) {
-        return agentMapper.findUnitRegisterIdByUkey(ukey);
+    public String findUnitRegisterIdByUkeyOrAgentUserName(Agent agent) {
+        return agentMapper.findUnitRegisterIdByUkeyOrAgentUserName(agent);
     }
+
 }

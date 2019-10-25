@@ -102,9 +102,17 @@
         delete from group1_gjj.employee where employee_id = #{employeeId}
     </delete>
 
+
     <select id="selectEmployeeByNameAndPapersNameAndPapersNum" resultMap="EmployeeMap">
         select * from employee where employee_name = #{employeeName}
         and employee_papers_name = #{employeePapersName}
         and employee_papers_num = #{employeePapersNum}
     </select>
+
+    <!--通过UnitId删除-->
+    <delete id="deleteEmployeeByUnitId" parameterType="com.zlk.gjj.registerAndAccount.entity.SecondAssist">
+        delete from employee where unit_id=#{unitId}
+    </delete>
+
+
 </mapper>

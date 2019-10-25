@@ -50,4 +50,34 @@ public interface UnitRegisterMapper {
      */
     String selectUnitNameByUnitRegisterId(String unitRegisterId);
 
+    /**
+     *  根据单位登记号查找单位登记信息
+     *@method selectUnitRegisterByURId
+     *@params [unitRegisterId]
+     *@return com.zlk.gjj.registerAndAccount.entity.UnitRegister
+     *@author zhang
+     *@time 2019/10/24  16:15
+     */
+    UnitRegister selectUnitRegisterByURId(String unitRegisterId);
+
+    /**
+     *  根据单位id查找单位登记信息
+     *@method selectUnitRegisterByUId
+     *@params [unitId]
+     *@return com.zlk.gjj.registerAndAccount.entity.UnitRegister
+     *@author zhang
+     *@time 2019/10/24  17:04
+     */
+    UnitRegister selectUnitRegisterByUId(String unitId);
+
+    /**
+     *  更改单位登记信息
+     *@method updateUnitRegister
+     *@params [unitRegister]
+     *@return java.lang.Integer
+     *@author zhang
+     *@time 2019/10/24  17:15
+     */
+    Integer updateUnitRegister(UnitRegister unitRegister);
+
 }

@@ -95,4 +95,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeMapper.selectEmployeeByNameAndPapersNameAndPapersNum(employee);
     }
 
+    @Override
+    public Integer deleteEmployeeByUnitId(String unitId) {
+        return employeeMapper.deleteEmployeeByUnitId(unitId);
+    }
 }

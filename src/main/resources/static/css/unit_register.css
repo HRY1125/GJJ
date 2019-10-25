@@ -19,19 +19,3 @@
     top: 50px;
     left: 94%;
 }
-
-.layui-laydate-content>.layui-laydate-list{
-    padding-bottom: 0px;
-    overflow: hidden;
-}
-.layui-laydate-content>.layui-laydate-list>li{
-    width: 50%;
-}
-.merge-box .scrollbox .merge-list{
-    padding-bottom: 5px;
-}
-.laydate-time-list li{
-    width: 100%;
-    padding-left: 0;
-    text-align: center;
-}

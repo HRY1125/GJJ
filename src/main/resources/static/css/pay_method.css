@@ -32,3 +32,9 @@
     top: 0%;
     left: 0%;
 }
+
+#inpt_submit{
+    position: relative;
+    top: 50px;
+    left: 94%;
+}

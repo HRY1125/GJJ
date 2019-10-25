@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>汇缴清册</title>
@@ -16,42 +16,40 @@
 <body>
     <div id="div_form">
         <form id="form_main" class="layui-form" action="" lay-filter="unit">
-            <div class="layui-form-item">
+            <div class="layui-form-item layui-inline">
                 <label class="layui-form-label">单位登记号</label>
-                <div class="layui-input-block">
-                    <input id="ipt_unitId" type="text" name="unitRegisterId" lay-verify="myVerify" autocomplete="off" class="layui-input">
+                <div class="layui-input-inline">
+                    <input th:value="${session.get('unitRegistId')}" type="text" readonly="readonly" lay-verify="myVerify" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
-            <div class="layui-form-item">
+            <div class="layui-form-item layui-inline">
                 <label class="layui-form-label">单位名称</label>
-                <div class="layui-input-block">
-                    <input id="unitName" type="text" readonly="readonly" name="unitName" autocomplete="off" class="layui-input">
+                <div class="layui-input-inline">
+                    <input th:value="${session.get('unitName')}" type="text" readonly="readonly" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
-            <div class="layui-form-item">
+            <div class="layui-form-item layui-inline">
                 <label class="layui-form-label">资金来源</label>
-                <div class="layui-input-block">
-                    <input type="text" name="source" lay-verify="myVerify" autocomplete="off" class="layui-input">
+                <div class="layui-input-inline">
+                    <input type="text" th:value="${session.get('source')}" readonly="readonly" lay-verify="myVerify" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
-            <div class="layui-form-item">
-                <label class="layui-form-label">单位缴存比例</label>
-                <div class="layui-input-block">
-                    <input type="text" name="unitRatio" lay-verify="myVerify" autocomplete="off" class="layui-input">
+            <div class="layui-form-item layui-inline">
+                <label id="unit_label" class="layui-form-label" style="width: 100px;">单位缴存比例</label>
+                <div class="layui-input-inline" style="width: 80px;">
+                    <input type="text" th:value="${session.get('unitRatio')}" readonly="readonly" lay-verify="myVerify" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
-            <div class="layui-form-item">
-                <label class="layui-form-label">个人缴存比例</label>
-                <div class="layui-input-block">
-                    <input type="text" name="personRatio" lay-verify="myVerify" autocomplete="off" class="layui-input">
+            <div class="layui-form-item layui-inline">
+                <label class="layui-form-label" style="width: 100px;">个人缴存比例</label>
+                <div class="layui-input-inline" style="width: 80px;">
+                    <input type="text" th:value="${session.get('personRatio')}" readonly="readonly" lay-verify="myVerify" autocomplete="off" class="layui-input">
                 </div>
             </div>
-
-            <!--<input type="submit" class="layui-btn" value="提交">-->
 
         </form>
 

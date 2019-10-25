@@ -4,6 +4,7 @@ import com.zlk.gjj.registerAndAccount.entity.UnitRegister;
 import com.zlk.gjj.registerAndAccount.unitRegister.mapper.UnitRegisterMapper;
 import com.zlk.gjj.registerAndAccount.unitRegister.service.UnitRegisterService;
 import com.zlk.gjj.registerAndAccount.unitlogin.mapper.UnitMapper;
+import com.zlk.gjj.registerAndAccount.util.IdUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,7 @@ public class UnitRegisterServiceImpl implements UnitRegisterService {
 
     @Override
     public String insertUnitRegister(UnitRegister unitRegister) {
+        unitRegister.setUnitRegisterId(IdUtils.getUnitId(8));
         Integer integer = UnitRegisterMapper.insertUnitRegister(unitRegister);
         String message = "";
         if(integer>0){
@@ -47,6 +49,21 @@ public class UnitRegisterServiceImpl implements UnitRegisterService {
     @Override
     public String selectUnitNameByUnitRegisterId(String unitRegisterId) {
         return UnitRegisterMapper.selectUnitNameByUnitRegisterId(unitRegisterId);
+    }
+
+    @Override
+    public UnitRegister selectUnitRegisterByURId(String unitRegisterId) {
+        return UnitRegisterMapper.selectUnitRegisterByURId(unitRegisterId);
+    }
+
+    @Override
+    public UnitRegister selectUnitRegisterByUId(String unitId) {
+        return UnitRegisterMapper.selectUnitRegisterByUId(unitId);
+    }
+
+    @Override
+    public Integer updateUnitRegister(UnitRegister unitRegister) {
+        return UnitRegisterMapper.updateUnitRegister(unitRegister);
     }
 
 
