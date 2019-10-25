@@ -6,11 +6,21 @@ window.onload=function(){
         var layer = layui.layer;
 
         $("#ipt_ur").blur(function () {
-
+            var unitRegisterId = $("#ipt_ur").val();
+            $.ajax({
+                type : "POST",
+                contentType: "application/json;charset=UTF-8",
+                url : "/sys/findURId",
+                data : unitRegisterId,
+                dataType : "json",
+                success : function(result) {
+                    $("#unitName").val(result.unitName);
+                }
+            });
             table.render({
                 elem: '#employ'
                 ,height: 500
-                ,url: ''
+                ,url: '/remittance/selRemAndEmpByUnitRegisterId?unitRegisterId='+unitRegisterId
                 ,page: true
                 ,cols: [[ //表头
                     /*{field: 'NO.', title: '序号', width:80}

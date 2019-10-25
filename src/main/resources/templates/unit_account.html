@@ -42,21 +42,6 @@
                 </div>
             </div>
 
-
-            <script th:if="${#strings.equals(accountKind, '住房公积金')}">
-                $("#gjj").attr("checked","checked");
-            </script>
-            <script th:if="${#strings.equals(accountKind, '住房补贴')}">
-                $("#bt").attr("checked","checked");
-            </script>
-            <script th:if="${#strings.equals(accountKind, '住房基金')}">
-                $("#jj").attr("checked","checked");
-            </script>
-            <script th:if="${#strings.equals(accountKind, '住房维修基金')}">
-                $("#wx").attr("checked","checked");
-            </script>
-
-
             <div class="layui-form-item">
                 <label class="layui-form-label">资金来源</label>
                 <div class="layui-input-block">
