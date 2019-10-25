@@ -66,12 +66,12 @@ public interface RemittanceMapper {
     /**
      * 通过实体作为筛选条件查询 并分页
      *
-     * @param remittance 实例对象
+     * @param unitRegisterId
      * @param offset 查询起始位置
      * @param limit 查询条数
      * @return 对象列表
      */
-    List<Remittance> queryAllByRemittanceAndLimit(Remittance remittance, @Param("offset") int offset, @Param("limit") int limit);
+    List<Remittance> queryAllByRemittanceAndLimit(@Param("unitRegisterId")String  unitRegisterId, @Param("offset") int offset, @Param("limit") int limit);
 
 
 }

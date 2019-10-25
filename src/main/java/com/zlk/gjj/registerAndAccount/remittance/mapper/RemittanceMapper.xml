@@ -33,7 +33,7 @@
     </select>
 
     <!--通过实体作为筛选条件查询-->
-    <select id="queryAllByRemittanceAndLimit" resultMap="Remittance">
+    <select id="queryAll" resultMap="Remittance">
         select
         remittance_id, unit_register_id, employee_id, sa_id, deposit_base,
         unit_deposite,employee_deposite,deposite_total
@@ -67,37 +67,12 @@
     </select>
 
     <!--通过实体作为筛选条件查询 并分页-->
-    <select id="queryAll" resultMap="Remittance">
+    <select id="queryAllByRemittanceAndLimit" resultMap="Remittance">
         select
         remittance_id, unit_register_id, employee_id, sa_id, deposit_base,
         unit_deposite,employee_deposite,deposite_total
         from group1_gjj.remittance
-        <where>
-            <if test="remittanceId != null and remittanceId != ''">
-                and remittance_id = #{remittanceId}
-            </if>
-            <if test="unitRegisterId != null and unitRegisterId != ''">
-                and unit_register_id = #{unitRegisterId}
-            </if>
-            <if test="employeeId != null and employeeId != ''">
-                and employee_id = #{employeeId}
-            </if>
-            <if test="saId != null and saId != ''">
-                and sa_id = #{saId}
-            </if>
-            <if test="depositBase != null and depositBase != ''">
-                and deposit_base = #{depositBase}
-            </if>
-            <if test="unitDeposite != null and unitDeposite != ''">
-                and unit_deposite = #{unitDeposite}
-            </if>
-            <if test="employeeDeposite != null and employeeDeposite != ''">
-                and employee_deposite = #{employeeDeposite}
-            </if>
-            <if test="depositeTotal != null and depositeTotal != ''">
-                and deposite_total = #{depositeTotal}
-            </if>
-        </where>
+        where unit_register_id = #{unitRegisterId}
         limit #{offset}, #{limit}
     </select>
     <!--新增所有列-->
