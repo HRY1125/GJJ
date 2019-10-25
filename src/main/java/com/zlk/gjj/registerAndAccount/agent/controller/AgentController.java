@@ -33,7 +33,7 @@ public class AgentController {
 //        model.addAttribute("unitRegisterId",unitRegisterId);
 //        model.addAttribute("unitName",unitName);
         String unitId = (String) request.getSession().getAttribute("ID");
-        unitId = "24356741";
+//        unitId = "24356741";
         Agent agent = agentService.findAgentByUId(unitId);
         model.addAttribute("agent",agent);
         return "agent";

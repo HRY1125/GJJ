@@ -46,9 +46,6 @@ public class UnitRegisterController {
     public String detection(Model model,UnitRegister unitRegister,HttpServletRequest request) throws Exception{
         String unitName = unitRegister.getUnitName();
         String orgCode = unitRegister.getOrgCode();
-//        Map<String,Object> map = new HashMap<>();
-//        String unitName = "alibaba";
-//        String orgCode = "1";
         if(unitName!=null && !unitName.equals("")){
             UnitRegister unitRegister1 = UnitRegisterService.selectUnitRegisterByName(unitName);
             if(orgCode!=null && !orgCode.equals("")){

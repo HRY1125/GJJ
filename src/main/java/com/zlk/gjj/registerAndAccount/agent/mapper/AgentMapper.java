@@ -2,6 +2,8 @@ package com.zlk.gjj.registerAndAccount.agent.mapper;
 
 import com.zlk.gjj.registerAndAccount.entity.Agent;
 
+import java.util.List;
+
 public interface AgentMapper {
 
     /**
@@ -43,5 +45,15 @@ public interface AgentMapper {
      *@time 2019/10/25  11:52
      */
     Agent findAgentByUId(String unitId);
+
+    /**
+     *  查找全部agentid
+     *@method findAllAgentId
+     *@params []
+     *@return java.util.List<java.lang.String>
+     *@author zhang
+     *@time 2019/10/25  17:11
+     */
+    List<String> findAllAgentId();
 
 }

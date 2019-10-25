@@ -59,7 +59,12 @@ public class UnitServiceImpl implements UnitService {
             agent.setUnitId(unit.getUnitId());
             agent.setAgentType("证书用户");
             agent.setUkey(IdUtils.getUUID());
-            agent.setAgentId(IdUtils.getUnitId(10));
+            String agentId = IdUtils.getUnitId(10);
+            List<String> agentIds = agentMapper.findAllAgentId();
+            while (agentIds.contains(agentId)){
+                agentId = IdUtils.getUnitId(10);
+            }
+            agent.setAgentId(agentId);
             Integer flag1 = agentMapper.insertAgent(agent);
             if(flag>0 && flag1>0){
                 message="注册成功";

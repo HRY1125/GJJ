@@ -57,16 +57,8 @@ public class UnitController {
     @RequestMapping(value = "/login")
     public ModelAndView Login(HttpServletRequest request,Unit unit,String code) throws Exception{
         ModelAndView mv = new ModelAndView();
-        String checkCode = (String) request.getSession().getAttribute("checkCode");
-//        unit.setUnitId("44954121");
-//        unit.setAgentName("李四");
-//        unit.setPapersName("身份证");
-//        unit.setPapersNum("129837265427");
-//        unit.setAgentPhone("1232424");
-//        unit.setPassword("111111");
-//        unit.setUnitEmail("123234@123.com");
-//        unit.setUnitName("alibaba");
-        if(/*code.toLowerCase().equals(checkCode.toLowerCase())*/true){
+        String vrifyCode = (String) request.getSession().getAttribute("vrifyCode");
+        if(code.toLowerCase().equals(vrifyCode.toLowerCase())){
             String message = unitService.login(unit);
             if(message.equals("登录成功")){
                 request.getSession().setAttribute("ID",unit.getUnitId());
