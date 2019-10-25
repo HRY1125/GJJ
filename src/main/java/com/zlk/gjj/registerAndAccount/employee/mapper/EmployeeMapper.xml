@@ -87,4 +87,10 @@
         delete from group1_gjj.employee where employee_id = #{employeeId}
     </delete>
 
+    <!--通过UnitId删除-->
+    <delete id="deleteEmployeeByUnitId" parameterType="com.zlk.gjj.registerAndAccount.entity.SecondAssist">
+        delete from employee where unit_id=#{unitId}
+    </delete>
+
+
 </mapper>

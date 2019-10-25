@@ -49,8 +49,9 @@ public class SysController {
         return "unit_register_detection";
     }
 
-    @RequestMapping("/toLAR")
-    public String toLAR(){
-        return "loginandregister";
+
+    @RequestMapping("/toLogin")
+    public String toLogin(){
+        return "login";
     }
 }

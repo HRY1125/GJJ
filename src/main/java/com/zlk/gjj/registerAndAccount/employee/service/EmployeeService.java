@@ -60,5 +60,13 @@ public interface EmployeeService {
      */
     boolean deleteById(Integer employeeId);
 
+    /**
+     * 通过UnitId删除数据
+     *
+     * @param employeeId 主键
+     * @return 影响行数
+     */
+    Integer deleteEmployeeByUnitId(String unitId);
+
 
 }

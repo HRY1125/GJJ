@@ -33,4 +33,9 @@ public class AccountServiceImpl implements AccountService {
         return accountMapper.selectAccountByUnitRegisterId(unitRegisterId);
     }
 
+    @Override
+    public Integer deleteAccountByUnitId(String unitId) {
+        return accountMapper.deleteAccountByUnitId(unitId);
+    }
+
 }

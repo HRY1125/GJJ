@@ -72,4 +72,19 @@ public class EmployeeController {
         return employeeService.update(employee);
     }
 
+
+    /**
+     * 根据unitId删除数据
+     */
+
+    @RequestMapping(value = "/deleteEmployeeByUnitId")
+    public String deleteEmployeeByUnitId(String unitId) throws  Exception{
+
+        Integer flag = employeeService.deleteEmployeeByUnitId("1");
+        if(flag == 1){
+            return "index1";
+        }else {
+            return null;
+        }
+    }
 }
