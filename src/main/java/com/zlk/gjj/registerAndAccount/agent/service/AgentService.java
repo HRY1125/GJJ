@@ -33,4 +33,14 @@ public interface AgentService {
      *@time 2019/10/23  21:35
      */
     String findUnitRegisterIdByUkeyOrAgentUserName(Agent agent);
+
+    /**
+     *  更加unitid查找agent对象
+     *@method findAgentByUId
+     *@params [unitId]
+     *@return com.zlk.gjj.registerAndAccount.entity.Agent
+     *@author zhang
+     *@time 2019/10/25  11:52
+     */
+    Agent findAgentByUId(String unitId);
 }
