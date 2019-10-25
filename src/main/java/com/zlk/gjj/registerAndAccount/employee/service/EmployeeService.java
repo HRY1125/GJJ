@@ -18,7 +18,13 @@ public interface EmployeeService {
      */
     Employee queryById(Integer employeeId);
 
-
+    /**
+     * 通过ID查询单条数据
+     *
+     * @param employeeId 主键
+     * @return 实例对象
+     */
+    Employee queryByIdAndLimit(int employeeId,int offset, int limit);
     /**
      * 查询多条数据
      *
@@ -61,12 +67,17 @@ public interface EmployeeService {
     boolean deleteById(Integer employeeId);
 
     /**
+     * 根据姓名 证件名 证件号进行查询单个
+     * @param employee
+     * @return
+     */
+    Employee selectEmployeeByNameAndPapersNameAndPapersNum(Employee employee);
+    /**
      * 通过UnitId删除数据
      *
      * @param employeeId 主键
      * @return 影响行数
      */
     Integer deleteEmployeeByUnitId(String unitId);
-
 
 }

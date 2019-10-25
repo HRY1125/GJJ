@@ -1,5 +1,7 @@
 package com.zlk.gjj.registerAndAccount.sys.controller;
 
+import com.zlk.gjj.registerAndAccount.unitRegister.mapper.UnitRegisterMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +14,9 @@ import java.util.Map;
 @Controller
 @RequestMapping("/sys")
 public class SysController {
+
+    @Autowired
+    private UnitRegisterMapper unitRegisterMapper;
 
     @RequestMapping("/toFunctions")
     public String toFunctions(){
@@ -49,6 +54,10 @@ public class SysController {
         return "unit_register_detection";
     }
 
+    @RequestMapping("/toCard")
+    public String toCard() {
+        return "card";
+    }
 
     @RequestMapping("/toLogin")
     public String toLogin(){
@@ -56,7 +65,22 @@ public class SysController {
     }
 
     @RequestMapping("/toAgent")
-    public String toAgent(){
+    public String toAgent() {
         return "agent";
     }
+
+    @RequestMapping("/findURId")
+    @ResponseBody
+    public Map findURId(@RequestBody String URId){
+        String unitName = unitRegisterMapper.selectUnitNameByUnitRegisterId(URId);
+        Map map = new HashMap();
+        map.put("unitName",unitName);
+        return map;
+    }
+
+    @RequestMapping("/toSA")
+    public String toSA() {
+        return "second_assist";
+    }
+
 }

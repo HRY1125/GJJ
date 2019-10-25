@@ -20,19 +20,19 @@
 
         }
         .layui-tab-content{
-            height:200px;
-            width:250px;
+            height:289px;
+            width:258px;
             top:40%;
             left: 42%;
         }
         .layui-tab {
-            height:300px;
-            width:268px;
+            height:350px;
+            width:275px;
 
         }
         .d4{
             position: absolute;
-            top:40%;
+            top:25%;
             left: 42%;
         }
         .layui-this{
@@ -40,18 +40,20 @@
         }
         .layui-input1{
             height:35px;
-            width:247px;
+            width:230px;
         }
+
     </style>
 </head>
 <body>
+<img src="/static/img/123.png" >
 <div class="d4">
     <div class="layui-tab layui-tab-card">
         <ul class="layui-tab-title">
             <li class="layui-this" >登录</li>
             <li>注册</li>
         </ul>
-        <div class="layui-tab-content">
+        <div class="layui-tab-content" style="overflow-y: scroll">
             <div class="layui-tab-item layui-show">
                 <div class="d2">
                     <div class="d3">
@@ -65,12 +67,11 @@
                             <br><br>
                             <input type="checkbox" name="remember_user" id="remember_user" lay-skin="primary" title="记住用户" /> 记住密码
                             <br><br>
-                            <button class="layui-btn layui-btn-fluid" type="submit">登 录</button>
+                            <button class="layui-btn layui-btn-fluid" type="submit" style="width: 243px">登 录</button>
                         </form>
                     </div>
                 </div>
             </div>
-
 
             <div class="layui-tab-item">
                 <form action="/unit/signin" method="post" class="f1">

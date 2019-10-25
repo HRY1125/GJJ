@@ -1,5 +1,6 @@
 package com.zlk.gjj.registerAndAccount.remittance.service;
 
+import com.zlk.gjj.registerAndAccount.entity.Employee;
 import com.zlk.gjj.registerAndAccount.entity.Remittance;
 import com.zlk.gjj.registerAndAccount.entity.vo.Emp_Rem;
 
@@ -67,4 +68,6 @@ public interface RemittanceService {
     String updateEmpAndRem(Emp_Rem empRem);
 
     String deleRemAndEmp(Emp_Rem empRem);
+
+    List<Employee> selectRemAndEmpByUnitRegisterId(String UnitRegisterId,int offset, int limit);
 }

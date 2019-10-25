@@ -1,5 +1,6 @@
 package com.zlk.gjj.registerAndAccount.remittance.controller;
 
+import com.zlk.gjj.registerAndAccount.entity.Employee;
 import com.zlk.gjj.registerAndAccount.entity.Remittance;
 import com.zlk.gjj.registerAndAccount.entity.vo.Emp_Rem;
 import com.zlk.gjj.registerAndAccount.remittance.service.RemittanceService;
@@ -122,6 +123,20 @@ public class RemittanceController {
     public Map updateEmpAndRem1(@RequestBody Emp_Rem empRem){
         remittanceService.updateEmpAndRem(empRem);
         Map map = new HashMap();
+        return map;
+    }
+    /**
+     * 2.13的查询
+     */
+    @RequestMapping("selRemAndEmpByUnitRegisterId")
+    public Map selRemAndEmpByUnitRegisterId(Integer page,Integer limit,String unitRegisterId) {
+        int offset=(page-1)*limit;
+        List<Employee> employees = remittanceService.selectRemAndEmpByUnitRegisterId(unitRegisterId,offset,limit);
+        Map map = new HashMap();
+        map.put("code", 0);
+        map.put("msg", "");
+        map.put("count", employees.size());
+        map.put("data", employees);
         return map;
     }
 

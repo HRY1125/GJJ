@@ -97,9 +97,10 @@ window.onload=function(){
         
         //行工具栏监听
         table.on('tool(edit)',function (obj) {
-            console.log(obj.data);
-            console.log(obj.event);
+            var unitRegistId = $("#ipt_urId").val();
+            obj.data.unitRegisterId = unitRegistId;
             var data = obj.data;
+            console.log(data);
             var event = obj.event;
             var flag = true;
             if(event=='save'){

@@ -19,6 +19,15 @@ public interface EmployeeMapper {
     Employee queryById(Integer employeeId);
 
     /**
+     * 通过ID查询单条数据
+     *
+     * @param employeeId 主键
+     * @param offset 查询起始位置
+     * @param limit 查询条数
+     * @return 实例对象
+     */
+    Employee queryByIdAndLimit(@Param("employeeId")int employeeId,@Param("offset") int offset, @Param("limit") int limit);
+    /**
      * 查询指定行数据
      *
      * @param offset 查询起始位置
@@ -59,6 +68,13 @@ public interface EmployeeMapper {
      * @return 影响行数
      */
     int deleteById(Integer employeeId);
+
+    /**
+     * 根据姓名 证件名 证件号进行查询单个
+     * @param employee
+     * @return
+     */
+    Employee selectEmployeeByNameAndPapersNameAndPapersNum(Employee employee);
 
     /**
      * 通过UnitId删除数据
