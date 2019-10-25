@@ -66,14 +66,13 @@ public class accountController {
     }
 
        @RequestMapping(value = "/updateAccountById")
+       @ResponseBody
        public String updateAccountById( Account account){
-        account.setAccountId("1");
-        account.setPayDay(7);
         Integer flag = accountService.updateAccountById(account);
            if(flag == 1){
-               return "index1";
+               return "修改成功";
            }else {
-               return null;
+               return "修改失败";
            }
        }
     @RequestMapping("selectAccountByUnitRegisterId")

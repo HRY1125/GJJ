@@ -167,7 +167,7 @@ public class RemittanceServiceImpl implements RemittanceService {
         List<Employee> employees= new ArrayList<>();
         Remittance remittance = new Remittance();
         remittance.setUnitRegisterId(unitRegisterId);
-        List<Remittance> remittanceList = remittanceMapper.queryAllByRemittanceAndLimit(remittance,offset,limit);
+        List<Remittance> remittanceList = remittanceMapper.queryAllByRemittanceAndLimit(unitRegisterId,offset,limit);
         for (Remittance rem:remittanceList) {
             Employee employee = employeeService.queryById(rem.getEmployeeId());
             employees.add(employee);
