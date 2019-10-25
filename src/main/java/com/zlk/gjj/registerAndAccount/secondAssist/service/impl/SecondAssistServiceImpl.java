@@ -6,6 +6,8 @@ import com.zlk.gjj.registerAndAccount.secondAssist.service.SecondAssistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SecondAssistServiceImpl implements SecondAssistService {
 
@@ -19,7 +21,7 @@ public class SecondAssistServiceImpl implements SecondAssistService {
     }
 
     @Override
-    public SecondAssist selectSecondAssistByUnitId(String unitId) {
+    public List selectSecondAssistByUnitId(String unitId) {
         return SecondAssistMapper.selectSecondAssistByUnitId(unitId);
     }
 

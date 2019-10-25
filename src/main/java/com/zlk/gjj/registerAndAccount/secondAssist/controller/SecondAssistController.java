@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping(value="/SecondAssist")
 public class SecondAssistController {
@@ -34,7 +36,7 @@ public class SecondAssistController {
     @RequestMapping(value = "/selectSecondAssistByUnitId")
     public String selectSecondAssistByUnitId(String unitId){
 
-        SecondAssist flag= SecondAssistService.selectSecondAssistByUnitId("1");
+        List flag= SecondAssistService.selectSecondAssistByUnitId("1");
         if(flag == null){
             return null;
         }else {
