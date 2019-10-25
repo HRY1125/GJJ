@@ -6,6 +6,7 @@ import com.zlk.gjj.registerAndAccount.entity.PayIn;
 import com.zlk.gjj.registerAndAccount.payIn.service.PayInService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -15,7 +16,7 @@ public class PayInController {
     private PayInService PayInService;
 
     @RequestMapping(value = "/payInInsert")
-    public String insertPayIn(PayIn PayIn){
+    public String insertPayIn(PayIn PayIn, BindingResult bindingResult){
         /*PayIn.setUnitId("1");
         PayIn.setPayIdId(1);
         PayIn.setUnitRegisterId("1");
@@ -32,7 +33,7 @@ public class PayInController {
 
         Integer flag = PayInService.insertPayIn(PayIn);
         if(flag == 1){
-            return "index1";
+            return "functions";
         }else {
             return null;
         }

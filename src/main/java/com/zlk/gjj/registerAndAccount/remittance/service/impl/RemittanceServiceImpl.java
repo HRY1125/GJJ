@@ -163,11 +163,11 @@ public class RemittanceServiceImpl implements RemittanceService {
     }
 
     @Override
-    public List<Employee> selectRemAndEmpByUnitRegisterId(String unitRegisterId) {
+    public List<Employee> selectRemAndEmpByUnitRegisterId(String unitRegisterId,int offset, int limit) {
         List<Employee> employees= new ArrayList<>();
         Remittance remittance = new Remittance();
         remittance.setUnitRegisterId(unitRegisterId);
-        List<Remittance> remittanceList = remittanceMapper.queryAll(remittance);
+        List<Remittance> remittanceList = remittanceMapper.queryAllByRemittanceAndLimit(remittance,offset,limit);
         for (Remittance rem:remittanceList) {
             Employee employee = employeeService.queryById(rem.getEmployeeId());
             employees.add(employee);

@@ -18,7 +18,13 @@ public interface EmployeeService {
      */
     Employee queryById(Integer employeeId);
 
-
+    /**
+     * 通过ID查询单条数据
+     *
+     * @param employeeId 主键
+     * @return 实例对象
+     */
+    Employee queryByIdAndLimit(int employeeId,int offset, int limit);
     /**
      * 查询多条数据
      *

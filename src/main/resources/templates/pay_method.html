@@ -11,73 +11,73 @@
 </head>
 <body>
     <div id="div_form">
-        <form id="form_main" class="layui-form" action="">
+        <form id="form_main" class="layui-form" action="/payIn/payInInsert">
             <div class="layui-form-item">
                 <label class="layui-form-label">单位登记号</label>
                 <div class="layui-input-block">
-                    <input id="ipt_unitId" type="text" name="unitRegisterId" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input id="ipt_unitId" type="text" name="unitRegisterId" lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
             <div class="layui-form-item">
-                <label class="layui-form-label">单位名称</label>
+                <label class="layui-form-label">单位Id</label>
                 <div class="layui-input-block">
-                    <input id="unitName" type="text" readonly="readonly" name="unitName" autocomplete="off" class="layui-input">
+                    <input id="unitId" type="text" readonly="readonly" name="unitId" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label">业务种类</label>
                 <div class="layui-input-block">
-                    <input type="radio" name="kind" value="0" title="委托收款" lay-filter="kind">
-                    <input type="radio" name="kind" value="1" title="主动汇款" lay-filter="kind">
-                    <input type="radio" name="kind" value="2" title="转账支票" lay-filter="kind">
-                    <input type="radio" name="kind" value="3" title="现金(刷卡)" lay-filter="kind">
-                    <input type="radio" name="kind" value="4" title="财政统发" lay-filter="kind">
-                    <input type="radio" name="kind" value="5" title="转账交款" lay-filter="kind">
-                    <input type="radio" name="kind" value="6" title="在线支付" lay-filter="kind">
+                    <input type="radio" name="payMethod" value="0" title="委托收款" lay-filter="kind">
+                    <input type="radio" name="payMethod" value="1" title="主动汇款" lay-filter="kind">
+                    <input type="radio" name="payMethod" value="2" title="转账支票" lay-filter="kind">
+                    <input type="radio" name="payMethod" value="3" title="现金(刷卡)" lay-filter="kind">
+                    <input type="radio" name="payMethod" value="4" title="财政统发" lay-filter="kind">
+                    <input type="radio" name="payMethod" value="5" title="转账交款" lay-filter="kind">
+                    <input type="radio" name="payMethod" value="6" title="在线支付" lay-filter="kind">
                 </div>
             </div>
 
             <div class="layui-form-item entrust">
                 <label class="layui-form-label">委托收款单位名称</label>
                 <div class="layui-input-block">
-                    <input type="text" name="" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" name="receiptUnitName"   lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
             <div class="layui-form-item entrust">
                 <label class="layui-form-label">委托收款单位账号</label>
                 <div class="layui-input-block">
-                    <input type="text" name="" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" name="receiptUnitAccount"   lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
             <div class="layui-form-item entrust">
                 <label class="layui-form-label">托收单位开户银行名称</label>
                 <div class="layui-input-block">
-                    <input type="text" name="" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" name="receiptUnitBank"   lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
             <div class="layui-form-item entrust">
                 <label class="layui-form-label">银行交换号</label>
                 <div class="layui-input-block">
-                    <input type="text" name="" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" name="bankExchangeNum"   lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
             <div class="layui-form-item entrust">
                 <label class="layui-form-label">支付系统号</label>
                 <div class="layui-input-block">
-                    <input type="text" name="" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" name="paySusNum"   lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
             <div class="layui-form-item entrust">
                 <label class="layui-form-label">托收日期</label>
                 <div class="layui-input-block">
-                    <select name="payDay" required lay-verify="required" lay-filter="papers">
+                    <select name="receiptDate"  lay-verify="required" lay-filter="papers">
                         <option value=""></option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -117,56 +117,56 @@
             <div class="layui-form-item remit">
                 <label class="layui-form-label">汇款单位名称</label>
                 <div class="layui-input-block">
-                    <input type="text" name="" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" name="remitUnitName"   lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
             <div class="layui-form-item remit">
                 <label class="layui-form-label">汇款单位开户银行</label>
                 <div class="layui-input-block">
-                    <input type="text" name="" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" name="remitBankName"   lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
             <div class="layui-form-item remit">
                 <label class="layui-form-label">汇款账号</label>
                 <div class="layui-input-block">
-                    <input type="text" name="" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" name="remitUnitAccount"   lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
             <div class="layui-form-item check">
                 <label class="layui-form-label">单位开户银行</label>
                 <div class="layui-input-block">
-                    <input type="text" name="" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" name=""    autocomplete="off" class="layui-input">
                 </div>
             </div>
 
             <div class="layui-form-item check">
                 <label class="layui-form-label">账号</label>
                 <div class="layui-input-block">
-                    <input type="text" name="" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" name=""  autocomplete="off" class="layui-input">
                 </div>
             </div>
 
             <div class="layui-form-item cash">
                 <label class="layui-form-label">缴款网点</label>
                 <div class="layui-input-block">
-                    <input type="text" name="" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" name=""  autocomplete="off" class="layui-input">
                 </div>
             </div>
 
             <div class="layui-form-item finance">
                 <label class="layui-form-label">统发单位名称</label>
                 <div class="layui-input-block">
-                    <input type="text" name="" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" name=""  autocomplete="off" class="layui-input">
                 </div>
             </div>
 
             <div class="layui-form-item transfer">
                 <label class="layui-form-label">住房基金账户信息</label>
                 <div class="layui-input-block">
-                    <input type="text" name="" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" name=""  autocomplete="off" class="layui-input">
                 </div>
             </div>
 

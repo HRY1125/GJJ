@@ -129,13 +129,15 @@ public class RemittanceController {
      * 2.13的查询
      */
     @RequestMapping("selRemAndEmpByUnitRegisterId")
-    public Map selRemAndEmpByUnitRegisterId(Integer page,Integer limit,String unitRegisterId){
-        List<Employee> employees = remittanceService.selectRemAndEmpByUnitRegisterId(unitRegisterId);
+    public Map selRemAndEmpByUnitRegisterId(Integer page,Integer limit,String unitRegisterId) {
+        int offset=(page-1)*limit;
+        List<Employee> employees = remittanceService.selectRemAndEmpByUnitRegisterId(unitRegisterId,offset,limit);
         Map map = new HashMap();
-        map.put("code",0);
-        map.put("msg","");
-        map.put("count",employees.size());
-        map.put("data",employees);
+        map.put("code", 0);
+        map.put("msg", "");
+        map.put("count", employees.size());
+        map.put("data", employees);
         return map;
     }
+
 }

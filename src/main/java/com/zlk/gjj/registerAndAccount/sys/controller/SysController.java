@@ -74,7 +74,12 @@ public class SysController {
     }
 
     @RequestMapping("/toSA")
-    public String toSA(){
+    public String toSA() {
         return "second_assist";
+    }
+
+    @RequestMapping("/toDetection")
+    public String toDetection(){
+        return "detection";
     }
 }
