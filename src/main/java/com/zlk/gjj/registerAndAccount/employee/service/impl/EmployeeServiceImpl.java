@@ -30,6 +30,16 @@ public class EmployeeServiceImpl implements EmployeeService {
         return this.employeeMapper.queryById(employeeId);
     }
 
+    /**
+     * 通过ID查询单条数据并分页
+     *
+     * @param employeeId 主键
+     * @return 实例对象
+     */
+    @Override
+    public Employee queryByIdAndLimit(int employeeId, int offset, int limit) {
+        return employeeMapper.queryByIdAndLimit(employeeId,offset,limit);
+    }
 
     /**
      * 查询多条数据
