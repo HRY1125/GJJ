@@ -1,6 +1,7 @@
 package com.zlk.gjj.registerAndAccount.unitlogin.service;
 
 import com.zlk.gjj.registerAndAccount.entity.Unit;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -55,4 +56,14 @@ public interface UnitService {
      *@time 2019/10/22  20:37
      */
     String login(Unit unit);
+
+    /**
+     *  根据证件号码查找用户
+     *@method findUnitByPapersNum
+     *@params [papersNum]
+     *@return com.zlk.gjj.registerAndAccount.entity.Unit
+     *@author zhang
+     *@time 2019/10/22  19:11
+     */
+    Unit findUnitByPapersNum(String papersNum);
 }

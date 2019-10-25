@@ -111,9 +111,6 @@
             <if test="agentId != null and agentId!=''">
                 agent_id = #{agentId},
             </if>
-            <if test="unitId != null and unitId!=''">
-                unit_id = #{unitId},
-            </if>
             <if test="unitRegisterId != null and unitRegisterId!=''">
                 unit_register_id = #{unitRegisterId},
             </if>

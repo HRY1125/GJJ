@@ -50,11 +50,10 @@ public class UnitRegisterServiceImpl implements UnitRegisterService {
         Integer integer1 = agentMapper.updateAgentById(agent);
         String message = "";
         if(integer>0 && integer1>0){
-            message = "单位登记成功";
+            return message = "单位登记成功";
         }else {
-            message = "单位登记失败";
+            return message = "单位登记失败";
         }
-        return message;
     }
 
     @Override

@@ -4,6 +4,7 @@ import com.zlk.gjj.registerAndAccount.entity.Unit;
 import com.zlk.gjj.registerAndAccount.unitlogin.service.UnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,25 +32,18 @@ public class UnitController {
      *@time 2019/10/23  10:28
      */
     @RequestMapping(value = "/signin")
-    public ModelAndView singIn(Unit unit,String password1) throws Exception{
+    public String singIn(Model model,Unit unit, String password1) throws Exception{
         ModelAndView mv = new ModelAndView();
-//        unit.setAgentName("李四");
-//        unit.setPapersName("身份证");
-//        unit.setPapersNum("129837265427");
-//        unit.setAgentPhone("1232424");
-//        unit.setPassword("111111");
-//        unit.setUnitEmail("123234@123.com");
-//        unit.setUnitName("alibaba");
         if (password1.equals(unit.getPassword())){
             String msg = unitService.insertUnit(unit);
-            mv.addObject("message",msg);
-            mv.setViewName("login");
+            Unit unitAfter = unitService.findUnitByPapersNum(unit.getPapersNum());
+            model.addAttribute("message",msg);
+            model.addAttribute("unit",unitAfter);
         }else {
-            mv.addObject("message","两次密码不一致");
-            mv.setViewName("login");
+            model.addAttribute("message","两次密码不一致");
         }
 
-        return mv;
+        return "login";
     }
 
     /**

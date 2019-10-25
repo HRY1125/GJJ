@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <title>table模块快速使用</title>
@@ -57,10 +57,10 @@
             <div class="layui-tab-item layui-show">
                 <div class="d2">
                     <div class="d3">
-                        <form action="/unit/login" method="post" class="f1">
+                        <form action="/unit/login" method="post" class="f1" th:object="${unit}">
                             <input type="text" name="unitId" placeholder="请输入用户名" autocomplete="off" class="layui-input" autofocus="true" required>
                             <br><br>
-                            <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input1" required>
+                            <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input" required>
                             <br><br>
                             <input type="text" name="code" placeholder="验证码" autocomplete="off" class="layui-input1" required><br>
                             <img id="imgCode" src="/validateCodeServlet"><br>
