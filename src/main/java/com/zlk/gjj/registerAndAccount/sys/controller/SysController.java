@@ -54,4 +54,9 @@ public class SysController {
     public String toLogin(){
         return "login";
     }
+
+    @RequestMapping("/toAgent")
+    public String toAgent(){
+        return "agent";
+    }
 }

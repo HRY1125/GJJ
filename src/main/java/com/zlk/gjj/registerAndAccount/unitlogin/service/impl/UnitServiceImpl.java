@@ -40,8 +40,7 @@ public class UnitServiceImpl implements UnitService {
             message = "该证件已注册，不可重复注册";
             return message;
         }else {
-//            String unitId = new IdUtils().getUnitId();
-            String unitId = "1411";
+            String unitId = new IdUtils().getUnitId(8);
             List<String> unitIds = findAllUnitId();
             while (unitIds.contains(unitId)){
                 unitId = IdUtils.getUnitId(8);

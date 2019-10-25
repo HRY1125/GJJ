@@ -31,18 +31,24 @@ public class UnitController {
      *@time 2019/10/23  10:28
      */
     @RequestMapping(value = "/signin")
-    public ModelAndView singIn(Unit unit) throws Exception{
+    public ModelAndView singIn(Unit unit,String password1) throws Exception{
         ModelAndView mv = new ModelAndView();
-        unit.setAgentName("李四");
-        unit.setPapersName("身份证");
-        unit.setPapersNum("129837265427");
-        unit.setAgentPhone("1232424");
-        unit.setPassword("111111");
-        unit.setUnitEmail("123234@123.com");
-        unit.setUnitName("alibaba");
-        String msg = unitService.insertUnit(unit);
-        mv.addObject("message",msg);
-        mv.setViewName("test");
+//        unit.setAgentName("李四");
+//        unit.setPapersName("身份证");
+//        unit.setPapersNum("129837265427");
+//        unit.setAgentPhone("1232424");
+//        unit.setPassword("111111");
+//        unit.setUnitEmail("123234@123.com");
+//        unit.setUnitName("alibaba");
+        if (password1.equals(unit.getPassword())){
+            String msg = unitService.insertUnit(unit);
+            mv.addObject("message",msg);
+            mv.setViewName("login");
+        }else {
+            mv.addObject("message","两次密码不一致");
+            mv.setViewName("login");
+        }
+
         return mv;
     }
 
@@ -58,14 +64,14 @@ public class UnitController {
     public ModelAndView Login(HttpServletRequest request,Unit unit,String code) throws Exception{
         ModelAndView mv = new ModelAndView();
         String checkCode = (String) request.getSession().getAttribute("checkCode");
-        unit.setUnitId("44954121");
-        unit.setAgentName("李四");
-        unit.setPapersName("身份证");
-        unit.setPapersNum("129837265427");
-        unit.setAgentPhone("1232424");
-        unit.setPassword("111111");
-        unit.setUnitEmail("123234@123.com");
-        unit.setUnitName("alibaba");
+//        unit.setUnitId("44954121");
+//        unit.setAgentName("李四");
+//        unit.setPapersName("身份证");
+//        unit.setPapersNum("129837265427");
+//        unit.setAgentPhone("1232424");
+//        unit.setPassword("111111");
+//        unit.setUnitEmail("123234@123.com");
+//        unit.setUnitName("alibaba");
         if(/*code.toLowerCase().equals(checkCode.toLowerCase())*/true){
             String message = unitService.login(unit);
             if(message.equals("登录成功")){
