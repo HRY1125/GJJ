@@ -1,6 +1,8 @@
 package com.zlk.gjj.registerAndAccount.sys.controller;
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
+import com.zlk.gjj.registerAndAccount.entity.Unit;
+import com.zlk.gjj.registerAndAccount.entity.UnitRegister;
 import com.zlk.gjj.registerAndAccount.unitRegister.mapper.UnitRegisterMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -68,7 +70,10 @@ public class SysController {
     }
 
     @RequestMapping("/toLogin")
-    public String toLogin(){
+    public String toLogin(Map<String,Object> map){
+        Unit unit = new Unit();
+        unit.setUnitId("");
+        map.put("unit",unit);
         return "login";
     }
 
@@ -117,6 +122,20 @@ public class SysController {
         responseOutputStream.write(captchaChallengeAsJpeg);
         responseOutputStream.flush();
         responseOutputStream.close();
+    }
+
+    @RequestMapping("isUnitName")
+    @ResponseBody
+    public Map isUnitName(@RequestBody String unitName){
+        Map map = new HashMap();
+        UnitRegister unitRegister = unitRegisterMapper.selectUnitRegisterByName(unitName);
+        if(unitRegister==null){
+            map.put("isExist",false);
+        }else{
+            map.put("isExist",true);
+        }
+
+        return map;
     }
 
 }

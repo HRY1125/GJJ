@@ -90,7 +90,7 @@ window.onload=function(){
                             ,page: true
                             ,toolbar: '#toolbar'
                         });
-                    },
+                    }
                 });
             }
         });

@@ -43,13 +43,13 @@ public class AgentController {
     public String insertAgent(Model model, Agent agent) throws Exception{
         String message = agentService.insertAgent(agent);
         model.addAttribute("message","message");
-        return "test";
+        return "agent";
     }
 
     @RequestMapping(value = "/updateAgent")
     public String updateAgent(Model model,Agent agent) throws Exception{
         String message = agentService.updateAgentById(agent);
         model.addAttribute("message","message");
-        return "test";
+        return "agent";
     }
 }
