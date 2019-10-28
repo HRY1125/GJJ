@@ -94,7 +94,7 @@ public class RemittanceController {
     public Map selRemAndEmpAndSAAll1(String UnitRegisterId,Integer page,Integer limit){
         int offset=(page-1)*limit;
         List<Emp_Rem> emp_rems = remittanceService.selRemAndEmpAndSAAll(UnitRegisterId,offset, limit);
-        int count = emp_rems.size();
+        int count = remittanceService.queryCountByunitRegisterId(UnitRegisterId);
         Map map = new HashMap();
         map.put("code",0);
         map.put("msg","");

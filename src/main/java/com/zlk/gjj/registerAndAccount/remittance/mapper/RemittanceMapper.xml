@@ -31,6 +31,12 @@
         from group1_gjj.remittance
         limit #{offset}, #{limit}
     </select>
+    <!--查询指定行数据-->
+    <select id="queryCountByunitRegisterId" resultType="java.lang.Integer">
+        select count(1)
+        from group1_gjj.remittance
+        where unit_register_id=#{unitRegisterId}
+    </select>
 
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="Remittance">

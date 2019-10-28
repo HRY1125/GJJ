@@ -131,6 +131,9 @@ window.onload=function(){
 
                         $("#ipt_unitId").val(values);
                     }
+                    else if (index === "unitPeopleDepositeRatio") {
+                        $("#gernbili").val(values);
+                    }
                     else if (index === "payDay"){
 
                         if(values === 1){
@@ -236,7 +239,7 @@ window.onload=function(){
 
             },
             error: function (data) {
-                alert("有错了");
+                alert(JSON.stringify(data));
             }
         });
     });

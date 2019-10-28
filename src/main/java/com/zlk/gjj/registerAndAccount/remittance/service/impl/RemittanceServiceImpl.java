@@ -175,4 +175,9 @@ public class RemittanceServiceImpl implements RemittanceService {
         return employees;
     }
 
+    @Override
+    public Integer queryCountByunitRegisterId(String unitRegisterId) {
+        return remittanceMapper.queryCountByunitRegisterId(unitRegisterId);
+    }
+
 }
