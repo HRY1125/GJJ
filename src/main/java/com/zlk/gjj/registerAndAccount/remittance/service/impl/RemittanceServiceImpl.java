@@ -102,9 +102,9 @@ public class RemittanceServiceImpl implements RemittanceService {
     }
 
     @Override
-    public List<Emp_Rem> selRemAndEmpAndSAAll(int offset, int limit) {
+    public List<Emp_Rem> selRemAndEmpAndSAAll(String UnitRegisterId,int offset, int limit) {
         List<Emp_Rem> empRemList=new ArrayList<>();
-        List<Remittance>  remittanceList=remittanceMapper.queryAllByLimit( offset,  limit);
+        List<Remittance>  remittanceList=remittanceMapper.queryAllByRemittanceAndLimit(UnitRegisterId, offset,  limit);
         for(Remittance remittance:remittanceList){
             Employee employee=employeeService.queryById(remittance.getEmployeeId());
             Emp_Rem empRem=new Emp_Rem();
