@@ -85,7 +85,7 @@ public class accountController {
     }
 
     @RequestMapping("updatekaihu")
-    public String updatekaihu(HttpServletRequest request){
+    public String updatekaihu(){
         return "unit_account_update";
     }
 
