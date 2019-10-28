@@ -135,7 +135,7 @@ public class RemittanceController {
         Map map = new HashMap();
         map.put("code", 0);
         map.put("msg", "");
-        map.put("count", employees.size());
+        map.put("count", remittanceService.queryCountByunitRegisterId(unitRegisterId));
         map.put("data", employees);
         return map;
     }
