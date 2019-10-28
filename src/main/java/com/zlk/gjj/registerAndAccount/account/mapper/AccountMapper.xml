@@ -40,7 +40,7 @@
 
     <select id="selectAccountByUnitRegisterId" resultMap="accountEntityMap">
         select * from account where
-        unit_register_id = #{unitRegisterId}
+        unit_id = #{unitId}
     </select>
 
     <update id="updateAccountById" parameterType="com.zlk.gjj.registerAndAccount.entity.Account">

@@ -29,7 +29,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">证件名称</label>
                 <div class="layui-input-block">
-                    <select id="select1" name="employeePapersName" required lay-verify="required" lay-filter="papers">
+                    <select id="select1" name="employeePapersName" lay-verify="required" lay-filter="papers">
                         <option ></option>
                         <option value="身份证">身份证</option>
                         <option value="护照">护照</option>
@@ -48,13 +48,13 @@
             <div id="div_nation" class="layui-form-item" style="display: none">
                 <label class="layui-form-label">国籍</label>
                 <div class="layui-input-block">
-                    <input id="ipt_nation" type="text" name="employeeNationnality" lay-verify="required" autocomplete="off" class="layui-input">
+                    <input id="ipt_nation" type="text" name="employeeNationnality" autocomplete="off" class="layui-input">
                 </div>
                 <label class="layui-form-label retmsg">aaa</label>
             </div>
 
             <div class="layui-form-item">
-                <input id="inpt_submit" type="submit" class="layui-btn" value="登记">
+                <button id="inpt_submit" lay-submit class="layui-btn">登记</button>
             </div>
         </form>
 
