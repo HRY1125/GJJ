@@ -6,10 +6,13 @@ import com.zlk.gjj.registerAndAccount.secondAssist.service.SecondAssistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-@Controller
+@RestController
 @RequestMapping(value="/SecondAssist")
 public class SecondAssistController {
 
@@ -34,15 +37,14 @@ public class SecondAssistController {
     }
 
     @RequestMapping(value = "/selectSecondAssistByUnitId")
-    public String selectSecondAssistByUnitId(String unitId){
-
+    public Map selectSecondAssistByUnitId(String unitId){
         List flag= SecondAssistService.selectSecondAssistByUnitId("1");
-        if(flag == null){
-            return null;
-        }else {
-            return "index1";
-        }
-
+        Map map = new HashMap();
+        map.put("code", 0);
+        map.put("msg", "");
+        map.put("count", flag.size());
+        map.put("data", flag);
+        return map;
     }
 
     @RequestMapping(value = "/updateSecondAssistById")

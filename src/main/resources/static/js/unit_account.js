@@ -11,11 +11,11 @@ window.onload=function(){
            $.ajax({
                type : "POST",
                contentType: "application/json;charset=UTF-8",
-               url : "",
+               url : "/sys/findURId",
                data : unitId,
                dataType : "json",
                success : function(result) {
-                   $("#unitName").val();
+                   $("#unitName").val(result.unitName);
                }
            });
        });

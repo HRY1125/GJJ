@@ -13,10 +13,10 @@ window.onload=function () {
             ,toolbar: '#toolbar'
             ,cols: [[ //表头
                 /*{field: 'NO.', title: '序号', width:80}
-                ,*/{field: '', title: '部门编号', width:135}
-                ,{field: 'employeeName', title: '部门名称', width:135, edit:'text'}
-                ,{field: 'employeePapersName', title: '部门代码', width:135, edit:'text'}
-                ,{field: '', title: '保存/删除', width: 110, fixed: 'right'
+                ,*/{field: 'departmentId', title: '部门编号', width:285, edit:'text'}
+                ,{field: 'departmentName', title: '部门名称', width:285, edit:'text'}
+                ,{field: 'departmentCode', title: '部门代码', width:285, edit:'text'}
+                ,{field: '', title: '保存/删除', width: 183, fixed: 'right'
                     , toolbar:'<div><div class="layui-btn-group">\n' +
                         '  <button type="button" class="layui-btn layui-btn-sm" lay-event="save">\n' +
                         '    <i class="layui-icon">&#xe61f;</i>\n' +
