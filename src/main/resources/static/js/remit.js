@@ -4,11 +4,12 @@ window.onload=function(){
         var table = layui.table;
         var form = layui.form;
         var layer = layui.layer;
-
+        var unitRegistId1000 = $("#ipt_urId").val();
         table.render({
+
             elem: '#employ'
             ,height: 500
-            ,url: '/remittance/select'
+            ,url: '/remittance/select?UnitRegisterId='+unitRegistId1000
             ,page: true
             ,toolbar: '#toolbar'
             ,cols: [[ //表头
