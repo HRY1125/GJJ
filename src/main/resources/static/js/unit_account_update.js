@@ -114,6 +114,10 @@ window.onload=function(){
 
                         $("#ipt_unitId").val(values);
                     }
+                    else if (index === "unitPeopleDepositeRatio") {
+
+                        $("#gernbili").val(values);
+                    }
                     else if (index === "payDay"){
 
                         if(values === 1){

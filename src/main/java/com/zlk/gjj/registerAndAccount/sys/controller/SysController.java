@@ -1,6 +1,8 @@
 package com.zlk.gjj.registerAndAccount.sys.controller;
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
+import com.zlk.gjj.registerAndAccount.account.service.AccountService;
+import com.zlk.gjj.registerAndAccount.entity.Account;
 import com.zlk.gjj.registerAndAccount.entity.UnitRegister;
 import com.zlk.gjj.registerAndAccount.unitRegister.mapper.UnitRegisterMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +23,8 @@ import java.util.Map;
 @Controller
 @RequestMapping("/sys")
 public class SysController {
-
+    @Autowired
+    private AccountService accountService;
     @Autowired
     private UnitRegisterMapper unitRegisterMapper;
     @Autowired
@@ -49,12 +52,13 @@ public class SysController {
     }
 
     @RequestMapping("/toRemit")
-    public String toRemit(HttpServletRequest request){
-        request.getSession().setAttribute("unitRegistId","111");
-        request.getSession().setAttribute("unitName","111");
-        request.getSession().setAttribute("source","111");
-        request.getSession().setAttribute("unitRatio","111");
-        request.getSession().setAttribute("personRatio","111");
+    public String toRemit(HttpServletRequest request,Map map){
+        Account account=accountService.selectAccountByUnitRegisterId((String)request.getSession().getAttribute("ID"));
+        map.put("unitRegistId",account.getUnitRegisterId());
+        map.put("unitName",account.getUnitName());
+        map.put("source",account.getCapitalSource());
+        map.put("unitRatio",account.getUnitDepositeRatio());
+        map.put("personRatio",account.getUnitPeopleDepositeRatio());
         return "remit";
     }
 
