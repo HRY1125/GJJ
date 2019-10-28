@@ -5,12 +5,13 @@ window.onload=function(){
 
         //监听select
         form.on('select(papers)', function(data){
-            if ($("#select1").val()==1){
+            var kind = $("#select1").val();
+            if (kind == '护照'){
                 $("#div_nation").css("display","block");
-                $("#ipt_nation").attr("required","required");
+                $("#ipt_nation").attr("lay-verify","required");
             }else{
                 $("#div_nation").css("display","none");
-                $("#ipt_nation").removeAttr("required");
+                $("#ipt_nation").removeAttr("lay-verify");
             }
         });
     });

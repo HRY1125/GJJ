@@ -9,6 +9,7 @@
     <script src="D:/GitHub/GJJ/src/main/resources/static/layui/layui.js"></script>-->
     <link rel="stylesheet" href="/css/unit_account.css" type="text/css">
     <link rel="stylesheet" href="/layui/css/layui.css" type="text/css">
+    <script type="text/javascript" src="/js/unit_account_update.js"></script>
     <script src="/layui/layui.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
@@ -20,7 +21,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">单位登记号</label>
                 <div class="layui-input-block">
-                    <input id="ipt_unitId" type="text" name="unitRegisterId" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input id="ipt_unitId" type="text" name="unitRegisterId" readonly="readonly" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
@@ -34,41 +35,42 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">业务种类</label>
                 <div class="layui-input-block">
-                    <input id="gjj" type="radio" name="businessKind" value="住房公积金" title="住房公积金">
-                    <input id="bt" type="radio" name="businessKind" value="住房补贴" title="住房补贴">
-                    <input id="jj" type="radio" name="businessKind" value="住房基金" title="住房基金">
-                    <input id="wx" type="radio" name="businessKind" value="住房维修基金" title="住房维修基金">
+                    <input id="gjj" type="radio" name="businessKind" value="住房公积金" title="住房公积金" lay-verify="single">
+                    <input id="bt" type="radio" name="businessKind" value="住房补贴" title="住房补贴" lay-verify="single">
+                    <input id="jj" type="radio" name="businessKind" value="住房基金" title="住房基金" lay-verify="single">
+                    <input id="wx" type="radio" name="businessKind" value="住房维修基金" title="住房维修基金" lay-verify="single">
                 </div>
             </div>
+
             <div class="layui-form-item">
                 <label class="layui-form-label">资金来源</label>
                 <div class="layui-input-block">
-                    <input id="Dwzc" type="radio" name="capitalSource" value="单位自筹" title="单位自筹">
-                    <input id="Czbk" type="radio" name="capitalSource" value="财政拨款" title="财政拨款">
-                    <input id="DwzcHeCzbk" type="radio" name="capitalSource" value="财政拨款和单位自筹" title="财政拨款和单位自筹">
+                    <input id="Dwzc" type="radio" name="capitalSource" value="单位自筹" title="单位自筹" lay-verify="single">
+                    <input id="Czbk" type="radio" name="capitalSource" value="财政拨款" title="财政拨款" lay-verify="single">
+                    <input id="DwzcHeCzbk" type="radio" name="capitalSource" value="财政拨款和单位自筹" title="财政拨款和单位自筹" lay-verify="single">
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label">开通二级辅助信息</label>
                 <div class="layui-input-block">
-                    <input id="KaiTong" type="radio" name="isSecondAssist" value="是" title="是">
-                    <input id="BuKaiTong" type="radio" name="isSecondAssist" value="否" title="否">
+                    <input id="KaiTong" type="radio" name="isSecondAssist" value="是" title="是" lay-verify="single">
+                    <input id="BuKaiTong" type="radio" name="isSecondAssist" value="否" title="否" lay-verify="single">
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label">财政拨款单位</label>
                 <div class="layui-input-block">
-                    <input id="Scz" type="radio" name="allocateUnit" value="市财政" title="市财政">
-                    <input id="QXcz" type="radio" name="allocateUnit" value="区县财政" title="区县财政">
+                    <input id="Scz" type="radio" name="allocateUnit" value="市财政" title="市财政" lay-verify="single">
+                    <input id="QXcz" type="radio" name="allocateUnit" value="区县财政" title="区县财政" lay-verify="single">
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label">业务经办部门</label>
                 <div class="layui-input-block">
-                    <input id="YWJBBM" type="text" name="agentDepartment" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input id="YWJBBM" type="text" name="agentDepartment" lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
@@ -82,14 +84,14 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">联系电话</label>
                 <div class="layui-input-block">
-                    <input id="LXDH" type="text" name="unitPhone" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input id="LXDH" type="text" name="unitPhone" lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label">发薪日期</label>
                 <div class="layui-input-block">
-                    <select name="payDay" required lay-verify="required" lay-filter="papers">
+                    <select name="payDay" lay-verify="required" lay-filter="papers">
                         <option  value=""></option>
                         <option id="payDay1" value="1">1</option>
                         <option id="payDay2" value="2">2</option>
@@ -129,7 +131,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">首次汇缴月份</label>
                 <div class="layui-input-block">
-                    <select name="firstRemitMonth" required lay-verify="required" lay-filter="papers">
+                    <select name="firstRemitMonth" lay-verify="required" lay-filter="papers">
                         <option value=""></option>
                         <option id="firstRemitMonth1" value="1">1</option>
                         <option id="firstRemitMonth2" value="2">2</option>
@@ -150,15 +152,15 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">跨年清册核定月份</label>
                 <div class="layui-input-block">
-                    <input id="1yue" type="radio" name="yearListRatify" value="1" title="1月">
-                    <input id="7yue" type="radio" name="yearListRatify" value="7" title="7月">
+                    <input id="1yue" type="radio" name="yearListRatify" value="1" title="1月" lay-verify="single">
+                    <input id="7yue" type="radio" name="yearListRatify" value="7" title="7月" lay-verify="single">
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label">单位缴存比例</label>
                 <div class="layui-input-block">
-                    <input id="danweibili" type="text" name="unitDepositeRatio" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input id="danweibili" type="text" name="unitDepositeRatio" lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
@@ -172,20 +174,20 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">每月汇缴是否需要确认人员清册</label>
                 <div class="layui-input-block">
-                    <input id="yesIsMonthConfirm" type="radio" name="isMonthConfirm" value="是" title="是">
-                    <input id="noIsMonthConfirm" type="radio" name="isMonthConfirm" value="否" title="否">
+                    <input id="yesIsMonthConfirm" type="radio" name="isMonthConfirm" value="是" title="是" lay-verify="single">
+                    <input id="noIsMonthConfirm" type="radio" name="isMonthConfirm" value="否" title="否" lay-verify="single">
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label">是否接受中心信息服务</label>
                 <div class="layui-input-block">
-                    <input id="yesIsAcceptService" type="radio" name="isAcceptService" value="是" title="是">
-                    <input id="noIsAcceptService"  type="radio" name="isAcceptService" value="否" title="否">
+                    <input id="yesIsAcceptService" type="radio" name="isAcceptService" value="是" title="是" lay-verify="single">
+                    <input id="noIsAcceptService"  type="radio" name="isAcceptService" value="否" title="否" lay-verify="single">
                 </div>
             </div>
 
-            <div class="layui-form-item">
+            <!--<div class="layui-form-item">
                 <label class="layui-form-label">缴款方式</label>
                 <div class="layui-input-block">
                     <input id="WTSK" type="radio" name="payMethod" value="委托收款" title="委托收款">
@@ -196,14 +198,12 @@
                     <input id="ZZFK" type="radio" name="payMethod" value="转账交款" title="转账交款">
                     <input id="ZXZF" type="radio" name="payMethod" value="在线支付" title="在线支付">
                 </div>
-            </div>
+            </div>-->
 
-            <input id="inpt_submit" type="submit" class="layui-btn" value="修改">
+            <button id="inpt_submit" lay-submit class="layui-btn">修改</button>
 
         </form>
     </div>
-
-    <script type="text/javascript" src="/js/unit_account_update.js"></script>
 
 </body>
 </html>
