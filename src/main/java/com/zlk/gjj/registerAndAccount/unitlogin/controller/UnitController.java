@@ -66,7 +66,7 @@ public class UnitController {
                 request.getSession().setAttribute("ID",unit.getUnitId());
                 request.getSession().setAttribute("name",unit.getAgentName());
                 mv.addObject("message",message);
-                mv.setViewName("functions");
+                mv.setViewName("redirect:/sys/toFunctions");
             }else if(message.equals("登录错误3次，退出系统")){
                 mv.addObject("message",message);
                 mv.setViewName("index");

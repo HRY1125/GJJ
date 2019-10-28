@@ -73,5 +73,8 @@ public interface RemittanceMapper {
      */
     List<Remittance> queryAllByRemittanceAndLimit(@Param("unitRegisterId")String  unitRegisterId, @Param("offset") int offset, @Param("limit") int limit);
 
-
+    /**
+     *根据unitRegisterId查询数据条数
+     */
+    Integer queryCountByunitRegisterId(String  unitRegisterId);
 }

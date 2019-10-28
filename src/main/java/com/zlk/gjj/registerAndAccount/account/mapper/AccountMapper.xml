@@ -22,6 +22,7 @@
         <result property="firstRemitMonth" column="first_remit_month" javaType="java.lang.Integer"></result>
         <result property="yearListRatify" column="year_list_ratify" javaType="java.lang.Integer"></result>
         <result property="unitDepositeRatio" column="unit_deposite_ratio" javaType="java.lang.Integer"></result>
+        <result property="unitPeopleDepositeRatio" column="unit_people_deposite_ratio" javaType="java.lang.Integer"></result>
         <result property="isMonthConfirm" column="is_month_confirm" javaType="java.lang.String"></result>
         <result property="payMethod" column="pay_method" javaType="java.lang.String"></result>
 
@@ -30,16 +31,16 @@
 
 
 <insert id="insertAccount" parameterType="com.zlk.gjj.registerAndAccount.entity.Account">
-        insert into account(account_id,unit_register_id,unit_id,unit_name,unit_phone,business_kind,capital_source,allocate_unit,is_second_assist,is_accept_service,agent_department,pay_day,first_remit_month,year_list_ratify,unit_deposite_ratio,is_month_confirm,pay_method) values (#{accountId},#{unitRegisterId},#{unitId},#{unitName},#{unitPhone},#{businessKind},#{capitalSource},#{allocateUnit},#{isSecondAssist},#{isAcceptService},#{agentDepartment},#{payDay},#{firstRemitMonth},#{yearListRatify},#{unitDepositeRatio},#{isMonthConfirm},#{payMethod})
+        insert into account(account_id,unit_register_id,unit_id,unit_name,unit_phone,business_kind,capital_source,allocate_unit,is_second_assist,is_accept_service,agent_department,pay_day,first_remit_month,year_list_ratify,unit_deposite_ratio,unit_people_deposite_ratio,is_month_confirm,pay_method) values (#{accountId},#{unitRegisterId},#{unitId},#{unitName},#{unitPhone},#{businessKind},#{capitalSource},#{allocateUnit},#{isSecondAssist},#{isAcceptService},#{agentDepartment},#{payDay},#{firstRemitMonth},#{yearListRatify},#{unitDepositeRatio},#{unitPeopleDepositeRatio},#{isMonthConfirm},#{payMethod})
     </insert>
 
     <select id="selectAccountByUnitId" parameterType="com.zlk.gjj.registerAndAccount.entity.Account" resultType="java.lang.String">
-		select businessKind from account where unit_id=#{unitId}
+		select business_kind from account where unit_id=#{unitId}
 	</select>
 
     <select id="selectAccountByUnitRegisterId" resultMap="accountEntityMap">
         select * from account where
-        unit_register_id = #{unitRegisterId}
+        unit_id = #{unitId}
     </select>
 
     <update id="updateAccountById" parameterType="com.zlk.gjj.registerAndAccount.entity.Account">
@@ -88,6 +89,9 @@
         <if test="unitDepositeRatio!=null and unitDepositeRatio!=''">
             unit_deposite_ratio  =#{unitDepositeRatio},
         </if>
+        <if test="unitPeopleDepositeRatio!=null and unitPeopleDepositeRatio!=''">
+            unit_people_deposite_ratio  =#{unitPeopleDepositeRatio},
+        </if>
         <if test="isMonthConfirm!=null and isMonthConfirm!=''">
             is_month_confirm  =#{isMonthConfirm},
         </if>
@@ -105,6 +109,9 @@
     <delete id="deleteAccountByUnitId" parameterType="com.zlk.gjj.registerAndAccount.entity.Account">
         delete from account where unit_id=#{unitId}
     </delete>
+
+
+
 
 
 

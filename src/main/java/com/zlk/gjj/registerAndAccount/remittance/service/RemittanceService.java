@@ -63,11 +63,16 @@ public interface RemittanceService {
      */
     boolean deleteById(Integer remittanceId);
 
-    List<Emp_Rem> selRemAndEmpAndSAAll(int offset, int limit);
+    List<Emp_Rem> selRemAndEmpAndSAAll(String UnitRegisterId,int offset, int limit);
 
     String updateEmpAndRem(Emp_Rem empRem);
 
     String deleRemAndEmp(Emp_Rem empRem);
 
     List<Employee> selectRemAndEmpByUnitRegisterId(String UnitRegisterId,int offset, int limit);
+
+    /**
+     *根据unitRegisterId查询数据条数
+     */
+    Integer queryCountByunitRegisterId(String  unitRegisterId);
 }

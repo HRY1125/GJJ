@@ -17,6 +17,7 @@ public class Account {
     private int  firstRemitMonth;
     private int  yearListRatify;
     private int  unitDepositeRatio;
+    private int  unitPeopleDepositeRatio;
     private String isMonthConfirm;
     private String payMethod;
 
@@ -157,10 +158,19 @@ public class Account {
         this.isAcceptService = isAcceptService;
     }
 
+    public int getUnitPeopleDepositeRatio() {
+        return unitPeopleDepositeRatio;
+    }
+
+    public void setUnitPeopleDepositeRatio(int unitPeopleDepositeRatio) {
+        this.unitPeopleDepositeRatio = unitPeopleDepositeRatio;
+    }
+
     public Account() {
     }
 
-    public Account(String accountId, String unitRegisterId, String unitId, String unitName, String unitPhone, String accountType, String businessKind, String capitalSource, String allocateUnit, String isSecondAssist, String isAcceptService, String agentDepartment, int payDay, int firstRemitMonth, int yearListRatify, int unitDepositeRatio, String isMonthConfirm, String payMethod) {
+
+    public Account(String accountId, String unitRegisterId, String unitId, String unitName, String unitPhone, String businessKind, String capitalSource, String allocateUnit, String isSecondAssist, String isAcceptService, String agentDepartment, int payDay, int firstRemitMonth, int yearListRatify, int unitDepositeRatio, int unitPeopleDepositeRatio, String isMonthConfirm, String payMethod) {
         this.accountId = accountId;
         this.unitRegisterId = unitRegisterId;
         this.unitId = unitId;
@@ -176,6 +186,7 @@ public class Account {
         this.firstRemitMonth = firstRemitMonth;
         this.yearListRatify = yearListRatify;
         this.unitDepositeRatio = unitDepositeRatio;
+        this.unitPeopleDepositeRatio = unitPeopleDepositeRatio;
         this.isMonthConfirm = isMonthConfirm;
         this.payMethod = payMethod;
     }
@@ -198,6 +209,7 @@ public class Account {
                 ", firstRemitMonth=" + firstRemitMonth +
                 ", yearListRatify=" + yearListRatify +
                 ", unitDepositeRatio=" + unitDepositeRatio +
+                ", unitPeopleDepositeRatio=" + unitPeopleDepositeRatio +
                 ", isMonthConfirm='" + isMonthConfirm + '\'' +
                 ", payMethod='" + payMethod + '\'' +
                 '}';

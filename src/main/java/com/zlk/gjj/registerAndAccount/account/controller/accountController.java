@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import javax.servlet.http.HttpServletRequest;
+
 
 @Controller
 @RequestMapping(value="/account")
@@ -20,12 +22,12 @@ public class accountController {
     private UnitRegisterService UnitRegisterService;
 
     @RequestMapping(value = "/toUA")
-    public String toUA(){
+    public String toUA() {
         return "unit_account";
     }
 
     @RequestMapping(value = "/accountInsert")
-    public String insertAccount(Account account){
+    public String insertAccount(Account account) {
         /*account.setAccountId("1");
         account.setUnitRegistId("1");
         account.setUnitId("1");
@@ -43,58 +45,70 @@ public class accountController {
         account.setUnitId("2");
 
         Integer flag = accountService.insertAccount(account);
-        if(flag == 1){
+        if (flag == 1) {
             return "index";
-        }else {
+        } else {
             return null;
         }
     }
 
     @RequestMapping(value = "/selectAccountByUnitId")
-    public String selectAccountByUnitId(String unitId,String unitName, String orgCode){
+    public String selectAccountByUnitId(String unitId, String unitName, String orgCode) {
         UnitRegister unitRegister = new UnitRegister();
         unitRegister.setUnitName("1");
         unitRegister.setOrgCode("1");
         String s = UnitRegisterService.selectUnitRegisterUnitId(unitRegister);
-        String flag = accountService.selectAccountByUnitId(s);
-        if(flag .equals("1")){
+        /*String flag = accountService.selectAccountByUnitId(s);
+        if (flag.equals("1")) {
             return "index1";
-        }else {
+        } else {
             return null;
-        }
-
+        }*/
+      return null;
     }
 
-       @RequestMapping(value = "/updateAccountById")
-       @ResponseBody
-       public String updateAccountById( Account account){
+    @RequestMapping(value = "/updateAccountById")
+    @ResponseBody
+    public String updateAccountById(Account account) {
         Integer flag = accountService.updateAccountById(account);
-           if(flag == 1){
-               return "修改成功";
-           }else {
-               return "修改失败";
-           }
-       }
+        if (flag == 1) {
+            return "修改成功";
+        } else {
+            return "修改失败";
+        }
+    }
+
     @RequestMapping("selectAccountByUnitRegisterId")
     @ResponseBody
-    public Account selectAccountByUnitRegisterId(String unitRegisterId){
-        Account account=accountService.selectAccountByUnitRegisterId(unitRegisterId);
-        return accountService.selectAccountByUnitRegisterId(unitRegisterId);
+    public Account selectAccountByUnitRegisterId(HttpServletRequest request) {
+        Account account = accountService.selectAccountByUnitRegisterId((String)request.getSession().getAttribute("ID"));
+        return account;
     }
 
     @RequestMapping("updatekaihu")
-    public String updatekaihu(){
+    public String updatekaihu() {
+
         return "unit_account_update";
     }
 
     @RequestMapping(value = "/deleteAccountByUnitId")
-    public String deleteAccountByUnitId(String unitId) throws  Exception{
+    public String deleteAccountByUnitId(String unitId) throws Exception {
 
         Integer flag = accountService.deleteAccountByUnitId("1");
-        if(flag == 1){
+        if (flag == 1) {
             return "index1";
-        }else {
+        } else {
             return null;
         }
+    }
+
+    @RequestMapping(value = "/selectAccountBusinessByUnitId")
+    @ResponseBody
+    public String selectAccountBusinessByUnitId(Account account, String unitId) {
+        account.setUnitId("84834387");
+        String s = accountService.selectAccountByUnitId(account.getUnitId());
+
+
+        return null;
     }
 }

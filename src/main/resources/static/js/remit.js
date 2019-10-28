@@ -4,11 +4,12 @@ window.onload=function(){
         var table = layui.table;
         var form = layui.form;
         var layer = layui.layer;
-
+        var unitRegistId1000 = $("#ipt_urId").val();
         table.render({
+
             elem: '#employ'
             ,height: 500
-            ,url: '/remittance/select'
+            ,url: '/remittance/select?UnitRegisterId='+unitRegistId1000
             ,page: true
             ,toolbar: '#toolbar'
             ,cols: [[ //表头
@@ -80,15 +81,17 @@ window.onload=function(){
                 $.ajax({
                     type : "POST",
                     contentType: "application/json;charset=UTF-8",
-                    url : "/remittance/add",
+                    url : "/remittance/add?unitRegisterId="+$("#ipt_urId").val(),
                     data : "",
                     dataType : "json",
                     success : function(result) {
                         table.reload('employ',{
                             height: 500
-                            ,url: '/remittance/select'
-                            ,page: true
+                            ,url: '/remittance/select?UnitRegisterId='+$("#ipt_urId").val()
                             ,toolbar: '#toolbar'
+                            ,page:{
+                                curr:1
+                            }
                         });
                     }
                 });
@@ -118,8 +121,10 @@ window.onload=function(){
                                 layer.msg("保存成功！");
                                 table.reload('employ', {
                                     height: 500
-                                    , url: '/remittance/select'
-                                    , page: true
+                                    , url: '/remittance/select?UnitRegisterId='+unitRegistId
+                                    , page:{
+                                        curr:1
+                                    }
                                     , toolbar: '#toolbar'
                                 });
                             },
@@ -145,8 +150,10 @@ window.onload=function(){
                                 layer.msg("删除成功！");
                                 table.reload('employ', {
                                     height: 500
-                                    , url: '/remittance/select'
-                                    , page: true
+                                    , url: '/remittance/select?UnitRegisterId='+$("#ipt_urId").val()
+                                    , page: {
+                                        curr:1
+                                    }
                                     , toolbar: '#toolbar'
                                 });
                             },
