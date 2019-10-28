@@ -1,6 +1,5 @@
 package com.zlk.gjj.registerAndAccount.account.controller;
 
-import ch.qos.logback.core.joran.conditional.ElseAction;
 import com.zlk.gjj.registerAndAccount.account.service.AccountService;
 import com.zlk.gjj.registerAndAccount.entity.Account;
 import com.zlk.gjj.registerAndAccount.entity.UnitRegister;
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.sql.SQLOutput;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping(value="/account")
@@ -81,9 +80,9 @@ public class accountController {
 
     @RequestMapping("selectAccountByUnitRegisterId")
     @ResponseBody
-    public Account selectAccountByUnitRegisterId(String unitRegisterId) {
-        Account account = accountService.selectAccountByUnitRegisterId(unitRegisterId);
-        return accountService.selectAccountByUnitRegisterId(unitRegisterId);
+    public Account selectAccountByUnitRegisterId(HttpServletRequest request) {
+        Account account = accountService.selectAccountByUnitRegisterId((String)request.getSession().getAttribute("ID"));
+        return account;
     }
 
     @RequestMapping("updatekaihu")

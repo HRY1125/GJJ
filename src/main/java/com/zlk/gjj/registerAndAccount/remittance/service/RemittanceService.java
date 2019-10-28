@@ -70,4 +70,9 @@ public interface RemittanceService {
     String deleRemAndEmp(Emp_Rem empRem);
 
     List<Employee> selectRemAndEmpByUnitRegisterId(String UnitRegisterId,int offset, int limit);
+
+    /**
+     *根据unitRegisterId查询数据条数
+     */
+    Integer queryCountByunitRegisterId(String  unitRegisterId);
 }
