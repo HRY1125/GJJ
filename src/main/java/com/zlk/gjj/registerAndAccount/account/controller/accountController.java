@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping(value="/account")
 public class accountController {
@@ -77,13 +79,13 @@ public class accountController {
        }
     @RequestMapping("selectAccountByUnitRegisterId")
     @ResponseBody
-    public Account selectAccountByUnitRegisterId(String unitRegisterId){
-        Account account=accountService.selectAccountByUnitRegisterId(unitRegisterId);
-        return accountService.selectAccountByUnitRegisterId(unitRegisterId);
+    public Account selectAccountByUnitRegisterId(HttpServletRequest request){
+        Account account=accountService.selectAccountByUnitRegisterId((String)request.getSession().getAttribute("ID"));
+        return account;
     }
 
     @RequestMapping("updatekaihu")
-    public String updatekaihu(){
+    public String updatekaihu(HttpServletRequest request){
         return "unit_account_update";
     }
 
