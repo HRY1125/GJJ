@@ -13,4 +13,6 @@ public interface AccountMapper {
      Integer updateAccountById(Account account);
 
      Integer deleteAccountByUnitId(String unitId);
+
+     String selectAccountBusinessByUnitId(String unitId);
 }
