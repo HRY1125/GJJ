@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.sql.SQLOutput;
+import java.util.List;
 
 @Controller
 @RequestMapping(value="/account")
@@ -59,13 +60,13 @@ public class accountController {
         unitRegister.setUnitName("1");
         unitRegister.setOrgCode("1");
         String s = UnitRegisterService.selectUnitRegisterUnitId(unitRegister);
-        String flag = accountService.selectAccountByUnitId(s);
+        /*String flag = accountService.selectAccountByUnitId(s);
         if (flag.equals("1")) {
             return "index1";
         } else {
             return null;
-        }
-
+        }*/
+      return null;
     }
 
     @RequestMapping(value = "/updateAccountById")
@@ -108,16 +109,7 @@ public class accountController {
     public String selectAccountBusinessByUnitId(Account account, String unitId) {
         account.setUnitId("84834387");
         String s = accountService.selectAccountByUnitId(account.getUnitId());
-        System.out.println(s);
-        if (s.equals("住房公积金")) {
-            return "index1";
-        } else if (s.equals("住房补贴")) {
-            return null;
-        } else if (s.equals("住房基金")) {
-            return null;
-        } else if (s.equals("住房维修基金")) {
-            return null;
-        }
+
 
         return null;
     }

@@ -1,6 +1,8 @@
 package com.zlk.gjj.registerAndAccount.sys.controller;
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
+import com.zlk.gjj.registerAndAccount.account.service.AccountService;
+import com.zlk.gjj.registerAndAccount.entity.Account;
 import com.zlk.gjj.registerAndAccount.entity.UnitRegister;
 import com.zlk.gjj.registerAndAccount.unitRegister.mapper.UnitRegisterMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -26,16 +29,21 @@ public class SysController {
     private UnitRegisterMapper unitRegisterMapper;
     @Autowired
     private DefaultKaptcha captchaProducer;
+    @Autowired
+    private AccountService accountService;
 
     @RequestMapping("/toFunctions")
-    public String toFunctions(){
+    public String toFunctions(HttpServletRequest request,Map map){
+        String s = accountService.selectAccountByUnitId((String) request.getSession().getAttribute("ID"));
+        map.put("accountKind",s);
         return "functions";
     }
 
     @RequestMapping("/toUA")
-    public String toUA(Map map){
-        map.put("accountKind","住房补贴");
+    public String toUA(){
+
         return "unit_account";
+
     }
 
     @RequestMapping("/toPR")
