@@ -31,7 +31,7 @@
 
 
 <insert id="insertAccount" parameterType="com.zlk.gjj.registerAndAccount.entity.Account">
-        insert into account(account_id,unit_register_id,unit_id,unit_name,unit_phone,business_kind,capital_source,allocate_unit,is_second_assist,is_accept_service,agent_department,pay_day,first_remit_month,year_list_ratify,unit_deposite_ratio,is_month_confirm,pay_method) values (#{accountId},#{unitRegisterId},#{unitId},#{unitName},#{unitPhone},#{businessKind},#{capitalSource},#{allocateUnit},#{isSecondAssist},#{isAcceptService},#{agentDepartment},#{payDay},#{firstRemitMonth},#{yearListRatify},#{unitDepositeRatio},#{isMonthConfirm},#{payMethod})
+        insert into account(account_id,unit_register_id,unit_id,unit_name,unit_phone,business_kind,capital_source,allocate_unit,is_second_assist,is_accept_service,agent_department,pay_day,first_remit_month,year_list_ratify,unit_deposite_ratio,unit_people_deposite_ratio,is_month_confirm,pay_method) values (#{accountId},#{unitRegisterId},#{unitId},#{unitName},#{unitPhone},#{businessKind},#{capitalSource},#{allocateUnit},#{isSecondAssist},#{isAcceptService},#{agentDepartment},#{payDay},#{firstRemitMonth},#{yearListRatify},#{unitDepositeRatio},#{unitPeopleDepositeRatio},#{isMonthConfirm},#{payMethod})
     </insert>
 
     <select id="selectAccountByUnitId" parameterType="com.zlk.gjj.registerAndAccount.entity.Account" resultType="java.lang.String">
@@ -88,6 +88,9 @@
         </if>
         <if test="unitDepositeRatio!=null and unitDepositeRatio!=''">
             unit_deposite_ratio  =#{unitDepositeRatio},
+        </if>
+        <if test="unitPeopleDepositeRatio!=null and unitPeopleDepositeRatio!=''">
+            unit_people_deposite_ratio  =#{unitPeopleDepositeRatio},
         </if>
         <if test="isMonthConfirm!=null and isMonthConfirm!=''">
             is_month_confirm  =#{isMonthConfirm},
