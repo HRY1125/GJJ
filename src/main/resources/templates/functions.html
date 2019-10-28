@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>functions</title>
@@ -22,7 +22,7 @@
                 <a href="javascript:;">业务功能</a>
                 <dl class="layui-nav-child">
                     <dd><a href="/sys/toPR" target="iframe1">个人登记</a></dd>
-                    <dd><a href="/sys/toUA" target="iframe1">单位开户</a></dd>
+                    <dd><a href="/sys/toUA" th:if="${accountKind==null}" target="iframe1">单位开户</a></dd>
                     <dd><a href="/sys/toUR" target="iframe1">单位登记申请</a></dd>
                     <dd><a href="/agent/toAgent" target="iframe1">单位经办人授权</a></dd>
                     <dd><a href="/sys/toPM" target="iframe1">缴款方式管理</a></dd>

@@ -22,4 +22,18 @@ window.onload=function(){
         });
     });
 
-}
+
+    var unSelected = "gray";
+    var selected = "#000";
+    $("#select1").css("color", unSelected);
+    $("option").css("color", selected);
+    $("#select1").change(function () {
+        var selItem = $(this).val();
+        if (selItem == $(this).find('option:first').val()) {
+            $(this).css("color", unSelected);
+        } else {
+            $(this).css("color", selected);
+        }
+    });
+
+};

@@ -39,7 +39,9 @@ public class UnitController {
             Unit unitAfter = unitService.findUnitByPapersNum(unit.getPapersNum());
             model.addAttribute("message",msg);
             model.addAttribute("unit",unitAfter);
+            model.addAttribute("flag",true);
         }else {
+            model.addAttribute("flag",false);
             model.addAttribute("message","两次密码不一致");
         }
 
@@ -64,17 +66,17 @@ public class UnitController {
                 request.getSession().setAttribute("ID",unit.getUnitId());
                 request.getSession().setAttribute("name",unit.getAgentName());
                 mv.addObject("message",message);
-                mv.setViewName("functions");
+                mv.setViewName("redirect:/sys/toFunctions");
             }else if(message.equals("登录错误3次，退出系统")){
                 mv.addObject("message",message);
-                mv.setViewName("test");
+                mv.setViewName("index");
             }else {
                 mv.addObject("message",message);
-                mv.setViewName("test");
+                mv.setViewName("login");
             }
         }else {
             mv.addObject("message","验证码输入错误");
-            mv.setViewName("test");
+            mv.setViewName("login");
         }
 
         return mv;

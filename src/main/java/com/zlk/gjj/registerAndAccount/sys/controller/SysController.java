@@ -1,6 +1,7 @@
 package com.zlk.gjj.registerAndAccount.sys.controller;
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
+import com.zlk.gjj.registerAndAccount.entity.Unit;
 import com.zlk.gjj.registerAndAccount.account.service.AccountService;
 import com.zlk.gjj.registerAndAccount.entity.Account;
 import com.zlk.gjj.registerAndAccount.entity.UnitRegister;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
+
 import java.util.Map;
 
 @Controller
@@ -30,15 +32,19 @@ public class SysController {
     @Autowired
     private DefaultKaptcha captchaProducer;
 
+
     @RequestMapping("/toFunctions")
-    public String toFunctions(){
+    public String toFunctions(HttpServletRequest request,Map map){
+        String s = accountService.selectAccountByUnitId((String) request.getSession().getAttribute("ID"));
+        map.put("accountKind",s);
         return "functions";
     }
 
     @RequestMapping("/toUA")
-    public String toUA(Map map){
-        map.put("accountKind","住房补贴");
+    public String toUA(){
+
         return "unit_account";
+
     }
 
     @RequestMapping("/toPR")
@@ -73,7 +79,10 @@ public class SysController {
     }
 
     @RequestMapping("/toLogin")
-    public String toLogin(){
+    public String toLogin(Map<String,Object> map){
+        Unit unit = new Unit();
+        unit.setUnitId("");
+        map.put("unit",unit);
         return "login";
     }
 
