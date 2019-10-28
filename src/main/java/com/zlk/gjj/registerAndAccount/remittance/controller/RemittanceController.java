@@ -73,10 +73,10 @@ public class RemittanceController {
         return remittanceService.update(remittance);
     }
 
-    @RequestMapping("selRemAndEmpAndSAAll")
+   /* @RequestMapping("selRemAndEmpAndSAAll")
     public List<Emp_Rem> selRemAndEmpAndSAAll(int offset, int limit){
         return remittanceService.selRemAndEmpAndSAAll(offset, limit);
-    }
+    }*/
 
     @RequestMapping("updateEmpAndRem")
     public String updateEmpAndRem(Emp_Rem empRem){
@@ -91,9 +91,9 @@ public class RemittanceController {
     }
 
     @RequestMapping("select")
-    public Map selRemAndEmpAndSAAll1(Integer page,Integer limit){
+    public Map selRemAndEmpAndSAAll1(String UnitRegisterId,Integer page,Integer limit){
         int offset=(page-1)*limit;
-        List<Emp_Rem> emp_rems = remittanceService.selRemAndEmpAndSAAll(offset, limit);
+        List<Emp_Rem> emp_rems = remittanceService.selRemAndEmpAndSAAll(UnitRegisterId,offset, limit);
         int count = emp_rems.size();
         Map map = new HashMap();
         map.put("code",0);
