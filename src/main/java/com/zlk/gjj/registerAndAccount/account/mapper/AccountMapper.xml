@@ -22,6 +22,7 @@
         <result property="firstRemitMonth" column="first_remit_month" javaType="java.lang.Integer"></result>
         <result property="yearListRatify" column="year_list_ratify" javaType="java.lang.Integer"></result>
         <result property="unitDepositeRatio" column="unit_deposite_ratio" javaType="java.lang.Integer"></result>
+        <result property="unitPeopleDepositeRatio" column="unit_people_deposite_ratio" javaType="java.lang.Integer"></result>
         <result property="isMonthConfirm" column="is_month_confirm" javaType="java.lang.String"></result>
         <result property="payMethod" column="pay_method" javaType="java.lang.String"></result>
 
@@ -34,7 +35,7 @@
     </insert>
 
     <select id="selectAccountByUnitId" parameterType="com.zlk.gjj.registerAndAccount.entity.Account" resultType="java.lang.String">
-		select businessKind from account where unit_id=#{unitId}
+		select business_kind from account where unit_id=#{unitId}
 	</select>
 
     <select id="selectAccountByUnitRegisterId" resultMap="accountEntityMap">
@@ -105,6 +106,9 @@
     <delete id="deleteAccountByUnitId" parameterType="com.zlk.gjj.registerAndAccount.entity.Account">
         delete from account where unit_id=#{unitId}
     </delete>
+
+
+
 
 
 
