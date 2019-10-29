@@ -98,6 +98,10 @@ public class UnitRegisterController {
             return "default";
         }
         UnitRegister unitRegister = UnitRegisterService.selectUnitRegisterByUId(unitId);
+        if (unitRegister==null){
+            model.addAttribute("retmsg","尚未进行单位登记,请先进行单位登记");
+            return "default";
+        }
         model.addAttribute("unitRegister",unitRegister);
         return "unit_register_update";
     }
