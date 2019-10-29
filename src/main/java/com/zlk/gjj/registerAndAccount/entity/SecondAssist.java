@@ -2,7 +2,7 @@ package com.zlk.gjj.registerAndAccount.entity;
 
 public class SecondAssist {
     /**部门Id*/
-    private String saId;
+    private Integer saId;
     /**单位Id*/
     private String unitId;
     /**部门编号*/
@@ -13,11 +13,22 @@ public class SecondAssist {
     private String departmentCode;
 
 
-    public String getSaId() {
+    public SecondAssist() {
+    }
+
+    public SecondAssist(Integer saId, String unitId, String departmentId, String departmentName, String departmentCode) {
+        this.saId = saId;
+        this.unitId = unitId;
+        this.departmentId = departmentId;
+        this.departmentName = departmentName;
+        this.departmentCode = departmentCode;
+    }
+
+    public Integer getSaId() {
         return saId;
     }
 
-    public void setSaId(String saId) {
+    public void setSaId(Integer saId) {
         this.saId = saId;
     }
 
@@ -53,21 +64,10 @@ public class SecondAssist {
         this.departmentCode = departmentCode;
     }
 
-    public SecondAssist(String saId, String unitId, String departmentId, String departmentName, String departmentCode) {
-        this.saId = saId;
-        this.unitId = unitId;
-        this.departmentId = departmentId;
-        this.departmentName = departmentName;
-        this.departmentCode = departmentCode;
-    }
-
-    public SecondAssist() {
-    }
-
     @Override
     public String toString() {
         return "SecondAssist{" +
-                "saId='" + saId + '\'' +
+                "saId=" + saId +
                 ", unitId='" + unitId + '\'' +
                 ", departmentId='" + departmentId + '\'' +
                 ", departmentName='" + departmentName + '\'' +

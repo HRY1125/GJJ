@@ -12,5 +12,5 @@ public interface SecondAssistService {
 
     Integer updateSecondAssistById(SecondAssist secondAssist);
 
-    Integer deleteSecondAssistByUnitId(String unitId);
+    Integer deleteSecondAssistByUnitId(SecondAssist secondAssist);
 }

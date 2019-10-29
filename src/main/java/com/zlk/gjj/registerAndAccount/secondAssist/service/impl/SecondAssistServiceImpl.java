@@ -31,7 +31,7 @@ public class SecondAssistServiceImpl implements SecondAssistService {
     }
 
     @Override
-    public Integer deleteSecondAssistByUnitId(String unitId) {
-        return SecondAssistMapper.deleteSecondAssistByUnitId(unitId);
+    public Integer deleteSecondAssistByUnitId(SecondAssist secondAssist) {
+        return SecondAssistMapper.deleteSecondAssistByUnitId(secondAssist);
     }
 }

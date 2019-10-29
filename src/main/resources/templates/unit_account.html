@@ -21,14 +21,14 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">单位登记号</label>
                 <div class="layui-input-block">
-                    <input id="ipt_unitId" type="text" name="unitRegisterId" lay-verify="required" autocomplete="off" class="layui-input">
+                    <input th:value="${unitRegistId}" id="ipt_unitId" type="text" readonly="readonly" name="unitRegisterId" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label">单位名称</label>
                 <div class="layui-input-block">
-                    <input id="unitName" type="text" readonly="readonly" name="unitName" autocomplete="off" class="layui-input">
+                    <input th:value="${unitName}" id="unitName" type="text" readonly="readonly" name="unitName" autocomplete="off" class="layui-input">
                 </div>
             </div>
 

@@ -1,6 +1,8 @@
 package com.zlk.gjj.registerAndAccount.remittance.service.impl;
 
+import com.zlk.gjj.registerAndAccount.account.service.AccountService;
 import com.zlk.gjj.registerAndAccount.employee.service.EmployeeService;
+import com.zlk.gjj.registerAndAccount.entity.Account;
 import com.zlk.gjj.registerAndAccount.entity.Employee;
 import com.zlk.gjj.registerAndAccount.entity.Remittance;
 import com.zlk.gjj.registerAndAccount.entity.vo.Emp_Rem;
@@ -10,6 +12,8 @@ import com.zlk.gjj.registerAndAccount.secondAssist.mapper.SecondAssistMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +30,9 @@ public class RemittanceServiceImpl implements RemittanceService {
 
     @Autowired
     private EmployeeService employeeService;
+
+    @Autowired
+    private AccountService accountService;
 
     @Autowired
     private SecondAssistMapper secondAssistMapper;
@@ -71,8 +78,8 @@ public class RemittanceServiceImpl implements RemittanceService {
      * @return 实例对象
      */
     @Override
-    public Remittance insert(Remittance remittance) {
-        Employee employee=employeeService.insert(new Employee());
+    public Remittance insert(HttpServletRequest request,Remittance remittance) {
+        Employee employee=employeeService.insert(request,new Employee());
         remittance.setEmployeeId(employee.getEmployeeId());
         this.remittanceMapper.insert(remittance);
         return remittance;
@@ -127,6 +134,8 @@ public class RemittanceServiceImpl implements RemittanceService {
 
     @Override
     public String updateEmpAndRem(Emp_Rem empRem) {
+
+
         Employee employee = new Employee();
         Remittance remittance = new Remittance();
         employee.setEmployeeId(empRem.getEmployeeId());
@@ -134,13 +143,25 @@ public class RemittanceServiceImpl implements RemittanceService {
         employee.setEmployeeName(empRem.getEmployeeName());
         employee.setEmployeePapersName(empRem.getEmployeePapersName());
         employee.setEmployeeNationnality(empRem.getEmployeeNationnality());
+        Employee employee1=employeeService.queryById(employee.getEmployeeId());
+        Account account=accountService.selectAccountByUnitId2(employee1.getUnitId());
+
+        Double gerenbili=account.getUnitPeopleDepositeRatio()*0.01;
+        Double danweibili=account.getUnitDepositeRatio()*0.01;
+        Double jisu=empRem.getDepositBase();
+        BigDecimal gerenbili12=new BigDecimal(Double.toString(gerenbili));
+        BigDecimal danweibili2=new BigDecimal(Double.toString(danweibili));
+        BigDecimal jisu2=new BigDecimal(Double.toString(jisu));
+        BigDecimal danweijine=jisu2.multiply(danweibili2).setScale(3, BigDecimal.ROUND_HALF_UP);
+        BigDecimal gerenjine=jisu2.multiply(gerenbili12).setScale(3, BigDecimal.ROUND_HALF_UP);
+        BigDecimal heji=danweijine.add(gerenjine);
         remittance.setSaId(empRem.getSaId());
         remittance.setRemittanceId(empRem.getRemittanceId());
         remittance.setEmployeeId(empRem.getEmployeeId());
         remittance.setDepositBase(empRem.getDepositBase());
-        remittance.setDepositeTotal(empRem.getEmployeeDeposite()+empRem.getUnitDeposite());
-        remittance.setEmployeeDeposite(empRem.getEmployeeDeposite());
-        remittance.setUnitDeposite(empRem.getUnitDeposite());
+        remittance.setDepositeTotal(heji.doubleValue());
+        remittance.setEmployeeDeposite(gerenjine.doubleValue());
+        remittance.setUnitDeposite(danweijine.doubleValue());
         remittance.setUnitRegisterId(empRem.getUnitRegisterId());
         int i1= remittanceMapper.update(remittance);
         Employee emp1=employeeService.update(employee);

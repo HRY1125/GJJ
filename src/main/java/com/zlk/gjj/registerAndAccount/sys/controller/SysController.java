@@ -44,8 +44,15 @@ public class SysController {
     }
 
     @RequestMapping("/toUA")
-    public String toUA(){
-
+    public String toUA(HttpServletRequest request,Map map){
+        String unitId = (String) request.getSession().getAttribute("ID");
+        UnitRegister unitRegister = unitRegisterMapper.selectUnitRegisterByUId(unitId);
+        if (unitRegister==null){
+            map.put("retmsg","单位未登记，请先进行单位登记");
+            return "default";
+        }
+        map.put("unitRegistId",unitRegister.getUnitRegisterId());
+        map.put("unitName",unitRegister.getUnitName());
         return "unit_account";
 
     }
@@ -62,7 +69,11 @@ public class SysController {
 
     @RequestMapping("/toRemit")
     public String toRemit(HttpServletRequest request,Map map){
-        Account account=accountService.selectAccountByUnitRegisterId((String)request.getSession().getAttribute("ID"));
+        Account account=accountService.selectAccountByUnitId2((String)request.getSession().getAttribute("ID"));
+        if (account==null){
+            map.put("retmsg","单位未开户，请先进行单位开户");
+            return "default";
+        }
         map.put("unitRegistId",account.getUnitRegisterId());
         map.put("unitName",account.getUnitName());
         map.put("source",account.getCapitalSource());

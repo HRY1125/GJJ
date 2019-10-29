@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 
 @Controller
@@ -59,16 +60,21 @@ public class accountController {
         }
     }
 
-    @RequestMapping("selectAccountByUnitRegisterId")
+    @RequestMapping("selectAccountByUnitId2")
     @ResponseBody
-    public Account selectAccountByUnitRegisterId(HttpServletRequest request) {
-        Account account = accountService.selectAccountByUnitRegisterId((String)request.getSession().getAttribute("ID"));
+    public Account selectAccountByUnitId2(HttpServletRequest request) {
+        Account account = accountService.selectAccountByUnitId2((String)request.getSession().getAttribute("ID"));
         return account;
     }
 
     @RequestMapping("updatekaihu")
-    public String updatekaihu() {
-
+    public String updatekaihu(HttpServletRequest request, Map map) {
+        String unitId = (String) request.getSession().getAttribute("ID");
+        String ret = accountService.selectAccountByUnitId(unitId);
+        if (ret == null){
+            map.put("retmsg","单位未开户，请先开户");
+            return "default";
+        }
         return "unit_account_update";
     }
 

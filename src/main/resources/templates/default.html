@@ -11,8 +11,9 @@
 </head>
 <body>
     <div id="entirety">
-        <div id="div_main">
-            <p id="p1">默认页</p>
+        <div id="div_main" th:switch="${retmsg}">
+            <p id="p1" th:case="${retmsg}" th:text="${retmsg}"></p>
+            <p id="p1" th:case="null">默认页</p>
         </div>
     </div>
 </body>
