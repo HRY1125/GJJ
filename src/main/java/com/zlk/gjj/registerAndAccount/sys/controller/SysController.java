@@ -54,7 +54,6 @@ public class SysController {
         map.put("unitRegistId",unitRegister.getUnitRegisterId());
         map.put("unitName",unitRegister.getUnitName());
         return "unit_account";
-
     }
 
     @RequestMapping("/toPR")

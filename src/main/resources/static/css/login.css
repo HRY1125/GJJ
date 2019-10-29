@@ -44,9 +44,15 @@ li{
 .inpt_submit{
     position: relative;
     left: 45%;
-}
-
-.layui-input{
     height: 40px !important;
 }
 
+.layui-input{
+
+}
+
+#message{
+    position: relative;
+    left: 45%;
+    color: red;
+}
