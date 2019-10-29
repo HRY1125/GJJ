@@ -28,22 +28,8 @@ public class accountController {
 
     @RequestMapping(value = "/accountInsert")
     public String insertAccount(Account account) {
-        /*account.setAccountId("1");
-        account.setUnitRegistId("1");
-        account.setUnitId("1");
-        account.setBusinessKind("1");
-        account.setCapitalSource("1");
-        account.setAllocateUnit("1");
-        account.setIsSecondAssist("1");
-        account.setAgentDepartment("1");
-        account.setPayDay(1);
-        account.setFirstRemitMonth(1);
-        account.setUnitDepositeRatio(1);
-        account.setIsMonthConfirm("1");*/
 
         account.setAccountId(IdUtils.getUnitId(9));
-        account.setUnitId("2");
-
         Integer flag = accountService.insertAccount(account);
         if (flag == 1) {
             return "index";
@@ -58,12 +44,7 @@ public class accountController {
         unitRegister.setUnitName("1");
         unitRegister.setOrgCode("1");
         String s = UnitRegisterService.selectUnitRegisterUnitId(unitRegister);
-        /*String flag = accountService.selectAccountByUnitId(s);
-        if (flag.equals("1")) {
-            return "index1";
-        } else {
-            return null;
-        }*/
+
       return null;
     }
 
@@ -93,7 +74,6 @@ public class accountController {
 
     @RequestMapping(value = "/deleteAccountByUnitId")
     public String deleteAccountByUnitId(String unitId) throws Exception {
-
         Integer flag = accountService.deleteAccountByUnitId("1");
         if (flag == 1) {
             return "index1";
@@ -105,10 +85,7 @@ public class accountController {
     @RequestMapping(value = "/selectAccountBusinessByUnitId")
     @ResponseBody
     public String selectAccountBusinessByUnitId(Account account, String unitId) {
-        account.setUnitId("84834387");
         String s = accountService.selectAccountByUnitId(account.getUnitId());
-
-
         return null;
     }
 }
