@@ -127,4 +127,9 @@ public class UnitServiceImpl implements UnitService {
         return unitMapper.findUnitByPapersNum(papersNum);
     }
 
+    @Override
+    public String findUnitIdByUnitName(String unitName) {
+        return unitMapper.findUnitIdByUnitName(unitName);
+    }
+
 }

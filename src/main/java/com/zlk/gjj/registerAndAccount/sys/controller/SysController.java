@@ -6,6 +6,7 @@ import com.zlk.gjj.registerAndAccount.account.service.AccountService;
 import com.zlk.gjj.registerAndAccount.entity.Account;
 import com.zlk.gjj.registerAndAccount.entity.UnitRegister;
 import com.zlk.gjj.registerAndAccount.unitRegister.mapper.UnitRegisterMapper;
+import com.zlk.gjj.registerAndAccount.unitlogin.mapper.UnitMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,6 +30,8 @@ public class SysController {
     private AccountService accountService;
     @Autowired
     private UnitRegisterMapper unitRegisterMapper;
+    @Autowired
+    private UnitMapper unitMapper;
     @Autowired
     private DefaultKaptcha captchaProducer;
 
@@ -148,8 +151,8 @@ public class SysController {
     @ResponseBody
     public Map isUnitName(@RequestBody String unitName){
         Map map = new HashMap();
-        UnitRegister unitRegister = unitRegisterMapper.selectUnitRegisterByName(unitName);
-        if(unitRegister==null){
+        String unitId = unitMapper.findUnitIdByUnitName(unitName);
+        if(unitId==null){
             map.put("isExist",false);
         }else{
             map.put("isExist",true);
