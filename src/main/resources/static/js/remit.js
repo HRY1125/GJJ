@@ -158,6 +158,5 @@ window.onload=function(){
 
             }
         })
-
     });
 };

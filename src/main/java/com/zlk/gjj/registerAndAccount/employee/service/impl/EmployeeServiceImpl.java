@@ -6,6 +6,7 @@ import com.zlk.gjj.registerAndAccount.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -71,8 +72,9 @@ public class EmployeeServiceImpl implements EmployeeService {
      * @return 是否成功
      */
     @Override
-    public Employee insert(Employee employee) {
+    public Employee insert(HttpServletRequest request,Employee employee) {
         employee.setEmployeeCardRegistStatus("未制卡");
+        employee.setUnitId((String)request.getSession().getAttribute("ID"));
         this.employeeMapper.insert(employee);
         return employee;
     }
@@ -84,7 +86,7 @@ public class EmployeeServiceImpl implements EmployeeService {
      * @return 实例对象
      */
     @Override
-    public Employee update(Employee employee) {
+    public Employee update( Employee employee) {
         this.employeeMapper.update(employee);
         return this.queryById(employee.getEmployeeId());
     }

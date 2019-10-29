@@ -66,7 +66,7 @@ public class SysController {
 
     @RequestMapping("/toRemit")
     public String toRemit(HttpServletRequest request,Map map){
-        Account account=accountService.selectAccountByUnitRegisterId((String)request.getSession().getAttribute("ID"));
+        Account account=accountService.selectAccountByUnitId2((String)request.getSession().getAttribute("ID"));
         if (account==null){
             map.put("retmsg","单位未开户，请先进行单位开户");
             return "default";

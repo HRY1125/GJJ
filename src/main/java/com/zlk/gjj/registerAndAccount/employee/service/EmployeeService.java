@@ -2,6 +2,7 @@ package com.zlk.gjj.registerAndAccount.employee.service;
 
 import com.zlk.gjj.registerAndAccount.entity.Employee;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -48,7 +49,7 @@ public interface EmployeeService {
      * @param employee 实例对象
      * @return 是否成功
      */
-    Employee insert(Employee employee);
+    Employee insert(HttpServletRequest request, Employee employee);
 
     /**
      * 修改数据
