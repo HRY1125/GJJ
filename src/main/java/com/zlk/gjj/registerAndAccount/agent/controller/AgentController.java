@@ -34,6 +34,10 @@ public class AgentController {
 //        model.addAttribute("unitName",unitName);
         String unitId = (String) request.getSession().getAttribute("ID");
 //        unitId = "24356741";
+        if (unitId==null){
+            model.addAttribute("retmsg","登录异常,请重新登陆");
+            return "default";
+        }
         Agent agent = agentService.findAgentByUId(unitId);
         model.addAttribute("agent",agent);
         return "agent";

@@ -93,6 +93,10 @@ public class UnitRegisterController {
     public String findUnitRegister(Model model, HttpServletRequest request) throws Exception{
         String unitId = (String) request.getSession().getAttribute("ID");
 //        unitId = "1";
+        if (unitId==null){
+            model.addAttribute("retmsg","登录异常,请重新登陆");
+            return "default";
+        }
         UnitRegister unitRegister = UnitRegisterService.selectUnitRegisterByUId(unitId);
         model.addAttribute("unitRegister",unitRegister);
         return "unit_register_update";

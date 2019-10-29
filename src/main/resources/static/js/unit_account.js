@@ -18,6 +18,12 @@ window.onload=function(){
                 if (flag){
                     return "单选必填项不能为空";
                 }
+            },
+
+            unitRegistId:function (value, item) {
+                if(!(/[1-9]([0-9]{8})/.test(value))){
+                    return "请输入正确的单位登记号";
+                }
             }
         });
     });

@@ -47,14 +47,6 @@ window.onload=function(){
 
         });
 
-        form.verify({
-            myVerify:function (value, item) { //value：表单的值、item：表单的DOM对象
-                if(value==null){
-                    return "不能为空";
-                }
-            }
-        });
-
         //头工具栏监听
         table.on('toolbar(edit)', function(obj){
             var event = obj.event;
