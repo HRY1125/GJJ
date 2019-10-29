@@ -19,7 +19,7 @@
     <div id="left">
         <ul id="left_navi" class="layui-nav layui-nav-tree" lay-filter="test">
             <li class="layui-nav-item layui-nav-itemed">
-                <a href="javascript:;">业务功能</a>
+                <a href="/sys/toDefault" target="iframe1">业务功能</a>
                 <dl class="layui-nav-child">
                     <dd><a href="/sys/toPR" target="iframe1">个人登记</a></dd>
                     <dd><a href="/sys/toUA" th:if="${accountKind==null}" target="iframe1">单位开户</a></dd>
@@ -37,7 +37,7 @@
         </ul>
     </div>
     <div id="right">
-        <iframe id="iframe_right" name="iframe1" frameborder="0" scrolling="yes" src=""></iframe>
+        <iframe id="iframe_right" name="iframe1" frameborder="0" scrolling="yes" src="/sys/toDefault"></iframe>
     </div>
 </body>
 </html>
