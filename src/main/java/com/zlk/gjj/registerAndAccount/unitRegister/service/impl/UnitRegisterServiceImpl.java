@@ -76,5 +76,10 @@ public class UnitRegisterServiceImpl implements UnitRegisterService {
         return UnitRegisterMapper.updateUnitRegister(unitRegister);
     }
 
+    @Override
+    public String selectUnitIdByUnitRegisterId(String unitRegisterId) {
+        return UnitRegisterMapper.selectUnitIdByUnitRegisterId(unitRegisterId);
+    }
+
 
 }

@@ -201,4 +201,8 @@
         </set>
         where unit_register_id = #{unitRegisterId}
     </update>
+
+    <select id="selectUnitIdByUnitRegisterId" parameterType="java.lang.String" resultType="java.lang.String">
+        select unit_id from unit_register where unit_register_id=#{unitRegisterId}
+    </select>
 </mapper>

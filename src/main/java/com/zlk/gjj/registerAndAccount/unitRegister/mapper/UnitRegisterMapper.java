@@ -79,5 +79,15 @@ public interface UnitRegisterMapper {
      *@time 2019/10/24  17:15
      */
     Integer updateUnitRegister(UnitRegister unitRegister);
+    /**
+     *  根据unitregisterid查找单位id
+     *@method selectUnitIdByUnitRegisterId
+     *@params [unitRegisterId]
+     *@return java.lang.String
+     *@author zhang
+     *@time 2019/10/23  21:41
+     */
+    String selectUnitIdByUnitRegisterId(String unitRegisterId);
+
 
 }
