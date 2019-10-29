@@ -35,7 +35,7 @@ public class AgentServiceImpl implements AgentService {
         if(integer>0){
             message = "经办人添加成功";
         }else {
-            message = "添加失败";
+            message = "经办人添加失败";
         }
         return message;
     }
@@ -51,9 +51,9 @@ public class AgentServiceImpl implements AgentService {
         Integer integer = agentMapper.updateAgentById(agent);
         String message = "";
         if(integer>0){
-            message = "经办人添加成功";
+            message = "经办人修改成功";
         }else {
-            message = "添加失败";
+            message = "经办人修改失败";
         }
         return message;
     }
@@ -64,8 +64,28 @@ public class AgentServiceImpl implements AgentService {
     }
 
     @Override
-    public Agent findAgentByUId(String unitId) {
+    public List<Agent> findAgentByUId(String unitId) {
         return agentMapper.findAgentByUId(unitId);
+    }
+
+    @Override
+    public Integer updateAgentByAId(Agent agent) {
+        return agentMapper.updateAgentByAId(agent);
+    }
+
+    @Override
+    public List<Agent> findAgentByUIdAll(String unitId, int offset, int limit) {
+        return agentMapper.findAgentByUIdAll(unitId,offset,limit);
+    }
+
+    @Override
+    public Integer findCountByUnitId(String unitId) {
+        return agentMapper.findCountByUnitId(unitId);
+    }
+
+    @Override
+    public Integer deleteAgentByAgentId(Agent agent) {
+        return agentMapper.deleteAgentByAgentId(agent);
     }
 
 }

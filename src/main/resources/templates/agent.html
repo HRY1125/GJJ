@@ -10,6 +10,18 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
+    <input id="message" th:if="${message != null}" th:value="${message}" hidden="hidden">
+    <script th:if="${message != null}">
+        var data = $("#message").val();
+        layui.use(['element','layer'], function(){
+            var element = layui.element;
+            var layer = layui.layer;
+
+            layer.open({
+                content: data
+            })
+        });
+    </script>
 <div id="div_form">
     <form id="form_main" class="layui-form" th:action="@{/agent/updateAgent}" method="post" th:object="${agent}">
         <input id="ipt_unitId" th:field="*{unitId}" th:hidden="hidden">
@@ -43,7 +55,8 @@
         <div class="layui-form-item">
             <label class="layui-form-label">经办人证件号码</label>
             <div class="layui-input-block">
-                <input type="text" th:field="*{agentPapersNum}" lay-verify="required" autocomplete="off" class="layui-input">
+                <input id="agentPapersNum" type="text" th:field="*{agentPapersNum}" required lay-verify="required" autocomplete="off" class="layui-input">
+                <span id="agentPapersNum_span" style="display: none;color: red"></span>
             </div>
         </div>
 
@@ -66,21 +79,24 @@
         <div class="layui-form-item">
             <label class="layui-form-label">办公电话</label>
             <div class="layui-input-block">
-                <input type="text" th:field="*{officePhone}" required  lay-verify="required" autocomplete="off" class="layui-input">
+                <input id="officePhone" type="text" th:field="*{officePhone}" required  lay-verify="required" autocomplete="off" class="layui-input">
+                <span id="officePhone_span" style="display: none;color: red"></span>
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">手机号码</label>
             <div class="layui-input-block">
-                <input type="text" th:field="*{agentPhone}" required  lay-verify="required" autocomplete="off" class="layui-input">
+                <input id="agentPhone" type="text" th:field="*{agentPhone}" required  lay-verify="required" autocomplete="off" class="layui-input">
+                <span id="agentPhone_span" style="display: none;color: red"></span>
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">经办人邮箱</label>
             <div class="layui-input-block">
-                <input type="text" th:field="*{agentEmail}" required  lay-verify="required" autocomplete="off" class="layui-input">
+                <input id="agentEmail" type="text" th:field="*{agentEmail}" required  lay-verify="required" autocomplete="off" class="layui-input">
+                <span id="agentEmail_span" style="display: none;color: red"></span>
             </div>
         </div>
 

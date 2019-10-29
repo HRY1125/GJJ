@@ -10,6 +10,18 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
+    <input id="message" th:if="${message != null}" th:value="${message}" hidden="hidden">
+    <script th:if="${message != null}">
+        var data = $("#message").val();
+        layui.use(['element','layer'], function(){
+            var element = layui.element;
+            var layer = layui.layer;
+
+            layer.open({
+                content: data
+            })
+        });
+    </script>
     <div id="div_form">
         <form id="form_main" class="layui-form" action="/unitRegister/unitRegister" method="post" th:object="${unitRegister}">
 
@@ -72,14 +84,17 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">证件号码</label>
                 <div class="layui-input-block">
-                    <input type="text" name="lpPapersNum" lay-verify="required" autocomplete="off" class="layui-input">
+                    <input id="lpPapersNum" type="text" name="lpPapersNum" lay-verify="required" autocomplete="off" class="layui-input">
+                    <i id="res_lpPapersNum_r" class="layui-icon" hidden="hidden" style="color: green">&#xe605;</i>
+                    <i id="res_lpPapersNum_w" class="layui-icon" hidden="hidden" style="color: red">&#x1006;</i>
+                    <span id="lpPapersNum_span" style="display: none;color: red"></span>
                 </div>
             </div>
 
             <div id="div_nation" class="layui-form-item" style="display: none">
                 <label class="layui-form-label">国籍</label>
                 <div class="layui-input-block">
-                    <input id="ipt_nation" type="text" name="nationality" lay-verify="required" autocomplete="off" class="layui-input">
+                    <input id="ipt_nation" type="text" name="nationality" required lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
 

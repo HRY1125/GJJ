@@ -8,6 +8,14 @@ import java.util.List;
 @Mapper
 public interface UnitRegisterMapper {
 
+    /**
+     *  查找unit_register表中的unitid的值
+     *@method selectUnitRegisterUnitId
+     *@params [unitRegister]
+     *@return java.lang.String
+     *@author zhang
+     *@time 2019/10/29  19:19
+     */
     String selectUnitRegisterUnitId (UnitRegister unitRegister);
 
     /**

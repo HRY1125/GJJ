@@ -31,7 +31,7 @@ public class UnitRegisterController {
     public String selectUnitRegisterUnitId(UnitRegister unitRegister){
         String s = UnitRegisterService.selectUnitRegisterUnitId(unitRegister);
         System.out.println(s);
-        return "test";
+        return "unit_register";
     }
 
     /**

@@ -7,14 +7,15 @@ window.onload=function(){
         var unitId = $("#ipt_unitId").val();
         table.render({
 
-            elem: '#employ'
+            elem: '#agent'
             ,height: 500
-            ,url: '/remittance/select?UnitId='+unitId
+            ,url: '/agent/select'
             ,page: true
             ,toolbar: '#toolbar'
-            ,cols: [[ //表头
+            ,cols: [
+                        [ //表头
                 /*{field: 'NO.', title: '序号', width:80}
-                ,*/{field: 'unitRegisterId', title: '单位登记号', width:135}
+                ,*/{field: 'agentId', title: '经办人编号', width:135}
                 ,{field: 'agentName', title: '经办人姓名', width:135, edit:'text'}
                 ,{field: 'agentPapersName', title: '经办人证件名称', width:135, edit:'text'}
                 ,{field: 'agentPapersNum', title: '经办人证件号码', width: 180, edit:'text'}
@@ -22,9 +23,9 @@ window.onload=function(){
                 ,{field: 'officePhone', title: '办公电话', width: 135, edit:'text'}
                 ,{field: 'agentPhone', title: '手机号码', width: 135, edit:'text'}
                 ,{field: 'agentEmail', title: '经办人邮箱', width: 135, edit:'text'}
-                ,{field: 'agentType', title: '用户类型', width: 135}
-                ,{field: 'ukey', title: '数字证书', width: 135}
-                ,{field: 'agentUserName', title: '用户名', width: 135}
+                ,{field: 'agentType', title: '用户类型', width: 135, edit:'text'}
+                ,{field: 'ukey', title: '数字证书', width: 135, edit:'text'}
+                ,{field: 'agentUserName', title: '用户名', width: 135, edit:'text'}
                 ,{field: '', title: '保存/删除', width: 110, fixed: 'right'
                     , toolbar:'<div><div class="layui-btn-group">\n' +
                         '  <button type="button" class="layui-btn layui-btn-sm" lay-event="save">\n' +
@@ -34,7 +35,8 @@ window.onload=function(){
                         '    <i class="layui-icon">&#xe640;</i>\n' +
                         '  </button>\n' + '</div>' +
                         '</div>'}
-            ]]
+                        ]
+            ]
         });
 
         table.on('edit(edit)', function(obj){
@@ -79,13 +81,13 @@ window.onload=function(){
                 $.ajax({
                     type : "POST",
                     contentType: "application/json;charset=UTF-8",
-                    url : "/remittance/add?unitId="+$("#ipt_unitId").val(),
+                    url : "/agent/insert",
                     data : "",
                     dataType : "json",
                     success : function(result) {
-                        table.reload('employ',{
+                        table.reload('agent',{
                             height: 500
-                            ,url: '/remittance/select?UnitRegisterId='+$("#ipt_urId").val()
+                            ,url: '/agent/select'
                             ,toolbar: '#toolbar'
                             ,page:{
                                 curr:1
@@ -112,14 +114,14 @@ window.onload=function(){
                         $.ajax({
                             type: "POST",
                             contentType: "application/json;charset=UTF-8",
-                            url: "/remittance/update",
+                            url: "/agent/update",
                             data: JSON.stringify(data),
                             dataType: "json",
                             success: function (result) {
                                 layer.msg("保存成功！");
-                                table.reload('employ', {
+                                table.reload('agent', {
                                     height: 500
-                                    , url: '/remittance/select?UnitRegisterId='+unitRegistId
+                                    , url: '/agent/select'
                                     , page:{
                                         curr:1
                                     }
@@ -141,14 +143,14 @@ window.onload=function(){
                         $.ajax({
                             type: "POST",
                             contentType: "application/json;charset=UTF-8",
-                            url: "/remittance/delete",
+                            url: "/agent/delete",
                             data: JSON.stringify(data),
                             dataType: "json",
                             success: function (result) {
                                 layer.msg("删除成功！");
                                 table.reload('employ', {
                                     height: 500
-                                    , url: '/remittance/select?UnitRegisterId='+$("#ipt_urId").val()
+                                    , url: '/agent/select'
                                     , page: {
                                         curr:1
                                     }

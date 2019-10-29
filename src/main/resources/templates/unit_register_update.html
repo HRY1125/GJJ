@@ -10,6 +10,19 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
+    <input id="message" th:if="${message != null}" th:value="${message}" hidden="hidden">
+    <script th:if="${message != null}">
+        var data = $("#message").val();
+        layui.use(['element','layer'], function(){
+            var element = layui.element;
+            var layer = layui.layer;
+
+            layer.open({
+                content: data
+            })
+        });
+    </script>
+
     <div id="div_form">
         <form id="form_main" class="layui-form" th:action="@{/unitRegister/updateUnitRegister}" method="post" th:object="${unitRegister}">
             <input th:field="*{unitRegisterId}" th:hidden="hidden">
@@ -72,6 +85,9 @@
                 <label class="layui-form-label">证件号码</label>
                 <div class="layui-input-block">
                     <input type="text" th:field="*{lpPapersNum}" lay-verify="required" autocomplete="off" class="layui-input" th:readonly="true">
+                    <i id="res_lpPapersNum_r" class="layui-icon" hidden="hidden" style="color: green">&#xe605;</i>
+                    <i id="res_lpPapersNum_w" class="layui-icon" hidden="hidden" style="color: red">&#x1006;</i>
+                    <span id="lpPapersNum_span" style="display: none;color: red"></span>
                 </div>
             </div>
 

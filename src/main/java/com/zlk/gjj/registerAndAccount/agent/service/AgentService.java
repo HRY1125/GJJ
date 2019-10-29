@@ -1,6 +1,9 @@
 package com.zlk.gjj.registerAndAccount.agent.service;
 
 import com.zlk.gjj.registerAndAccount.entity.Agent;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface AgentService {
 
@@ -42,5 +45,46 @@ public interface AgentService {
      *@author zhang
      *@time 2019/10/25  11:52
      */
-    Agent findAgentByUId(String unitId);
+    List<Agent> findAgentByUId(String unitId);
+
+    /**
+     *  根据agentid修改agent信息
+     *@method updateAgentByAId
+     *@params [agent]
+     *@return java.lang.Integer
+     *@author zhang
+     *@time 2019/10/29  20:24
+     */
+    Integer updateAgentByAId(Agent agent);
+
+    /**
+     *  分页查找本单位所有agent
+     *@method findAgentByUIdAll
+     *@params [unitId, offset, limit]
+     *@return java.util.List<com.zlk.gjj.registerAndAccount.entity.Agent>
+     *@author zhang
+     *@time 2019/10/29  20:43
+     */
+    List<Agent> findAgentByUIdAll(@Param("unitId")String  unitId, @Param("offset") int offset, @Param("limit") int limit);
+
+
+    /**
+     *  统计同一单位经办人数量
+     *@method findCountByUnitId
+     *@params [unitId]
+     *@return java.lang.Integer
+     *@author zhang
+     *@time 2019/10/29  20:44
+     */
+    Integer findCountByUnitId(String unitId);
+
+    /**
+     *  根据经办人id删除经办人信息
+     *@method deleteAgentByAgentId
+     *@params [agent]
+     *@return java.lang.Integer
+     *@author zhang
+     *@time 2019/10/29  20:51
+     */
+    Integer deleteAgentByAgentId(Agent agent);
 }

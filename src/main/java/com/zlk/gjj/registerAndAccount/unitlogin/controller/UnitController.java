@@ -69,11 +69,11 @@ public class UnitController {
                 mv.setViewName("index");
             }else {
                 mv.addObject("message",message);
-                mv.setViewName("login");
+                mv.setViewName("redirect:/sys/toLogin");
             }
         }else {
             mv.addObject("message","验证码输入错误");
-            mv.setViewName("login");
+            mv.setViewName("redirect:/sys/toLogin");
         }
 
         return mv;
