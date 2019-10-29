@@ -12,12 +12,12 @@
 <body>
 <div id="div_form">
     <form id="form_main" class="layui-form" th:action="@{/agent/updateAgent}" method="post" th:object="${agent}">
-        <input th:field="*{unitId}" th:hidden="hidden">
+        <input id="ipt_unitId" th:field="*{unitId}" th:hidden="hidden">
 
         <div class="layui-form-item">
             <label class="layui-form-label">单位登记号</label>
             <div class="layui-input-block">
-                <input id="unitName" th:field="*{unitRegisterId}" autocomplete="off" class="layui-input">
+                <input th:field="*{unitRegisterId}" autocomplete="off" class="layui-input">
             </div>
         </div>
 
