@@ -66,4 +66,14 @@ public interface UnitService {
      *@time 2019/10/22  19:11
      */
     Unit findUnitByPapersNum(String papersNum);
+
+    /**
+     *  根据单位名称查找单位id
+     *@method findUnitIdByUnitName
+     *@params [unitName]
+     *@return java.lang.String
+     *@author zhang
+     *@time 2019/10/29  15:24
+     */
+    String findUnitIdByUnitName(String unitName);
 }

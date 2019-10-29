@@ -130,4 +130,7 @@
         </set>
         where unit_id = #{unitId}
     </update>
+    <select id="findUnitIdByUnitName" parameterType="java.lang.String" resultType="java.lang.String">
+        select unit_id from unit where unit_name = #{unitName}
+    </select>
 </mapper>
