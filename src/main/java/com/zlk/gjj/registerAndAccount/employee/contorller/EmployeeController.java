@@ -43,6 +43,7 @@ public class EmployeeController {
      * @return 是否成功
      */
     @RequestMapping("insEmployee")
+    @ResponseBody
     public Employee insertEmployee(Employee employee){
         return employeeService.insert(employee);
     }
