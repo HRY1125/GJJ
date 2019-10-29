@@ -27,7 +27,7 @@ window.onload=function(){
         $.ajax({
             type: "POST",
             async: false,
-            url: "/account/selectAccountByUnitRegisterId",
+            url: "/account/selectAccountByUnitId2",
             data: {},
             dataType: "json",
             success: function (data) {

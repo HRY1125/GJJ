@@ -59,10 +59,10 @@ public class accountController {
         }
     }
 
-    @RequestMapping("selectAccountByUnitRegisterId")
+    @RequestMapping("selectAccountByUnitId2")
     @ResponseBody
-    public Account selectAccountByUnitRegisterId(HttpServletRequest request) {
-        Account account = accountService.selectAccountByUnitRegisterId((String)request.getSession().getAttribute("ID"));
+    public Account selectAccountByUnitId2(HttpServletRequest request) {
+        Account account = accountService.selectAccountByUnitId2((String)request.getSession().getAttribute("ID"));
         return account;
     }
 

@@ -59,7 +59,7 @@ public class SysController {
 
     @RequestMapping("/toRemit")
     public String toRemit(HttpServletRequest request,Map map){
-        Account account=accountService.selectAccountByUnitRegisterId((String)request.getSession().getAttribute("ID"));
+        Account account=accountService.selectAccountByUnitId2((String)request.getSession().getAttribute("ID"));
         map.put("unitRegistId",account.getUnitRegisterId());
         map.put("unitName",account.getUnitName());
         map.put("source",account.getCapitalSource());

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,8 +53,8 @@ public class RemittanceController {
      * 新增数据
      */
     @RequestMapping("insRemittance")
-    public Remittance insertRemittance(Remittance remittance){
-        return remittanceService.insert(remittance);
+    public Remittance insertRemittance(HttpServletRequest request, Remittance remittance){
+        return remittanceService.insert(request,remittance);
     }
     /**
      * 根据id删除数据
@@ -106,8 +107,8 @@ public class RemittanceController {
 
     @RequestMapping("add")
     @ResponseBody
-    public Map insertRemittance1(Remittance remittance){
-        remittanceService.insert(remittance);
+    public Map insertRemittance1(HttpServletRequest request,Remittance remittance){
+        remittanceService.insert(request,remittance);
         Map map = new HashMap();
         return map;
     }

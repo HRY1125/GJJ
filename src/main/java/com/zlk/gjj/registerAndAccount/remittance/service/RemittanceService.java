@@ -4,6 +4,7 @@ import com.zlk.gjj.registerAndAccount.entity.Employee;
 import com.zlk.gjj.registerAndAccount.entity.Remittance;
 import com.zlk.gjj.registerAndAccount.entity.vo.Emp_Rem;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -45,7 +46,7 @@ public interface RemittanceService {
      * @param remittance 实例对象
      * @return 实例对象
      */
-    Remittance insert(Remittance remittance);
+    Remittance insert(HttpServletRequest request, Remittance remittance);
 
     /**
      * 修改数据

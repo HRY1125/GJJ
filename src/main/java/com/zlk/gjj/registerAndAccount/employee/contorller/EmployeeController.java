@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -44,8 +45,8 @@ public class EmployeeController {
      */
     @RequestMapping("insEmployee")
     @ResponseBody
-    public Employee insertEmployee(Employee employee){
-        return employeeService.insert(employee);
+    public Employee insertEmployee(HttpServletRequest request, Employee employee){
+        return employeeService.insert(request,employee);
     }
 
     /**

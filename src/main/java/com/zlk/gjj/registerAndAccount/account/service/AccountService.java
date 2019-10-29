@@ -10,7 +10,7 @@ public interface AccountService {
 
     Integer updateAccountById(Account account);
 
-    Account selectAccountByUnitRegisterId(String unitId);
+    Account selectAccountByUnitId2(String unitId);
 
     Integer deleteAccountByUnitId(String unitId);
 }

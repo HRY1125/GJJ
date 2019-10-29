@@ -166,6 +166,5 @@ window.onload=function(){
 
             }
         })
-
     });
 };

@@ -38,7 +38,7 @@
 		select business_kind from account where unit_id=#{unitId}
 	</select>
 
-    <select id="selectAccountByUnitRegisterId" resultMap="accountEntityMap">
+    <select id="selectAccountByUnitId2" resultMap="accountEntityMap">
         select * from account where
         unit_id = #{unitId}
     </select>
