@@ -28,9 +28,10 @@ public class accountController {
     }
 
     @RequestMapping(value = "/accountInsert")
-    public String insertAccount(Account account) {
-
+    public String insertAccount(HttpServletRequest request,Account account) {
         account.setAccountId(IdUtils.getUnitId(9));
+        String unitId = (String) request.getSession().getAttribute("ID");
+        account.setUnitId(unitId);
         Integer flag = accountService.insertAccount(account);
         if (flag == 1) {
             return "index";
