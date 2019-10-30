@@ -28,12 +28,7 @@ public class accountController {
     }
 
     @RequestMapping(value = "/accountInsert")
-<<<<<<< HEAD
-    public String insertAccount(HttpServletRequest request,Account account) {
-=======
-    public String insertAccount(Account account,Map map) {
-
->>>>>>> 63b9659a009efc2daa34be128a385b5358f1e462
+    public String insertAccount(HttpServletRequest request,Account account,Map map) {
         account.setAccountId(IdUtils.getUnitId(9));
         String unitId = (String) request.getSession().getAttribute("ID");
         account.setUnitId(unitId);
