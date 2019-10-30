@@ -49,7 +49,10 @@
             <div class="layui-form-item entrust">
                 <label class="layui-form-label">委托收款单位账号</label>
                 <div class="layui-input-block">
-                    <input type="text" name="receiptUnitAccount" autocomplete="off" class="layui-input entrust_ipt">
+                    <input id="receiptUnitAccount1" type="text" name="receiptUnitAccount" autocomplete="off" class="layui-input entrust_ipt">
+                    <i id="receiptUnitAccount_r" class="layui-icon" hidden="hidden" style="color: green">&#xe605;</i>
+                    <i id="receiptUnitAccount_w" class="layui-icon" hidden="hidden" style="color: red">&#x1006;</i>
+                    <span id="receiptUnitAccount_span" style="display: none;color: red"></span>
                 </div>
             </div>
 
@@ -131,7 +134,10 @@
             <div class="layui-form-item remit">
                 <label class="layui-form-label">汇款账号</label>
                 <div class="layui-input-block">
-                    <input type="text" name="remitUnitAccount" autocomplete="off" class="layui-input remit_ipt">
+                    <input id="remitUnitAccount1" type="text" name="remitUnitAccount" autocomplete="off" class="layui-input remit_ipt">
+                    <i id="remitUnitAccount_r" class="layui-icon" hidden="hidden" style="color: green">&#xe605;</i>
+                    <i id="remitUnitAccount_w" class="layui-icon" hidden="hidden" style="color: red">&#x1006;</i>
+                    <span id="remitUnitAccount_span" style="display: none;color: red"></span>
                 </div>
             </div>
 

@@ -136,4 +136,43 @@ window.onload=function(){
         });
     });
 
+    //汇款账号验证
+    $("#remitUnitAccount1").blur(function () {
+        var phoneReg = /^\d{19}$/g;
+        var data = $("#remitUnitAccount1").val();
+        if(data==null || data == ""){
+            $("#remitUnitAccount_r").hide();
+            $("#remitUnitAccount_w").show();
+            $("#remitUnitAccount_span").css("display","inline").html("汇款账号不能为空");
+        }else if (!phoneReg.test(data)){
+            $("#remitUnitAccount_r").hide();
+            $("#remitUnitAccount_w").show();
+            $("#remitUnitAccount_span").css("display","inline").html("汇款账号不正确");
+        }else {
+            $("#remitUnitAccount_r").show();
+            $("#remitUnitAccount_w").hide();
+            $("#remitUnitAccount_span").css("display","none")
+        }
+    });
+
+    //委托收款单位账号验证
+    $("#receiptUnitAccount1").blur(function () {
+        var phoneReg = /^\d{19}$/g;
+        var data = $("#receiptUnitAccount1").val();
+        if(data==null || data == ""){
+            $("#receiptUnitAccount_r").hide();
+            $("#receiptUnitAccount_w").show();
+            $("#receiptUnitAccount_span").css("display","inline").html("收款账号不能为空");
+        }else if (!phoneReg.test(data)){
+            $("#receiptUnitAccount_r").hide();
+            $("#receiptUnitAccount_w").show();
+            $("#receiptUnitAccount_span").css("display","inline").html("收款账号不正确");
+        }else {
+            $("#receiptUnitAccount_r").show();
+            $("#receiptUnitAccount_w").hide();
+            $("#receiptUnitAccount_span").css("display","none")
+        }
+    });
+
+
 };
