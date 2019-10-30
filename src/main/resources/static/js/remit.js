@@ -4,6 +4,7 @@ window.onload=function(){
         var table = layui.table;
         var form = layui.form;
         var layer = layui.layer;
+        var senfenboolean = true;
         var unitRegistId1000 = $("#ipt_urId").val();
         table.render({
 
@@ -20,8 +21,8 @@ window.onload=function(){
                 ,{field: 'employeeNationnality', title: '国别', width: 135, edit:'text'}
                 ,{field: 'employeePapersNum', title: '证件号码', width: 180, edit:'text'}
                 ,{field: 'depositBase', title: '缴存基数', width: 135, edit:'text'}
-                ,{field: 'unitDeposite', title: '单位月缴存额', width: 135, edit:'text'}
-                ,{field: 'employeeDeposite', title: '个人月缴存额', width: 135, edit:'text'}
+                ,{field: 'unitDeposite', title: '单位月缴存额', width: 135}
+                ,{field: 'employeeDeposite', title: '个人月缴存额', width: 135}
                 ,{field: 'depositeTotal', title: '月缴存额合计', width: 135}
                 /*,{field: 'wealth', title: '二级管理辅助信息', width: 150
                     , templet: '<div><input type="radio" name="second" value="开通" title="开通">' +
@@ -38,12 +39,42 @@ window.onload=function(){
                               '</div>'}
             ]]
         });
-
+        var zhengjianming;
         table.on('edit(edit)', function(obj){
 
             console.log(obj.value); //得到修改后的值
             console.log(obj.field); //当前编辑的字段名
             console.log(obj.data); //所在行的所有相关数据
+
+            if(obj.field==="employeePapersName"){
+                zhengjianming=obj.value;
+                alert(zhengjianming);
+            }
+
+            if(obj.field==="employeePapersNum"){
+                //身份证号吗验证的正则
+                var papersNumReg = /(^[1-9]\d{5}(19|([23]\d))\d{2}((0[1-9])|(1[0-2]))((0[1-9])|([1-2][0-9])|(3[0-1]))\d{3}[0-9Xx]$)|(^[1-9]\d{5}((0[1-9])|(1[0-2]))((0[1-9])|([1-2][0-9])|(3[0-1]))\d{2}[0-9Xx]$)/;
+                if(!papersNumReg.test(obj.value)){
+                    layer.open({
+                        content:'身份证号码格式不正确！'
+                    });
+                    senfenboolean=false;
+                }else {
+                    senfenboolean=true;
+                }
+            }
+            /*if(obj.field==="depositBase"){
+                //身份证号吗验证的正则
+                var papersNumReg = ;
+                if(!papersNumReg.test(obj.value)){
+                    layer.open({
+                        content:'身份证号码格式不正确'});
+                    boolean=false;
+
+                }else {
+                    boolean=true;
+                }
+            }*/
 
         });
 
@@ -103,24 +134,30 @@ window.onload=function(){
                     content:'是否保存？'
                     ,btn:['是','否']
                     ,yes:function () {
-                        $.ajax({
-                            type: "POST",
-                            contentType: "application/json;charset=UTF-8",
-                            url: "/remittance/update",
-                            data: JSON.stringify(data),
-                            dataType: "json",
-                            success: function (result) {
-                                layer.msg("保存成功！");
-                                table.reload('employ', {
-                                    height: 500
-                                    , url: '/remittance/select?UnitRegisterId='+unitRegistId
-                                    , page:{
-                                        curr:1
-                                    }
-                                    , toolbar: '#toolbar'
-                                });
-                            },
-                        });
+                        if(senfenboolean){
+                            $.ajax({
+                                type: "POST",
+                                contentType: "application/json;charset=UTF-8",
+                                url: "/remittance/update",
+                                data: JSON.stringify(data),
+                                dataType: "json",
+                                success: function (result) {
+                                    layer.msg("保存成功！");
+                                    table.reload('employ', {
+                                        height: 500
+                                        , url: '/remittance/select?UnitRegisterId='+unitRegistId
+                                        , page:{
+                                            curr:1
+                                        }
+                                        , toolbar: '#toolbar'
+                                    });
+                                },
+                            });
+                        }else {
+                            layer.open({
+                                content:'您输入的身份证号不符合规范请重新输入！'});
+                        }
+
                     }
                     ,btn2:function () {
                         flag = false;
