@@ -2,12 +2,16 @@ package com.zlk.gjj.registerAndAccount.payIn.controller;
 
 
 
+import com.zlk.gjj.registerAndAccount.entity.Account;
 import com.zlk.gjj.registerAndAccount.entity.PayIn;
 import com.zlk.gjj.registerAndAccount.payIn.service.PayInService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 @Controller
 @RequestMapping(value="/payIn")
@@ -16,7 +20,7 @@ public class PayInController {
     private PayInService PayInService;
 
     @RequestMapping(value = "/payInInsert")
-    public String insertPayIn(PayIn PayIn, BindingResult bindingResult){
+    public String insertPayIn(HttpServletRequest request, PayIn PayIn, BindingResult bindingResult, Map map){
         /*PayIn.setUnitId("1");
         PayIn.setPayIdId(1);
         PayIn.setUnitRegisterId("1");
@@ -30,12 +34,17 @@ public class PayInController {
         PayIn.setRemitUnitName("1");
         PayIn.setRemitBankName("1");
         PayIn.setRemitUnitAccount(1);*/
-
+        String unitId = (String) request.getSession().getAttribute("ID");
+        PayIn.setUnitId(unitId);
         Integer flag = PayInService.insertPayIn(PayIn);
+
+
         if(flag == 1){
-            return "functions";
+            map.put("retmsg","发送成功");
+            return "default";
         }else {
-            return null;
+            map.put("retmsg","发送失败");
+            return "default";
         }
     }
 
