@@ -51,7 +51,7 @@ window.onload=function(){
                 alert(zhengjianming);
             }
 
-            if(obj.field==="employeePapersNum"){
+            if(obj.field==="employeePapersNum"&&zhengjianming==="身份证"){
                 //身份证号吗验证的正则
                 var papersNumReg = /(^[1-9]\d{5}(19|([23]\d))\d{2}((0[1-9])|(1[0-2]))((0[1-9])|([1-2][0-9])|(3[0-1]))\d{3}[0-9Xx]$)|(^[1-9]\d{5}((0[1-9])|(1[0-2]))((0[1-9])|([1-2][0-9])|(3[0-1]))\d{2}[0-9Xx]$)/;
                 if(!papersNumReg.test(obj.value)){
