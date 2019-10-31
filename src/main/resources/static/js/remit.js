@@ -5,6 +5,7 @@ window.onload=function(){
         var form = layui.form;
         var layer = layui.layer;
         var senfenboolean = true;
+        var depositBaseboolean = true;
         var unitRegistId1000 = $("#ipt_urId").val();
         table.render({
 
@@ -17,7 +18,7 @@ window.onload=function(){
                 /*{field: 'NO.', title: '序号', width:80}
                 ,*/{field: 'employeeId', title: '职工编号', width:135}
                 ,{field: 'employeeName', title: '姓名', width:135, edit:'text'}
-                ,{field: 'employeePapersName', title: '证件名称', width:135, edit:'text'}
+                ,{field: 'employeePapersName',title: '证件名称', width:135, templet: '#select',style: 'height:52px;padding-top:0px'}
                 ,{field: 'employeeNationnality', title: '国别', width: 135, edit:'text'}
                 ,{field: 'employeePapersNum', title: '证件号码', width: 180, edit:'text'}
                 ,{field: 'depositBase', title: '缴存基数', width: 135, edit:'text'}
@@ -28,30 +29,45 @@ window.onload=function(){
                     , templet: '<div><input type="radio" name="second" value="开通" title="开通">' +
                         '<input type="radio" name="second" value="不开通" title="不开通"></div>'}*/
 
-                ,{field: '', title: '保存/删除', width: 110, fixed: 'right'
-                    , toolbar:'<div><div class="layui-btn-group">\n' +
-                                '  <button type="button" class="layui-btn layui-btn-sm" lay-event="save">\n' +
-                                '    <i class="layui-icon">&#xe61f;</i>\n' +
-                                '  </button>\n' +
-                                '  <button type="button" class="layui-btn layui-btn-sm" lay-event="delete">\n' +
-                                '    <i class="layui-icon">&#xe640;</i>\n' +
-                                '  </button>\n' + '</div>' +
+                ,{field: '', title: '保存/删除', width: 110, fixed: 'right',style: 'height:52px'
+                    , toolbar:'<div>' +
+                                 '<div class="layui-btn-group">\n' +
+                                    '<button type="button" class="layui-btn layui-btn-sm" lay-event="save">\n' +
+                                        '<i class="layui-icon">&#xe61f;</i>\n' +
+                                    '</button>\n' +
+                                    '<button type="button" class="layui-btn layui-btn-sm" lay-event="delete">\n' +
+                                        '<i class="layui-icon">&#xe640;</i>\n' +
+                                    '</button>\n' +
+                                 '</div>' +
                               '</div>'}
             ]]
+            ,done: function (res, curr, count) {
+                layui.each($('select'), function (index, item) {
+                    var elem = $(item);
+                    elem.val(elem.data('value')).parents('div.layui-table-cell').css('overflow', 'visible');
+                });
+                form.render();
+            }
+
         });
-        var zhengjianming;
+
+        // 监听修改update到表格中
+        form.on('select(papers)', function (data) {
+            var elem = $(data.elem);
+            var trElem = elem.parents('tr');
+            var tableData = table.cache['employ'];
+            // 更新到表格的缓存数据中，才能在获得选中行等等其他的方法中得到更新之后的值
+            tableData[trElem.data('index')][elem.attr('name')] = data.value;
+            // 其他的操作看需求 TODO
+        });
+
         table.on('edit(edit)', function(obj){
 
             console.log(obj.value); //得到修改后的值
             console.log(obj.field); //当前编辑的字段名
             console.log(obj.data); //所在行的所有相关数据
 
-            if(obj.field==="employeePapersName"){
-                zhengjianming=obj.value;
-                alert(zhengjianming);
-            }
-
-            if(obj.field==="employeePapersNum"&&zhengjianming==="身份证"){
+            if(obj.field ==="employeePapersNum" && obj.data.employeePapersName==="身份证"){
                 //身份证号吗验证的正则
                 var papersNumReg = /(^[1-9]\d{5}(19|([23]\d))\d{2}((0[1-9])|(1[0-2]))((0[1-9])|([1-2][0-9])|(3[0-1]))\d{3}[0-9Xx]$)|(^[1-9]\d{5}((0[1-9])|(1[0-2]))((0[1-9])|([1-2][0-9])|(3[0-1]))\d{2}[0-9Xx]$)/;
                 if(!papersNumReg.test(obj.value)){
@@ -59,8 +75,25 @@ window.onload=function(){
                         content:'身份证号码格式不正确！'
                     });
                     senfenboolean=false;
+                    $(obj.tr[0].firstChild).next().next().next().next().css("color","red");
                 }else {
                     senfenboolean=true;
+                    $(obj.tr[0].firstChild).next().next().next().next().css("color","black");
+                }
+            }
+
+            if(obj.field ==="depositBase"){
+                //身份证号吗验证的正则
+                var depositBaseReg = /^(0|[1-9][0-9]{0,5})(\.([0][1-9]|[1-9][0-9]|[0][0]|[1-9]))?$/;
+                if(!depositBaseReg.test(obj.value)){
+                    layer.open({
+                        content:'缴存基数格式不正确！'
+                    });
+                    depositBaseboolean=false;
+                    $(obj.tr[0].firstChild).next().next().next().next().next().css("color","red");
+                }else {
+                    depositBaseboolean=true;
+                    $(obj.tr[0].firstChild).next().next().next().next().next().css("color","black");
                 }
             }
             /*if(obj.field==="depositBase"){
@@ -130,39 +163,46 @@ window.onload=function(){
             var event = obj.event;
             var flag = true;
             if(event=='save'){
-                layer.open({
-                    content:'是否保存？'
-                    ,btn:['是','否']
-                    ,yes:function () {
-                        if(senfenboolean){
-                            $.ajax({
-                                type: "POST",
-                                contentType: "application/json;charset=UTF-8",
-                                url: "/remittance/update",
-                                data: JSON.stringify(data),
-                                dataType: "json",
-                                success: function (result) {
-                                    layer.msg("保存成功！");
-                                    table.reload('employ', {
-                                        height: 500
-                                        , url: '/remittance/select?UnitRegisterId='+unitRegistId
-                                        , page:{
-                                            curr:1
-                                        }
-                                        , toolbar: '#toolbar'
-                                    });
-                                },
-                            });
-                        }else {
-                            layer.open({
-                                content:'您输入的身份证号不符合规范请重新输入！'});
-                        }
+                if (senfenboolean==false || depositBaseboolean==false){
+                    layer.open({
+                        content: '尚有不正确的格式未修改,无法保存！'
+                    });
+                }else {
+                    layer.open({
+                        content: '是否保存？'
+                        , btn: ['是', '否']
+                        , yes: function () {
+                            if (senfenboolean) {
+                                $.ajax({
+                                    type: "POST",
+                                    contentType: "application/json;charset=UTF-8",
+                                    url: "/remittance/update",
+                                    data: JSON.stringify(data),
+                                    dataType: "json",
+                                    success: function (result) {
+                                        layer.msg("保存成功！");
+                                        table.reload('employ', {
+                                            height: 500
+                                            , url: '/remittance/select?UnitRegisterId=' + unitRegistId
+                                            , page: {
+                                                curr: 1
+                                            }
+                                            , toolbar: '#toolbar'
+                                        });
+                                    },
+                                });
+                            } else {
+                                layer.open({
+                                    content: '您输入的身份证号不符合规范请重新输入！'
+                                });
+                            }
 
-                    }
-                    ,btn2:function () {
-                        flag = false;
-                    }
-                });
+                        }
+                        , btn2: function () {
+                            flag = false;
+                        }
+                    });
+                }
 
             }else if(event=='delete'){
                 layer.open({
