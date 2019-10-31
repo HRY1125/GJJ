@@ -72,7 +72,7 @@ public class AgentController {
     @RequestMapping(value = "/updateAgent")
     public String updateAgent(Model model,Agent agent) throws Exception{
         String message = agentService.updateAgentById(agent);
-        model.addAttribute("message","message");
+        model.addAttribute("message",message);
         return "agent";
     }
 

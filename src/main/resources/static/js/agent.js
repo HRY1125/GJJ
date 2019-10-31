@@ -211,12 +211,12 @@ window.onload=function(){
 
         //办公电话验证
         $("#officePhone").blur(function () {
-            var phoneReg = /^0\d{2,3}-?\d{7,8}$/;
+            var phoneReg = /^(0\d{2,3}-)?\d{7,8}$/;
             var data = $("#officePhone").val();
             if(data==null || data == ""){
-                $("#officePhone_span").css("display","inline").html("手机号不能为空");
+                $("#officePhone_span").css("display","inline").html("办公电话不能为空");
             }else if (!phoneReg.test(data)){
-                $("#officePhone_span").css("display","inline").html("手机号码不正确");
+                $("#officePhone_span").css("display","inline").html("办公电话不正确");
             }else {
                 $("#officePhone_span").css("display","none")
             }
