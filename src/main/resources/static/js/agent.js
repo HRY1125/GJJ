@@ -237,7 +237,7 @@ window.onload=function(){
 
         //注册邮箱验证
         $("#agentEmail").blur(function () {
-            var emailReg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+            var emailReg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+\.([a-zA-Z0-9_-]+)+$/;
             var data = $("#agentEmail").val();
             if(data==null || data == ""){
                 $("#agentEmail_span").css("display","inline").html("邮箱不能为空");

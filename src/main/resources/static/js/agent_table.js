@@ -4,6 +4,13 @@ window.onload=function(){
         var table = layui.table;
         var form = layui.form;
         var layer = layui.layer;
+        var agentPapersNumBoolean = true;
+        var nationalityBoolean = true;
+        var officePhoneBoolean = true;
+        var agentPhoneBoolean = true;
+        var agentEmailBoolean = true;
+        var agentUserNameBoolean = true;
+        var ukeyBoolean = true;
         table.render({
 
             elem: '#agent'
@@ -57,7 +64,7 @@ window.onload=function(){
                                     '      </select>';
                             }
                         }
-                ,{field: 'ukey', title: '数字证书', width: 210, edit:'text'}
+                ,{field: 'ukey', title: '数字证书', width: 240}
                 ,{field: 'agentUserName', title: '用户名', width: 135, edit:'text'}
                 ,{field: '', title: '保存/删除', width: 110, fixed: 'right'
                     , toolbar:'<div><div class="layui-btn-group">\n' +
@@ -89,9 +96,10 @@ window.onload=function(){
             console.log(obj.field); //当前编辑的字段名
             console.log(obj.data); //所在行的所有相关数据
 
-            if (obj.value == null){
+            if (obj.value === null){
                 layer.message(obj.field+"不能为空");
             }
+
 
             //身份证号码验证
            if (obj.field==="agentPapersNum") {
@@ -100,22 +108,31 @@ window.onload=function(){
 
                 if(papersNum==null || papersNum === ""){
                     layer.alert("证件号不能为空");
+                    agentPapersNumBoolean = false;
                 }else {
                     if (obj.data.agentPapersName === '身份证'){
                         if (!papersNumReg.test(papersNum)){
                             layer.alert("身份证号码格式不正确");
+                            agentPapersNumBoolean = false;
+                        }else {
+                            agentPapersNumBoolean = true;
                         }
                     }
                 }
             }
 
            //国籍验证
-            if (obj.data.agentPapersName === '护照'){
-                var nationality = obj.value;
-                if (nationality == null || nationality === ""){
-                    layer.alert("国籍不能为空");
+            if (obj.field === "nationality"){
+                if (obj.data.agentPapersName === '护照'){
+                    if (obj.value === null || obj.value === ""){
+                        layer.alert("国籍不能为空");
+                        nationalityBoolean = false;
+                    }else {
+                        nationalityBoolean = true;
+                    }
                 }
             }
+
 
             //办公电话验证
            if (obj.field === "officePhone"){
@@ -123,8 +140,12 @@ window.onload=function(){
                 var officePhone = obj.value;
                 if(officePhone==null || officePhone === ""){
                     layer.alert("电话号码不能为空");
+                    officePhoneBoolean = false;
                 }else if (!phoneReg.test(officePhone)){
                     layer.alert("号码格式应为区号+座机号");
+                    officePhoneBoolean = false;
+                }else {
+                    officePhoneBoolean = true;
                 }
            }
 
@@ -134,33 +155,27 @@ window.onload=function(){
                 var phone = obj.value;
                 if(phone==null || phone === ""){
                     layer.alert("手机号不能为空");
+                    agentPhoneBoolean=false;
                 }else if (!phoneReg.test(phone)){
                     layer.alert("手机号码不正确");
+                    agentPhoneBoolean = false;
+                }else {
+                    agentPhoneBoolean = true;
                 }
             }
 
             //注册邮箱验证
-            if (obj.field === "agentPhone"){
-                var emailReg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+            if (obj.field === "agentEmail"){
+                var emailReg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+\.([a-zA-Z0-9_-]+)+$/;
                 var agentEmail = obj.value;
                 if(agentEmail==null || agentEmail === ""){
                     layer.alert("邮箱不能为空");
+                    agentEmailBoolean = false;
                 }else if (!emailReg.test(agentEmail)){
                     layer.alert("邮箱格式不正确");
-                }
-            }
-
-            if (obj.field === "agentUserName") {
-                if (obj.data.agentType === "非证书用户") {
-                    if (obj.data.agentUserName == null || obj.data.agentUserName === "") {
-                        layer.alert("非证书用户请填写用户名");
-                    }
-                }
-            }
-
-            if (obj.field === "ukey") {
-                if (obj.data.agentType === "非证书用户") {
-                    layer.alert("非证书用户请填写用户名,不可填写数字证书");
+                    agentEmailBoolean = false;
+                }else {
+                    agentEmailBoolean = true;
                 }
             }
 
@@ -169,7 +184,7 @@ window.onload=function(){
         form.verify({
             myVerify:function (value, item) { //value：表单的值、item：表单的DOM对象
                 if(value==null){
-                    return "不能为空";
+                    return alert("不能为空");
                 }
             }
         });
@@ -206,36 +221,61 @@ window.onload=function(){
             obj.data.unitRegisterId = unitRegistId;
             var data = obj.data;
             console.log(data);
+            if (data.agentPapersName ==="护照" || data.agentPapersName ==="身份证"){
+                if (data.agentPapersNum == null){
+                    layer.alert("请填写证件号码");
+                    agentPapersNumBoolean=false;
+                }
+            }
+            if (data.agentPapersName === "护照"){
+                if (data.nationality ===null){
+                    layer.alert("请填写国籍");
+                    nationalityBoolean = false;
+                }
+            }
+            if (data.agentType === "非证书用户"){
+                if (data.agentUserName == null){
+                    layer.alert("请填写用户名");
+                    agentUserNameBoolean=false;
+                }
+            }
             var event = obj.event;
             var flag = true;
             if(event=='save'){
-                layer.open({
-                    content:'是否保存？'
-                    ,btn:['是','否']
-                    ,yes:function () {
-                        $.ajax({
-                            type: "POST",
-                            contentType: "application/json;charset=UTF-8",
-                            url: "/agent/update",
-                            data: JSON.stringify(data),
-                            dataType: "json",
-                            success: function (result) {
-                                layer.msg("保存成功！");
-                                table.reload('agent', {
-                                    height: 500
-                                    , url: '/agent/select'
-                                    , page:{
-                                        curr:1
-                                    }
-                                    , toolbar: '#toolbar'
-                                });
-                            },
-                        });
-                    }
-                    ,btn2:function () {
-                        flag = false;
-                    }
-                });
+                if (agentPapersNumBoolean===false|| nationalityBoolean===false|| officePhoneBoolean===false
+                    ||agentPhoneBoolean===false|| agentEmailBoolean===false||
+                    agentUserNameBoolean===false|| ukeyBoolean===false){
+                    alert("有选项不符合填写要求，请认真检查");
+                }else {
+                    layer.open({
+                        content:'是否保存？'
+                        ,btn:['是','否']
+                        ,yes:function () {
+                            $.ajax({
+                                type: "POST",
+                                contentType: "application/json;charset=UTF-8",
+                                url: "/agent/update",
+                                data: JSON.stringify(data),
+                                dataType: "json",
+                                success: function (result) {
+                                    layer.msg("保存成功！");
+                                    table.reload('agent', {
+                                        height: 500
+                                        , url: '/agent/select'
+                                        , page:{
+                                            curr:1
+                                        }
+                                        , toolbar: '#toolbar'
+                                    });
+                                }
+                            });
+                        }
+                        ,btn2:function () {
+                            flag = false;
+                        }
+                    });
+                }
+
 
             }else if(event=='delete'){
                 layer.open({
@@ -258,7 +298,7 @@ window.onload=function(){
                                     }
                                     , toolbar: '#toolbar'
                                 });
-                            },
+                            }
                         });
                     }
                     ,btn2:function () {
