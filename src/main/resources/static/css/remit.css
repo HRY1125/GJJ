@@ -17,3 +17,7 @@
     position: relative;
     left: -7px !important;
 }
+
+.layui-table-cell{
+    overflow: visible !important;
+}
