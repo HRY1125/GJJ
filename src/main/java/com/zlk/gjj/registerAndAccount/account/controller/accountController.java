@@ -28,14 +28,17 @@ public class accountController {
     }
 
     @RequestMapping(value = "/accountInsert")
-    public String insertAccount(Account account) {
-
+    public String insertAccount(HttpServletRequest request,Account account,Map map) {
         account.setAccountId(IdUtils.getUnitId(9));
+        String unitId = (String) request.getSession().getAttribute("ID");
+        account.setUnitId(unitId);
         Integer flag = accountService.insertAccount(account);
         if (flag == 1) {
-            return "index";
+            map.put("retmsg","开户成功");
+            return "default";
         } else {
-            return null;
+            map.put("retmsg","开户失败");
+            return "default";
         }
     }
 
@@ -51,12 +54,14 @@ public class accountController {
 
     @RequestMapping(value = "/updateAccountById")
     @ResponseBody
-    public String updateAccountById(Account account) {
+    public String updateAccountById(Account account,Map map) {
         Integer flag = accountService.updateAccountById(account);
         if (flag == 1) {
-            return "修改成功";
+            map.put("retmsg","修改成功");
+            return "default";
         } else {
-            return "修改失败";
+            map.put("retmsg","修改失败");
+            return "default";
         }
     }
 

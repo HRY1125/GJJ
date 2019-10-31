@@ -70,21 +70,28 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">业务经办部门</label>
                 <div class="layui-input-block">
-                    <input type="text" name="agentDepartment" lay-verify="required" autocomplete="off" class="layui-input">
+                    <input id="agentDepartment1" type="text" name="agentDepartment" lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
+                <i id="agentDepartment1_r" class="layui-icon" hidden="hidden" style="color: green">&#xe605;</i>
+                <i id="agentDepartment1_w" class="layui-icon" hidden="hidden" style="color: red">&#x1006;</i>
+                <span id="agentDepartment1_span" style="display: none;color: red"></span>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label">单位预算代码</label>
                 <div class="layui-input-block">
                     <input type="text" name="" lay-verify="required" autocomplete="off" class="layui-input">
+
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label">联系电话</label>
                 <div class="layui-input-block">
-                    <input type="text" name="unitPhone" lay-verify="required" autocomplete="off" class="layui-input">
+                    <input id="unitPhone1" type="text" name="unitPhone" lay-verify="required" autocomplete="off" class="layui-input">
+                    <i id="unitPhone_r" class="layui-icon" hidden="hidden" style="color: green">&#xe605;</i>
+                    <i id="unitPhone_w" class="layui-icon" hidden="hidden" style="color: red">&#x1006;</i>
+                    <span id="unitPhone_span" style="display: none;color: red"></span>
                 </div>
             </div>
 
@@ -160,16 +167,45 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">单位缴存比例</label>
                 <div class="layui-input-block">
-                    <input type="text" name="unitDepositeRatio" lay-verify="required" autocomplete="off" class="layui-input">
+                    <select name="unitDepositeRatio" lay-verify="required" lay-filter="papers">
+                        <option value=""></option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label">个人缴存比例</label>
                 <div class="layui-input-block">
-                    <input type="text" name="unitPeopleDepositeRatio" lay-verify="required" autocomplete="off" class="layui-input">
+                    <select name="unitPeopleDepositeRatio" lay-verify="required" lay-filter="papers">
+                        <option value=""></option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
                 </div>
             </div>
+
 
             <div class="layui-form-item">
                 <label class="layui-form-label">每月汇缴是否需要确认人员清册</label>

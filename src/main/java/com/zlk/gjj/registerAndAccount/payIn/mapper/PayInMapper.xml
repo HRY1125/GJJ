@@ -4,8 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zlk.gjj.registerAndAccount.payIn.mapper.PayInMapper">
     <resultMap id="payInEntityMap" type="com.zlk.gjj.registerAndAccount.entity.PayIn">
-        <id property="unitId" column="unit_id" javaType="java.lang.String"></id>
-        <result property="payIdId" column="pay_id_id" javaType="java.lang.Integer"></result>
+        <id property="payIdId" column="pay_id_id" javaType="java.lang.Integer"></id>
+        <result property="unitId" column="unit_id" javaType="java.lang.String"></result>
         <result property="unitRegisterId" column="unit_register_id" javaType="java.lang.String"></result>
         <result property="payMethod" column="pay_method" javaType="java.lang.String"></result>
         <result property="receiptUnitName" column="receipt_unit_name" javaType="java.lang.String"></result>
@@ -21,7 +21,7 @@
     </resultMap>
 
     <insert id="insertPayIn" parameterType="com.zlk.gjj.registerAndAccount.entity.PayIn">
-        insert into pay_in(unit_id,pay_id_id,unit_register_id,pay_method,receipt_unit_name,receipt_unit_account,receipt_unit_bank,bank_exchange_num,pay_sus_num,receipt_date,remit_unit_name,remit_bank_name,remit_unit_account) values (#{unitId},#{payIdId},#{unitRegisterId},#{payMethod},#{receiptUnitName},#{receiptUnitAccount},#{receiptUnitBank},#{bankExchangeNum},#{paySusNum},#{receiptDate},#{remitUnitName},#{remitBankName},#{remitUnitAccount})
+        insert into pay_in(pay_id_id,unit_id,unit_register_id,pay_method,receipt_unit_name,receipt_unit_account,receipt_unit_bank,bank_exchange_num,pay_sus_num,receipt_date,remit_unit_name,remit_bank_name,remit_unit_account) values (#{payIdId},#{unitId},#{unitRegisterId},#{payMethod},#{receiptUnitName},#{receiptUnitAccount},#{receiptUnitBank},#{bankExchangeNum},#{paySusNum},#{receiptDate},#{remitUnitName},#{remitBankName},#{remitUnitAccount})
     </insert>
 
     <select id="selectPayInByUnitId" parameterType="com.zlk.gjj.registerAndAccount.entity.PayIn" resultMap="payInEntityMap">
