@@ -18,7 +18,7 @@ window.onload=function(){
                 /*{field: 'NO.', title: '序号', width:80}
                 ,*/{field: 'employeeId', title: '职工编号', width:135}
                 ,{field: 'employeeName', title: '姓名', width:135, edit:'text'}
-                ,{title: '证件名称', width:135, templet: '#select',style: 'height:52px;padding-top:0px'}
+                ,{field: 'employeePapersName',title: '证件名称', width:135, templet: '#select',style: 'height:52px;padding-top:0px'}
                 ,{field: 'employeeNationnality', title: '国别', width: 135, edit:'text'}
                 ,{field: 'employeePapersNum', title: '证件号码', width: 180, edit:'text'}
                 ,{field: 'depositBase', title: '缴存基数', width: 135, edit:'text'}
@@ -41,7 +41,24 @@ window.onload=function(){
                                  '</div>' +
                               '</div>'}
             ]]
+            ,done: function (res, curr, count) {
+                layui.each($('select'), function (index, item) {
+                    var elem = $(item);
+                    elem.val(elem.data('value')).parents('div.layui-table-cell').css('overflow', 'visible');
+                });
+                form.render();
+            }
 
+        });
+
+        // 监听修改update到表格中
+        form.on('select(papers)', function (data) {
+            var elem = $(data.elem);
+            var trElem = elem.parents('tr');
+            var tableData = table.cache['employ'];
+            // 更新到表格的缓存数据中，才能在获得选中行等等其他的方法中得到更新之后的值
+            tableData[trElem.data('index')][elem.attr('name')] = data.value;
+            // 其他的操作看需求 TODO
         });
 
         table.on('edit(edit)', function(obj){
